@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" rev="stylesheet" href="/layui/css/loginform.css" type="text/css">
+<body>
+<style>
+    .form .submit-btn,
+    .form .submit-btn:active {
+        color: #;
+        background: #;
+    }
+    .form .submit-btn:hover {
+        color: #;
+        background: #;
+    }
+    .form .submit-disable-btn,
+    .form .submit-disable-btn:hover {
+        cursor: #;
+        background: #;
+    }
+
+
+    .customization_elements {
+        display: none;
+    }
+
+</style>
+<div class="login-content not-in-layer  ">
+
+    <div class="head">
+        <i class="iconfont" id="IframeLoginCloseBtn"></i>
+    </div>
+
+    <!-- form-content -->
+    <div class="form-content" id="ifmFormContent">
+        <div class="tab-selected">
+            <span class="" id="smsTitle">手机登录</span>
+            <span class="none" id="pwdTitle">账号密码登录</span>
+        </div>
+
+        <div class="tab-wrap">
+            <a class="none" id="smsTab" href="javascript:void(0);">手机登录</a>
+            <a class="" id="pwdTab" href="javascript:void(0);">账号密码登录</a>
+            <i class="separate"></i>
+            <a class="customer-tab" id="customerTab" href="javascript:void(0);">客户登录</a>
+        </div>
+
+        <!-- form-wrap -->
+        <div class="form-wrap">
+            <!-- sms form -->
+            <section id="phoneForm" class="">
+
+                <form class="form" autocomplete="off" method="post">
+                    <div class="item itemNode">
+                        <div class="control-item-wrap">
+                            <div class="control-item controlItemNode ">
+                                <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_phone@2x.png" width="20px" height="20px" alt="">
+                                <input class="ipt" id="phoneIpt" name="phone" type="text" maxlength="11" placeholder="请输入手机号码" value="" tabindex="1">
+                                <div class="sms-btn-box">
+                                    <a class="sms-btn sms-disabel-btn" id="sendSmsBtn" href="javascript:void(0);" tabindex="-1">获取验证码</a>
+                                    <img id="phoneCleanBtn" style="display: none;" src="//img.58cdn.com.cn/m58/m3/img/delinput.png" class="phoneCleanBtn">
+                                </div>
+                            </div>
+
+                        </div>
+                        <p class="hidden error errorItem" id="errorItemTop">错误～</p>
+                        <p class="voice-code" id="oVoiceCode">动态码收不到？<button id="oVoiceCodeBtn">使用语音验证</button></p>
+                    </div>
+                    <div class="item itemNode">
+                        <div class="control-item-wrap">
+                            <div class="sms-transition" id="smsTransitionNode">
+                                <div class="control-item control-item-md control-item-sms controlItemNode" id="smsIptItem">
+                                    <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_dun@3x.png" width="20px" height="20px" alt="" autocomplete="off">
+                                    <input class="ipt" id="smsIpt" name="sms_code" type="text" maxlength="6" placeholder="请输入验证码" tabindex="2">
+
+                                    <div class="sms-btn-box">
+                                        <img id="smsCleanBtn" style="display: none;" src="//img.58cdn.com.cn/m58/m3/img/delinput.png" class="phoneCleanBtn">
+                                    </div>
+                                </div>
+
+
+                                <div class="control-item control-item-md controlItemNode">
+                                    <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_dun@3x.png" width="20px" height="20px" alt="" autocomplete="off">
+                                    <input class="ipt" id="smsCaptchaIpt" name="captcha" type="text" maxlength="6" placeholder="请输入图片验证码" tabindex="-1">
+                                    <div class="refresh-box">
+                                        <img class="captcha captchaNode" id="vcodeblock" src="#" alt="验证码" tabindex="-1">
+                                        <a href="javascript:void(0);" class="refresh-btn iconfont" id="smsCaptchaRefreshBtn" tabindex="-1"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="hidden error errorItem">错误～</p>
+                        <input class="submit-btn" id="smsSubmitBtn" disabled="" type="button" value="立即登录">
+                    </div>
+                </form>
+
+
+            </section>
+            <!-- sms form end -->
+
+
+            <!-- pwd form -->
+            <section id="pwdForm" class="none">
+                <form class="form" autocomplete="off" id="pwdLoginForm" method="post">
+                    <div class="item itemNode">
+                        <div class="control-item-wrap auto-list-item-wrap">
+                            <div class="control-item controlItemNode">
+                                <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_man@2x.png" width="20px" height="20px" alt="">
+                                <input class="ipt" id="pwdUserNameIpt" type="text" name="username" maxlength="30" placeholder="请输入用户名/邮箱/手机" value="" tabindex="1">
+                                <div class="sms-btn-box">
+                                    <img id="userNameCleanBtn" style="display: none;" src="//img.58cdn.com.cn/m58/m3/img/delinput.png" class="phoneCleanBtn">
+                                </div>
+                            </div>
+                            <ul class="auto-ul none" id="autoUl">
+                                <li><span class="domain domainNode"></span><span class="mail emailNode">@qq.com</span></li>
+                                <li><span class="domain domainNode"></span><span class="mail emailNode">@163.com</span></li>
+                                <li><span class="domain domainNode"></span><span class="mail emailNode">@126.com</span></li>
+                                <li><span class="domain domainNode"></span><span class="mail emailNode">@sina.com</span></li>
+                                <li><span class="domain domainNode"></span><span class="mail emailNode">@sohu.com</span></li>
+                            </ul>
+
+                        </div>
+                        <p class="hidden error errorItem" id="errorItemTopPwd">错误～</p>
+                    </div>
+                    <div class="item itemNode">
+                        <div class="control-item-wrap">
+                            <div class="sms-transition" id="pwdTransitionNode">
+                                <div class="control-item controlItemNode" id="pwdIptItem">
+                                    <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_lock@2x.png" width="20px" height="20px" alt="">
+                                    <input class="ipt" id="pwdIpt" type="password" name="password" maxlength="40" placeholder="请输入密码" tabindex="2">
+                                    <div class="sms-btn-box">
+                                        <img id="pwdCleanBtn" style="display: none;" src="//img.58cdn.com.cn/m58/m3/img/delinput.png" class="phoneCleanBtn">
+                                        <img class="icon-space-right" id="pwdVisible" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_eyeclose@3x.png" width="20px" height="20px" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="control-item control-item-md controlItemNode">
+                                    <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_dun@3x.png" width="20px" height="20px" alt="" autocomplete="off">
+                                    <input class="ipt" id="pwdCaptchaIpt" name="captcha" type="text" maxlength="6" placeholder="请输入图片验证码" tabindex="-1">
+                                    <div class="refresh-box">
+                                        <img class="captcha captchaNode" id="verificationImageCode" src="#" alt="验证码" tabindex="-1">
+                                        <a href="javascript:void(0);" class="refresh-btn iconfont" id="pwdCaptchaRefreshBtn" tabindex="-1"></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p class="hidden error errorItem">错误～</p>
+                    </div>
+
+                    <input class="submit-btn" id="pwdSubmitBtn" disabled="" type="button" value="立即登录">
+                    <a class="forget" href="">忘记密码？</a>
+                </form>
+            </section>
+            <!-- pwd form end -->
+
+
+        </div> <!-- form-wrap end -->
+    </div> <!-- form-content end -->
+
+
+    <!-- 第三方登录模块展示开始 -->
+    <div class="third-login-title" id="thirdLoginTitle">
+        <p class="doc"><span>其他登录方式</span></p>
+    </div>
+
+    <div class="thirds-wrap" id="thirdsWrap">
+        <!-- QQ登录展示 -->
+        <!-- <a id="QQLogin" class="qq iconfont" href="https://login.anjuke.com/login/extlogin?login_type=qq&check_bind_phone=1&history=aHR0cHM6Ly9uai56dS5hbmp1a2UuY29tL2Zhbmd5dWFuLw==" target="_blank" _soj="login_page_qq">&#xe077;</a> -->
+
+        <!-- 微博登录展示 -->
+        <!-- <a id="weiboLogin" class="weibo iconfont" href="https://login.anjuke.com/login/extlogin?login_type=weibo_pc&check_bind_phone=1&history=aHR0cHM6Ly9uai56dS5hbmp1a2UuY29tL2Zhbmd5dWFuLw==" target="_blank" _soj="login_page_weibo">&#xe078;</a> -->
+
+        <!-- 微信登录展示 -->
+<!--        <a id="weixinLogin" class="weixin iconfont" href="https://login.anjuke.com/login/extlogin?login_type=weixin_pc&amp;check_bind_phone=1&amp;history=aHR0cHM6Ly9uai56dS5hbmp1a2UuY29tL2Zhbmd5dWFuLw==" target="_blank" _soj="login_page_weichat"></a>-->
+<!--    </div>-->
+    <!-- 第三方登录模块展示结束 -->
+
+    <!-- 其他登录模块展示开始 -->
+    <div class="other-login-wrap none" id="otherLoginWrap">
+        <div class="tip-arrow">
+            <span></span>
+        </div>
+        <p><i class="iconfont"></i><a href="https://svip.fang.anjuke.com/login" target="_blank" _soj="login_anjuke">房易通帐号</a></p>
+
+        <p><i class="iconfont"></i><a href="http://my.anjuke.com/fxb/login" target="_blank" _soj="login_anjuke">新房分销帐号</a></p>
+
+        <p><i class="iconfont"></i><a href="http://vip.anjuke.com/user/brokerhome" target="_blank" _soj="login_anjuke">经纪人帐号</a></p>
+    </div>
+    <!-- 其他登录模块展示结束 -->
+
+<!--    <div class="check-item" id="protocolItem">-->
+<!--        <span>我已阅读并接受</span>-->
+
+<!--        <a href="https://kfzx.anjuke.com/faqDetail/queryDetail?faqId=104&amp;faqTypeId=10" target="_blank">《安居客用户服务协议》</a>及-->
+<!--        <a href="https://kfzx.anjuke.com/faqDetail/queryDetail?faqId=104&amp;faqTypeId=10" target="_blank">《安居客隐私政策》</a>-->
+<!--    </div>-->
+</div>
+</body>
+</html>

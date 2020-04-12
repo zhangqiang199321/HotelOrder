@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>客房系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="/layui/css/anjuke.css" media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<body>
+<div class="topbar">
+    <div class="header-center clearfix">
+        <ul class="nav-site clearfix">
+            <li class="first"><a href="" _soj="navigation">首 页</a></li>
+        </ul>
+        <div id="userbox" class="user">
+            <!-- 用户未登录 -->
+            <div class="userlogin userblock">
+                <i class="icon icon-people"></i>
+                <a class="link" href="login" rel="nofollow">登录</a>
+                <a class="link" href="login" rel="nofollow">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header header-center clearfix">
+    <a class="logo-site" href="" title="客房系统">客房</a>
+    <a class="logo-site">租房</a>
+    <div class="cityselect">
+        <div id="switch_apf_id_5" class="city-view">
+            南京<i class="iconfont triangle-down"></i>
+        </div>
+    </div>
+    <form class="search-form" id="search-form" action="" method="GET">
+        <input type="hidden" name="t" value="1">
+        <input type="hidden" name="from" value="0">
+        <input type="hidden" name="comm_exist" value="on">
+<!--        <input type="text" name="kw" class="searchbar-rent" id="search-rent" placeholder="请输入小区名称、地址…"-->
+<!--               autocomplete="off" maxlength="100" value="" style="color: rgb(153, 153, 153);"><input type="submit"-->
+<!--                                                                                                     id="search-button"-->
+<!--                                                                                                     class="searchbar-button"-->
+<!--                                                                                                     hidefocus="true"-->
+<!--                                                                                                     value="搜索">-->
+        <i id="search-close" class="icon icon-close" data-tracker="delete-kw" style="display:none"></i>
+        <a href="" rel="nofollow" class="search-map" target="_blank" _soj="searchbar">优质服务</a>
+        <div class="auto-wrap"></div>
+    </form>
+    <script type="text/template" id="search-tpl"></script>
+</div>
+<div class="nav header-center clearfix">
+    <ul>
+        <li><a href="" _soj="navigation" class="current">需求找房</a>
+        </li>
+        <li><a href="" _soj="navigation">精品推荐</a></li>
+        <li><a href="" _soj="navigation" target="_blank">打折优惠</a></li>
+        <li><a href="" _soj="navigation" target="_blank">炫酷主题</a></li>
+        <!-- 显示下载app -->
+        <li><a href="" _soj="navigation" target="_blank">总统套房</a></li>
+        <li><a href="" _soj="navigation" target="_blank">我的租房</a></li>
+    </ul>
+</div>
+<div class="w1180">
+    <div class="div-border items-list">
+        <!-- 区域 begin-->
+        <!-- 区域 end-->
+
+        <!-- 租金 begin-->
+        <div class="items ">
+            <span class="item-title">价格：</span>
+            <span class="elems-l">
+                <a v-for="(value,key,index) in priceData" :href="value"  :class="{'selected-item':currentPriceIndex == index}"
+                   rel="nofollow" @click="price(index,value)">{{key}}</a>
+                <div class="pricecond">
+                    <!--两个输入框的长度width需要在加载时传入参数计算：数字长度小于等于3位时，width:24px 数字长度n大于3位时，width: 8*n px-->
+                    <form action="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/" id="price_range_form"
+                          onsubmit="">
+                        <input id="from-price" class="from-price yell" type="text" name="from_price" maxlength="5"
+                               value="0" style="width:32px;" autocomplete="off"> -
+                        <input id="to-price" class="to-price yell" type="text" name="to_price" maxlength="5" value="500"
+                               style="width:32px;" autocomplete="off">&nbsp;<span class="">元</span>
+                        <input class="smit" id="pricerange_search" style="" type="button" value="确定">
+                    </form>
+                </div>
+            </span>
+        </div>
+
+        <!--  房型 begin-->
+        <div class="items">
+            <span class="item-title">房型：</span>
+            <span class="elems-l">
+                    <a v-for="(value,key,index) in typeData" :href="value"  :class="{'selected-item':currentTypeIndex == index}"
+                        rel="nofollow" @click="type(index,value)">{{key}}</a>
+<!--                      <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-x2/" class="selected-item"-->
+<!--                         rel="nofollow">全部</a>-->
+<!--                      <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx1-x2/" rel="nofollow">一室</a>-->
+<!--                      <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/" rel="nofollow">二室</a>-->
+<!--                      <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx3-x2/" rel="nofollow">三室</a>-->
+<!--                      <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx4-x2/" rel="nofollow">四室</a>-->
+<!--                      <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx5-x2/" rel="nofollow">五室及以上</a>-->
+                  </span>
+        </div>
+
+        <div class="items">
+            <span class="item-title">类型：</span>
+            <span class="elems-l">
+                <a v-for="(value,key,index) in topicData" :href="value"  :class="{'selected-item':currentTopicIndex == index}"
+                   rel="nofollow" @click="topic(index,value)">{{key}}</a>
+<!--                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2/" rel="nofollow">全部</a>-->
+<!--                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x1/" rel="nofollow">优惠便利</a>-->
+<!--                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/" rel="nofollow">主题套房</a>-->
+<!--                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/" rel="nofollow">豪华套房</a>-->
+<!--                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/" rel="nofollow">总统套房</a>-->
+            </span>
+        </div>
+
+        <!-- 房屋类型 begin -->
+<!--        <div class="search_bottom clearfix">-->
+<!--            <div id="condmenu">-->
+<!--                <ul class="condul clearfix">-->
+<!--                    <li class="condlist_tip"><span>更多筛选：</span></li>-->
+<!--                    <li class="condibox">-->
+<!--                        <a href="javascript:void(0);">-->
+<!--                                                            <span class="select_item">-->
+<!--                                    <span class="txt" id="condhouseage_txt_id">房屋类型</span>-->
+<!--                                    <span class="icon">&nbsp;</span>-->
+<!--                                </span>-->
+<!--                        </a>-->
+<!--                        <ul style="display: none;">-->
+<!--                            <li class="selected">-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/"-->
+<!--                                   rel="nofollow">全部</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx1/" rel="nofollow">普通住宅</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx4/" rel="nofollow">公寓</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx2/" rel="nofollow">别墅</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx9/" rel="nofollow">四合院</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx10/"-->
+<!--                                   rel="nofollow">商住两用</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx7/" rel="nofollow">新里洋房</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx8/" rel="nofollow">老公房</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx5/" rel="nofollow">平房</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-lx6/" rel="nofollow">其他</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
+<!--                    <li class="condibox">-->
+<!--                        <a href="javascript:void(0);">-->
+<!--                                                            <span class="select_item">-->
+<!--                                    <span class="txt" id="condhouse_orient_txt_id">朝向</span>-->
+<!--                                    <span class="icon">&nbsp;</span>-->
+<!--                                </span>-->
+<!--                        </a>-->
+<!--                        <ul style="display: none;">-->
+<!--                            <li class="selected">-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/"-->
+<!--                                   rel="nofollow">全部</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw1/" rel="nofollow">朝东</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw2/" rel="nofollow">朝南</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw3/" rel="nofollow">朝西</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw4/" rel="nofollow">朝北</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw5/" rel="nofollow">东南</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw6/" rel="nofollow">东北</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw7/" rel="nofollow">西南</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw8/" rel="nofollow">西北</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw9/" rel="nofollow">南北</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-tw10/"-->
+<!--                                   rel="nofollow">东西</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
+<!--                    <li id="" class="filter_check">-->
+<!--                        <input type="checkbox" href="javascript:" id="filter_is_school_input"-->
+<!--                               onclick="location.href='https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-fyfw1/'">-->
+<!--                        <label for="filter_is_school_input">防疫服务</label>-->
+<!--                    </li>-->
+
+<!--                    <li id="" class="filter_check">-->
+<!--                        <input type="checkbox" href="javascript:" id="filter_is_school_input"-->
+<!--                               onclick="location.href='https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-mt1/'">-->
+<!--                        <label for="filter_is_school_input">近地铁</label>-->
+<!--                    </li>-->
+<!--                    <li id="" class="filter_check">-->
+<!--                        <input type="checkbox" href="javascript:" id="filter_is_school_input"-->
+<!--                               onclick="location.href='https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-dtf1/'">-->
+<!--                        <label for="filter_is_school_input">电梯房</label>-->
+<!--                    </li>-->
+<!--                    <li id="" class="filter_check">-->
+<!--                        <input type="checkbox" href="javascript:" id="filter_is_school_input"-->
+<!--                               onclick="location.href='https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-de1/'">-->
+<!--                        <label for="filter_is_school_input">独立卫生间</label>-->
+<!--                    </li>-->
+<!--                    <li id="" class="filter_check">-->
+<!--                        <input type="checkbox" href="javascript:" id="filter_is_school_input"-->
+<!--                               onclick="location.href='https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2-de3/'">-->
+<!--                        <label for="filter_is_school_input">独立阳台</label>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    <div class="maincontent">
+        <div class="list-content" id="list-content">
+            <!--标签-->
+            <div class="zu-tab">
+                <a href="" class="curTab">全部</a>
+            </div>
+            <!--排序-->
+            <div class="zu-sort">
+                <span class="tit">为您找到客房</span>
+                <div class="sort-cond">
+                    <span>排序 ：</span>
+                    <a href="https://nj.zu.anjuke.com/fangyuan/liuhe/zj201-fx2-x2/" class="light">默认</a>
+                    <a href="https://nj.zu.anjuke.com/fangyuan/liuhe/zj201-fx2-x2-px2/ " class="">租金<i
+                            class="icon icon-arrup"></i></a>
+                    <a href="https://nj.zu.anjuke.com/fangyuan/liuhe/zj201-fx2-x2-px3/ " class="">最新<i
+                            class="icon icon-arrdown"></i></a>
+                    <!--icon-arrup-org icon-arrdown-org为高亮箭头-->
+                </div>
+            </div>
+            <!--房源列表豆腐块-->
+            <!--区域板块租房房源列表页-->
+            <div class="zu-itemmod" link="/display" _soj="Filter_1&hfilter=filterlist">
+                <a data-company="" class="img" _soj="Filter_1" data-sign="true" href="/display" target="_blank"
+                   hidefocus="true">
+                    <img class="thumbnail" lazy_src="" src="" width="180" height="135" data-loaded="true">
+                    <span class="many-icons iconfont"></span>
+                </a>
+                <div class="zu-info">
+                    <h3>
+                        <a target="_blank" _soj="Filter_1" href="/display">
+                            <b class="strongbox">湖滨新寓 2室1厅1卫 主卧 南</b>
+                        </a>
+                        <em class="anxvan-ico"></em>
+                    </h3>
+                    <p class="details-item tag">
+                        <b class="strongbox" style="font-weight: normal;">2</b>室<b class="strongbox"
+                                                                                   style="font-weight: normal;">1</b>厅<span>|</span><b
+                            class="strongbox" style="font-weight: normal;">84</b>平米<span>|</span>高层(共6层)
+                    </p>
+                    <address class="details-item">
+                        <a target="_blank" href="/display">湖滨新寓</a>&nbsp;&nbsp;
+                        六合-大厂 凤滨路176号
+                    </address>
+                    <p class="details-item bot-tag">
+                        <span class="cls-1">合租</span>
+                        <span class="cls-2">朝南</span>
+                    </p>
+                </div>
+                <div class="zu-side">
+                    <p><strong><b class="strongbox">800</b></strong> 元/天</p>
+                </div>
+            </div>
+            <div id="zu-comhead" class="zu-comhead" style="height: 90px;">
+                <em>根据您的租房要求，特别<font color="#f60">推荐</font>以下房源</em>
+            </div>
+
+            <!--翻页-->
+            <div class="page-content">
+                <div class="multi-page"><i class="iPre">上一页</i><i class="curr">1</i><i class="iNxt">下一页 &gt;</i></div>
+            </div>
+        </div>
+        <div class="adver-content">
+            <div id="IFX_p3001" class="advBox" style="display:none;"></div>
+
+            <div id="IFX_p950" class="advBox" style="">
+                <div style="width:200px;height:200px;border:none;padding:0px;margin:0px;overflow:hidden;position: relative;">
+                    <a target="_blank"
+                       href="https://ifx.anjuke.com/cr?c=172&amp;u=http%3A%2F%2Fshanghai.anjuke.com%2Fask%2F%3Ffrom%3Dnavigation&amp;p=950&amp;as=228628970">
+                        <img style="width:200px;height:200px;border:none;"
+                             src="https://pic6.ajkimg.com/mat/f1e81f2a177ffbfd3fd2cb4c8f5bd58f?imageMogr2/format/jpg/thumbnail/200x200">
+                    </a>
+                    <span style="position: absolute;right: 11px;bottom: 0;color: white;">广告</span>
+                </div>
+            </div>
+
+            <div id="IFX_p951" class="advBox" style="">
+                <div style="width:200px;height:200px;border:none;padding:0px;margin:0px;overflow:hidden;position: relative;">
+                    <a target="_blank"
+                       href="https://ifx.anjuke.com/cr?c=172&amp;u=http%3A%2F%2Fi.anjuke.com%2Fpublish%3Ffrom%3Drent&amp;p=951&amp;as=3317633866">
+                        <img style="width:200px;height:200px;border:none;"
+                             src="https://pic1.ajkimg.com/display/xinform/b5b9e9a1deb129c1d7842869f00ff59f/W0QQnZo.jpg.d837c8b2673ed122e3a6c8537758982d.jpg">
+                    </a>
+                    <span style="position: absolute;right: 11px;bottom: 0;color: white;">广告</span>
+                </div>
+            </div>
+
+            <!--百度广告-->
+            <!--<div class="advBox" id="baidu_adv"></div>-->
+            <!-- 58联盟广告页 -->
+            <div class="luna-58-wrap">
+                <iframe class="luna-58ifm"
+                        src="https://luna.58.com/show/ads?n=b-33276477696777-ps-f-anjukepc&amp;c=zufangpc&amp;qq-pf-to=pcqq.discussion"
+                        width="240" height="240" scrolling="no" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var __Json4fe = {
+
+        cityId: 172,
+        suggestUrl: 'https://www.anjuke.com/zfgroup-ajax-apirent/Api_get_pc_search_suggest_qiankun',
+        feeParams: {
+            customparam: '{"v":"2.0","entry":1,"hpPage":"Haozu_Hp_View","channel":"3","commid":"0","tradeType":"2","result":116706,"userId":0,"userType":0,"proids":"5002990478|100934156|221876|2,5001427861|6662185|908156|2,5002991101|100934029|867041|2,5002993307|100934156|177223|2,5002998618|100934156|916791|2,5002987615|100934156|1258510|2,5002998144|100934156|177223|2,5002984671|100934156|916791|2,5002991869|100934029|145130|2,5002995141|100934029|145601|2,5002988090|100934029|145127|2,5002996914|100950373|838972|2,5002995046|100950373|839355|2,5002994577|100950373|1058285|2,5002992341|100933676|200154|2,5002992413|100950373|839355|2,5002985861|100933676|200797|2,1544256871|7688331|186799|2,5001786382|7688387|240037|2,1544252040|7688387|186799|2,5002996448|100933671|208034|2,5001984226|7688400|145601|2,5001931892|7688391|145518|2,5002048649|7688341|472116|2,5001132717|6636386|840595|2,5002997168|100950328|867025|2,5002994601|100933671|145398|2,5002053712|7688341|319917|2,5002993175|100933671|841221|2,5001342209|7688360|943113|2,5002995583|100933671|914076|2,5001935510|7688391|1017341|2,5002989981|100950328|840085|2,5002993468|100950318|223445|2,1544235096|100795255|840085|2,5002990454|100950328|200797|2,5001693007|100811545|184801|2,1544252043|7688387|145417|2,5002984772|100950328|145201|2,1544256884|7688331|145417|2,5001926038|7688391|908156|2,5002993345|100950328|836704|2,5001798656|7688387|1007648|2,1532498024|101105020|184801|2,5002996724|100950328|1084605|2,5001920306|7688429|145601|2,1544256869|7688331|207855|2,1544256905|7688331|184801|2,5002994129|100933671|145359|2,5001923404|7688391|145210|2,1540071134|101105020|184801|2,5002996952|100933671|1058338|2,5002995121|100933671|943489|2,5002055502|7688341|146057|2,5002998968|100950318|1258510|2,1541423119|7704435|916791|2,1530722928|3845793|840187|2,5002992922|100934156|145533|2,5002998924|100934029|943113|2,5002986820|100934165|177223|2,5002995553|100934029|200797|2,5002998163|100933676|840085|2,5002987334|100933676|146184|2,5002993798|100934165|145854|2,5002986615|100933676|145127|2,5002301644|7682115|1007648|2","search_type":"ordinary","KW":""}'
+        },
+
+        recommendList: {
+            customparam: '{}'
+        },
+
+        guessYouLike: {
+            customparam: '{"v":"2.0","entry":126,"hpPage":"Haozu_Hp_View","channel":"3","commid":"0","tradeType":"2","result":5,"userId":0,"userType":0,"proids":"5002845517|6932496|397816|1,5002885023|5714609|190333|2,5002991002|6666062|182335|1,5002913648|101193546|840545|1,5002875803|7200814|230957|2"}'
+        }
+    };
+
+    __Json4fe.jingxuanTrackURLs = ["https:\/\/adtrack.58.com\/1001664\/?data=1_1_a0bf076f-4cb1-4085-ad3e-c610c29d87c5_31a0a1bf8aad8df19d6d369e9d2f78a1,2_2_e90640d3-99df-451f-9c4d-097681a4a888_31a0a1bf8aad8df19d6d369e9d2f78a1,3_3_326e06d0-3e3f-4e72-8cd9-c28de9dc8b66_31a0a1bf8aad8df19d6d369e9d2f78a1,4_4_4f8caf14-9100-4305-869f-4b4e0768b758_31a0a1bf8aad8df19d6d369e9d2f78a1,5_5_db7b7823-87ca-4bbc-99a2-da97bc4367d9_31a0a1bf8aad8df19d6d369e9d2f78a1,6_6_f7885e7d-6c69-41c3-90b6-8cebcff3f1f4_31a0a1bf8aad8df19d6d369e9d2f78a1,7_7_bc337ef3-f699-4aa0-8965-ad676630c35f_31a0a1bf8aad8df19d6d369e9d2f78a1,8_8_c698a877-a216-4ede-a2e5-9638cb87acea_31a0a1bf8aad8df19d6d369e9d2f78a1,9_9_1c347bdf-b25f-43b6-916d-4fbab352473a_31a0a1bf8aad8df19d6d369e9d2f78a1,10_10_d5deae2e-4f83-4564-81e5-99193c8273e8_31a0a1bf8aad8df19d6d369e9d2f78a1,11_11_3ca2f98e-e903-449d-b47b-de91d5ec08f2_31a0a1bf8aad8df19d6d369e9d2f78a1,12_12_04ad92d0-1733-4637-a819-211e8223d614_31a0a1bf8aad8df19d6d369e9d2f78a1,13_13_ed91a071-883d-4b73-b0d3-70e09f593ca5_31a0a1bf8aad8df19d6d369e9d2f78a1,14_14_4efcfb8c-0c55-4859-b613-a2fae88749ce_31a0a1bf8aad8df19d6d369e9d2f78a1,15_15_ce1d34c4-0a42-4d90-84a0-7e21460db8c4_31a0a1bf8aad8df19d6d369e9d2f78a1&ver=v1.0.0", "https:\/\/adtrack.58.com\/1001664\/?data=16_16_dd726e8f-fe19-42ca-9880-71842065bfed_31a0a1bf8aad8df19d6d369e9d2f78a1,17_17_ab161a4f-e733-4bb2-bb54-67ffe3fc9a5c_31a0a1bf8aad8df19d6d369e9d2f78a1,18_18_f40da8e7-55df-47af-adb7-50af27844f71_31a0a1bf8aad8df19d6d369e9d2f78a1,19_19_e910e0f4-d90c-4bfb-bdf4-eb0e1a2d3df7_31a0a1bf8aad8df19d6d369e9d2f78a1,20_20_a949a9a3-c2d7-4d23-9f4d-e69d1e9b2554_31a0a1bf8aad8df19d6d369e9d2f78a1,21_21_0631390a-bce0-4279-8d55-cf400a8b3e93_31a0a1bf8aad8df19d6d369e9d2f78a1,22_22_e8262135-3901-47cb-83f1-b9cd536d6daf_31a0a1bf8aad8df19d6d369e9d2f78a1,23_23_3c5a73da-734a-44a0-8f45-0ae35c42ce58_31a0a1bf8aad8df19d6d369e9d2f78a1,24_24_22718a15-314f-4cd6-8f83-34445bb3360e_31a0a1bf8aad8df19d6d369e9d2f78a1,25_25_e0012caf-430c-4bc5-ae7f-5c663575bc6f_31a0a1bf8aad8df19d6d369e9d2f78a1,26_26_c1f320a6-829e-4189-b6aa-d74958b1e7b3_31a0a1bf8aad8df19d6d369e9d2f78a1,27_27_ee33ad7c-1ccd-4dfc-8d5a-23f75fd376bb_31a0a1bf8aad8df19d6d369e9d2f78a1,28_28_bf0bd5ab-ae59-4abd-8ca2-1b827f811dfb_31a0a1bf8aad8df19d6d369e9d2f78a1,29_29_589d784d-d82f-42c9-b8a6-f5f41f5a3894_31a0a1bf8aad8df19d6d369e9d2f78a1,30_30_ab4d8c77-acab-40f9-95d4-7bf8c4a41cc7_31a0a1bf8aad8df19d6d369e9d2f78a1&ver=v1.0.0", "https:\/\/adtrack.58.com\/1001664\/?data=31_31_dce30d31-bbc1-4e73-92ff-0eab0d360f95_31a0a1bf8aad8df19d6d369e9d2f78a1,32_32_64d14b75-75a9-4a9e-af53-de0947a2b6d3_31a0a1bf8aad8df19d6d369e9d2f78a1,33_33_e6598b7d-8f87-4207-9e77-5e2c131def8f_31a0a1bf8aad8df19d6d369e9d2f78a1,34_34_429368f7-6432-463b-ab06-e5eb13cab303_31a0a1bf8aad8df19d6d369e9d2f78a1,35_35_aabcc6ac-e952-414f-b359-136738c148d0_31a0a1bf8aad8df19d6d369e9d2f78a1,36_36_a848b768-42b7-40bf-aacc-a84980729467_31a0a1bf8aad8df19d6d369e9d2f78a1,37_37_92f95408-1441-45a8-bdb5-56dc0fc0b7c4_31a0a1bf8aad8df19d6d369e9d2f78a1,38_38_b05bddfc-f419-4930-b706-d6cdac703b42_31a0a1bf8aad8df19d6d369e9d2f78a1,39_39_816b4ec7-cb6d-4b99-a8a9-374ee2c55dfa_31a0a1bf8aad8df19d6d369e9d2f78a1,40_40_9e4c72e3-e12b-4c42-ba5b-aef780674e4a_31a0a1bf8aad8df19d6d369e9d2f78a1,41_41_2370f160-be49-4c2d-be55-83938f7dcd0a_31a0a1bf8aad8df19d6d369e9d2f78a1,42_42_7aa808ff-408d-45fa-b942-aea29898cc43_31a0a1bf8aad8df19d6d369e9d2f78a1,43_43_a85b5592-cd1c-4870-9512-893c3ec36df9_31a0a1bf8aad8df19d6d369e9d2f78a1,44_44_d3cdcb0e-3ccc-4a15-abd8-eb57e1658e34_31a0a1bf8aad8df19d6d369e9d2f78a1,45_45_b4231863-50c1-4812-83bd-d1fb1f5f613c_31a0a1bf8aad8df19d6d369e9d2f78a1&ver=v1.0.0", "https:\/\/adtrack.58.com\/1001664\/?data=46_46_779d00bd-77b2-4d5a-b407-9aa01ef8c033_31a0a1bf8aad8df19d6d369e9d2f78a1,47_47_ca4c9648-d734-43d3-9bad-9db8e9208679_31a0a1bf8aad8df19d6d369e9d2f78a1,48_48_7676ee01-eef5-4df1-9e8c-4f609d146e51_31a0a1bf8aad8df19d6d369e9d2f78a1,49_49_acd1f85c-814c-4bac-aab3-dc7aa8b9eb78_31a0a1bf8aad8df19d6d369e9d2f78a1,50_50_d55d9fce-b4b4-48a9-b787-45a4405fe4cf_31a0a1bf8aad8df19d6d369e9d2f78a1,51_51_05524600-d070-4847-a372-1bba509ae12c_31a0a1bf8aad8df19d6d369e9d2f78a1,52_52_cd4f72c0-9607-4ce4-be9c-e2f4143796a6_31a0a1bf8aad8df19d6d369e9d2f78a1,53_53_a57854f8-4820-415a-a03e-12b0d9a9fb1a_31a0a1bf8aad8df19d6d369e9d2f78a1,54_54_cac9a076-165b-49ba-a7bf-24e347586639_31a0a1bf8aad8df19d6d369e9d2f78a1,55_55_549f2956-66e4-445d-916b-5025a51ada76_31a0a1bf8aad8df19d6d369e9d2f78a1,56_56_49b790df-8a3c-4ce3-8eb6-a6cae9f4108e_31a0a1bf8aad8df19d6d369e9d2f78a1,57_57_88534cf5-6bca-43cb-911e-3716cc6068b6_31a0a1bf8aad8df19d6d369e9d2f78a1,58_58_061e4b08-1982-4f05-8b1d-d06dc6b6c1c8_31a0a1bf8aad8df19d6d369e9d2f78a1,59_59_66bed7f2-f09e-4c72-8f54-6bd12f2d0406_31a0a1bf8aad8df19d6d369e9d2f78a1,60_60_4cb91874-14b4-4910-9c6d-d2d359a69799_31a0a1bf8aad8df19d6d369e9d2f78a1&ver=v1.0.0", "https:\/\/adtrack.58.com\/1001664\/?data=61_61_a093c13c-c651-4193-ae58-51fbde7fbe5a_31a0a1bf8aad8df19d6d369e9d2f78a1,62_62_f967bc83-f7c2-4bdb-b28f-acda23453734_31a0a1bf8aad8df19d6d369e9d2f78a1,63_63_110d628f-d48e-4c12-ab25-c69d859e84ae_31a0a1bf8aad8df19d6d369e9d2f78a1,64_64_2320e14e-eebe-4289-be92-190b741e6d3a_31a0a1bf8aad8df19d6d369e9d2f78a1,65_65_744586fe-8989-4768-a0e2-f456a85474aa_31a0a1bf8aad8df19d6d369e9d2f78a1,66_66_1c69888d-19b6-4fad-ae16-4ef58db681a2_31a0a1bf8aad8df19d6d369e9d2f78a1&ver=v1.0.0", "https:\/\/adtrack.58.com\/1001669\/?data=2_67_5d933b04-d075-40a9-8575-5f943ebb9b11_31a0a1bf8aad8df19d6d369e9d2f78a1,5_68_2c6d0659-6c4a-4e5e-a148-c69decf2dca5_31a0a1bf8aad8df19d6d369e9d2f78a1&ver=v1.0.0"];
+</script>
+</body>
+<script src="/layui/anjuke.js"></script>
+<script type="text/javascript" src="/layui/vue.js"></script>
+<script type="text/javascript" src="/layui/vueindex.js"></script>
+</html>

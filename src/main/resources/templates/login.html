@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>登录</h1>
+<form action="post">
+    <table>
+        <tr>
+            <td>
+                账号：<input type="text" id="username" name="name" placeholder="请输入用户名"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                密码：<input type="text" id="password" name="passWord" placeholder="请输入密码"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <input id="login" type="button" value="提交" />
+            </td>
+            <td style="text-align: center">
+                <input id="save" type="button" value="注册" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#login").click(doLogin);
+        $("#save").click(SaveUser);
+    });
+    function doLogin(){
+        var params ={
+            name:$("#username").val(),
+            passWord:$("#password").val()
+        };
+        $.ajax({
+            type:"POST",
+            url:"userInfo/login",
+            data:params,
+            success:function (result) {
+                if(result.state == 1){
+                    alert(result.data);
+                }
+            }
+            }
+        );
+    };
+    function SaveUser() {
+        window.location.href="/register";
+    };
+</script>
+</html>
