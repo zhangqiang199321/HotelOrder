@@ -55,7 +55,7 @@ public interface SysRoleService {
 	 * @return
 	 */
 	PageObject<SysRole> findPageObjects(
-			 String name,
+			 String hotelType,
 			 Integer pageCurrent);
 	
 }

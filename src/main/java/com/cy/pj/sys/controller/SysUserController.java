@@ -11,6 +11,7 @@ import com.cy.pj.sys.service.SysUserService;
 @Controller
 @RequestMapping("/user/")
 public class SysUserController {
+	//todo 员工管理
 	@Autowired
 	private SysUserService sysUserService;
 	@RequestMapping("doUserListUI")
