@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" rev="stylesheet" href="/layui/css/loginform.css" type="text/css">
+</head>
 <body>
 <style>
     .form .submit-btn,
@@ -35,13 +36,13 @@
     <!-- form-content -->
     <div class="form-content" id="ifmFormContent">
         <div class="tab-selected">
-            <span class="" id="smsTitle">手机登录</span>
-            <span class="none" id="pwdTitle">账号密码登录</span>
+            <span class="none" id="smsTitle">手机登录</span>
+            <span class="" id="pwdTitle">账号密码登录</span>
         </div>
 
         <div class="tab-wrap">
-            <a class="none" id="smsTab" href="javascript:void(0);">手机登录</a>
-            <a class="" id="pwdTab" href="javascript:void(0);">账号密码登录</a>
+            <a class="" id="smsTab" href="javascript:void(0);">手机登录</a>
+            <a class="none" id="pwdTab" href="javascript:void(0);">账号密码登录</a>
             <i class="separate"></i>
             <a class="customer-tab" id="customerTab" href="javascript:void(0);">客户登录</a>
         </div>
@@ -49,7 +50,7 @@
         <!-- form-wrap -->
         <div class="form-wrap">
             <!-- sms form -->
-            <section id="phoneForm" class="">
+            <section id="phoneForm" class="none">
 
                 <form class="form" autocomplete="off" method="post">
                     <div class="item itemNode">
@@ -85,13 +86,13 @@
                                     <input class="ipt" id="smsCaptchaIpt" name="captcha" type="text" maxlength="6" placeholder="请输入图片验证码" tabindex="-1">
                                     <div class="refresh-box">
                                         <img class="captcha captchaNode" id="vcodeblock" src="#" alt="验证码" tabindex="-1">
-                                        <a href="javascript:void(0);" class="refresh-btn iconfont" id="smsCaptchaRefreshBtn" tabindex="-1"></a>
+                                        <a href="javascript:void(0);" class="refresh-btn iconfont" id="smsCaptchaRefreshBtn" tabindex="-1">&#xe083;</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <p class="hidden error errorItem">错误～</p>
-                        <input class="submit-btn" id="smsSubmitBtn" disabled="" type="button" value="立即登录">
+                        <input class="submit-btn" id="smsSubmitBtn" type="button" value="立即登录" >
                     </div>
                 </form>
 
@@ -101,12 +102,12 @@
 
 
             <!-- pwd form -->
-            <section id="pwdForm" class="none">
+            <section id="pwdForm" class="">
                 <form class="form" autocomplete="off" id="pwdLoginForm" method="post">
                     <div class="item itemNode">
                         <div class="control-item-wrap auto-list-item-wrap">
                             <div class="control-item controlItemNode">
-                                <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_man@2x.png" width="20px" height="20px" alt="">
+                                <img class="icon-space" src="/layui/images/img/icon_man@2x.png" width="20px" height="20px" alt="">
                                 <input class="ipt" id="pwdUserNameIpt" type="text" name="username" maxlength="30" placeholder="请输入用户名/邮箱/手机" value="" tabindex="1">
                                 <div class="sms-btn-box">
                                     <img id="userNameCleanBtn" style="display: none;" src="//img.58cdn.com.cn/m58/m3/img/delinput.png" class="phoneCleanBtn">
@@ -127,11 +128,11 @@
                         <div class="control-item-wrap">
                             <div class="sms-transition" id="pwdTransitionNode">
                                 <div class="control-item controlItemNode" id="pwdIptItem">
-                                    <img class="icon-space" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_lock@2x.png" width="20px" height="20px" alt="">
+                                    <img class="icon-space" src="/layui/images/img/icon_lock@2x.png" width="20px" height="20px" alt="">
                                     <input class="ipt" id="pwdIpt" type="password" name="password" maxlength="40" placeholder="请输入密码" tabindex="2">
                                     <div class="sms-btn-box">
                                         <img id="pwdCleanBtn" style="display: none;" src="//img.58cdn.com.cn/m58/m3/img/delinput.png" class="phoneCleanBtn">
-                                        <img class="icon-space-right" id="pwdVisible" src="https://pages.anjukestatic.com/usersite/touch/img/user/login/icon_eyeclose@3x.png" width="20px" height="20px" alt="">
+                                        <img class="icon-space-right" id="pwdVisible" src="/layui/images/img/icon_eyeclose@3x.png" width="20px" height="20px" alt="">
                                     </div>
                                 </div>
 
@@ -149,7 +150,7 @@
                         <p class="hidden error errorItem">错误～</p>
                     </div>
 
-                    <input class="submit-btn" id="pwdSubmitBtn" disabled="" type="button" value="立即登录">
+                    <input class="submit-btn active" id="pwdSubmitBtn" disabled="false" type="button" value="立即登录">
                     <a class="forget" href="">忘记密码？</a>
                 </form>
             </section>
@@ -162,7 +163,7 @@
 
     <!-- 第三方登录模块展示开始 -->
     <div class="third-login-title" id="thirdLoginTitle">
-        <p class="doc"><span>其他登录方式</span></p>
+<!--        <p class="doc"><span>其他登录方式</span></p>-->
     </div>
 
     <div class="thirds-wrap" id="thirdsWrap">
@@ -178,16 +179,16 @@
     <!-- 第三方登录模块展示结束 -->
 
     <!-- 其他登录模块展示开始 -->
-    <div class="other-login-wrap none" id="otherLoginWrap">
-        <div class="tip-arrow">
-            <span></span>
+        <div class="other-login-wrap none" id="otherLoginWrap">
+            <div class="tip-arrow">
+                <span></span>
+            </div>
+            <p><i class="iconfont">&#xe074;</i><a href="https://svip.fang.anjuke.com/login" target="_blank" _soj="login_anjuke">房易通帐号</a></p>
+
+            <p><i class="iconfont">&#xe080;</i><a href="http://my.anjuke.com/fxb/login" target="_blank" _soj="login_anjuke">新房分销帐号</a></p>
+
+            <p><i class="iconfont">&#xe075;</i><a href="http://vip.anjuke.com/user/brokerhome" target="_blank" _soj="login_anjuke">经纪人帐号</a></p>
         </div>
-        <p><i class="iconfont"></i><a href="https://svip.fang.anjuke.com/login" target="_blank" _soj="login_anjuke">房易通帐号</a></p>
-
-        <p><i class="iconfont"></i><a href="http://my.anjuke.com/fxb/login" target="_blank" _soj="login_anjuke">新房分销帐号</a></p>
-
-        <p><i class="iconfont"></i><a href="http://vip.anjuke.com/user/brokerhome" target="_blank" _soj="login_anjuke">经纪人帐号</a></p>
-    </div>
     <!-- 其他登录模块展示结束 -->
 
 <!--    <div class="check-item" id="protocolItem">-->
@@ -198,4 +199,46 @@
 <!--    </div>-->
 </div>
 </body>
+<script type="text/javascript" crossorigin src="/anjuke/jquery-underscore.min.js"></script>
+<script type="text/javascript" crossorigin src="/anjuke/Json2.js"></script>
+<script type="text/javascript" crossorigin src="/anjuke/bbv10.js"></script>
+<script type="text/javascript" crossorigin src="/anjuke/challenge_pop_20190903.js"></script>
+<script type="text/javascript" crossorigin src="/anjuke/sdk_pc_20190903.js"></script>
+<script type="text/javascript" crossorigin src="/anjuke/Member_Web_Login_IframeForm.js"></script>
+<script type="text/javascript">
+
+    $(function() {
+        ajk['phoneInner'] = new ajk.phoneForm({
+            submit_text:  "",
+            submiting_text  : "", // 提交按钮文案
+            submiting_function  : "1", // 提交按钮方法 1: 登录 2：忘记密码 3.换绑解绑 4： 换绑绑定  5.绑定手机 6.第三方登录
+            history         : "https://nj.zu.anjuke.com/fangyuan/",
+            custom_class : "",
+            thirdLoginUrl: ""
+        });
+    });
+
+    ;$(function() {
+        ajk.pwdInner = new ajk.pwdForm({
+            submit_text:  "",
+            submiting_text  : "", // 提交按钮文案
+            submiting_function  : "1", // 提交按钮方法 1: 登录
+            history         : "https://nj.zu.anjuke.com/fangyuan/"
+        });
+    });
+
+    ;$(function() {
+        ajk.loginInner = new ajk.LoginIframe({
+            history         : "https://nj.zu.anjuke.com/fangyuan/"
+        });
+
+        // 通知外层文档ready
+        ajk.loginInner.send({
+            name : "logincontentLoaded"
+        });
+
+        ajk.Logger.addLinkSoj();
+
+    });
+</script>
 </html>

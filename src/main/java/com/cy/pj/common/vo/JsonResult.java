@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //自动为类添加无参构造函数
 public class JsonResult implements Serializable{
 	private static final long serialVersionUID = 677048178703375661L;
+	private int code=0;
 	/**状态码*/
 	private int state=1;//1表示SUCCESS,0表示ERROR
 	/**状态信息*/

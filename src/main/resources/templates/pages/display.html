@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>【多图】颐和美地西区，百家湖租房，毕业生专属福利 百家湖颐和美地西区 九龙湖站 近地铁 生活便，江宁租房-南京58安居客</title>
+    <title>客房展示</title>
     <meta name="keywords" content="南京江宁百家湖颐和美地西区2室1厅1卫16/17东精装修普通住宅租房信息">
     <meta name="description"
           content="安居客南京租房网，提供南京江宁百家湖颐和美地西区2室1厅1卫16/17东精装修普通住宅租房信息，毕业生专属福利 百家湖颐和美地西区 九龙湖站 近地铁 生活便房屋出租，安居客让租房子变得简单！">
@@ -2252,23 +2252,25 @@
                                                                                                           name="uid"
                                                                                                           value="0">
     </form>
+    <link rel="stylesheet" href="/layui/css/anjuke.css" media="all">
 </head>
 <body>
+<div id = "exp">
 <div class="navhead">
     <div class="header-center clearfix">
-        <!-- LOGO -->
-        <a href="" class="logo">anjuke</a>
+<!--        &lt;!&ndash; LOGO &ndash;&gt;-->
+<!--        <a class="logo-site" href="" title="客房系统">客房</a>-->
 
-        <!-- Navigation -->
+<!--        &lt;!&ndash; Navigation &ndash;&gt;-->
 
-        <div class="cityselect">
-            <div id="switch_apf_id_1" class="city-view">
-                南京<i class="iconfont triangle-down"></i>
-            </div>
-        </div>
+<!--        <div class="cityselect">-->
+<!--            <div id="switch_apf_id_1" class="city-view">-->
+<!--                南京<i class="iconfont triangle-down"></i>-->
+<!--            </div>-->
+<!--        </div>-->
         <ul class="navigation" id="navigation">
             <li class="">
-                <a class="nav-lv1" href="https://nanjing.anjuke.com/" _soj="navigation">首 页</a>
+                <a class="nav-lv1" href="locahost" _soj="navigation">首 页</a>
             </li>
         </ul>
 
@@ -2287,16 +2289,16 @@
 <div class="wrapper">
 
     <h3 class="house-title">
-        <div class="strongbox" style="font-weight: normal;">毕业生专属福利 百家湖颐和美地西区 九龙湖站 近地铁 生活便</div>
+        <div class="strongbox" style="font-weight: normal;">{{roomDisplay.special}}</div>
     </h3>
     <div class="title-basic-info clearfix">
 
 
-        <span class="light info-tag"><em><b class="strongbox" style="font-weight: normal;">齤龤龤</b></em>元/月</span>
+        <span class="light info-tag"><em><b class="strongbox" style="font-weight: normal;">{{roomDisplay.price}}</b></em>元/天</span>
         <span class="info-tag">
-            <em><b class="strongbox" style="font-weight: normal;">龒</b></em>室<em><b class="strongbox" style="font-weight: normal;">閏</b></em>厅
+            <em><b class="strongbox" style="font-weight: normal;">1</b></em>室<em><b class="strongbox" style="font-weight: normal;">1</b></em>卫
         </span>
-        <span class="info-tag no-line"><em><b class="strongbox" style="font-weight: normal;">閏麣</b></em>平方米</span>
+        <span class="info-tag no-line"><em><b class="strongbox" style="font-weight: normal;">{{roomDisplay.mianji}}</b></em>平方米</span>
         <ul class="title-label cf">
 
             <li class="title-label-item fy">入口检疫                <i class="wrap">
@@ -2318,6 +2320,68 @@
         <div class="lbox">
 
             <div class="switch_warpper">
+<!--                <div class="switch_with_map">-->
+<!--                    <div class="inner_switcher" id="inner_switcher">-->
+<!--                        <div class="switch_mask switch_left_mask" id="switch_left_mask" data-track="pc_fydy_switch_qh">-->
+<!--                            <i class="switch_left_btn switch_btn iconfont" id="switch_left_btn"></i>-->
+<!--                            <span id="prev-title">环境图片</span>-->
+<!--                        </div>-->
+<!--                        <div class="switch_mask switch_right_mask" id="switch_right_mask" data-track="pc_fydy_switch_qh">-->
+<!--                            <i class="switch_right_btn switch_btn iconfont" id="switch_right_btn"></i>-->
+<!--                            <span id="next-title">室内图片</span>-->
+<!--                        </div>-->
+<!--                        <div class="switch_wrap" id="switch_wrap" style="left: -1105px;">-->
+<!--                            <div class="switch_list zhankeng_first" id="zhankeng_first">-->
+<!--                                <div class="img_wrap zhankeng_img1"><img data-src="https://pic1.ajkimg.com/display/anjuke/69e9214909068a9cd439a5300ded0cac/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/69e9214909068a9cd439a5300ded0cac/600x450c.jpg?t=1" alt="" height="450"></div>-->
+<!--                                <div class="img_wrap zhankeng_img2"><img src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-deft-img.png" alt="暂无图片" height="450"></div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash;室内图&ndash;&gt;-->
+<!--                            <div class="switch_list" id="room_pic_wrap">-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" alt="" height="450">-->
+<!--                                </div>-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" alt="" height="450">-->
+<!--                                </div>-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/bd439cfe57786282c194fe3152908785/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">-->
+<!--                                </div>-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/dc8da8abd0a2fe11f4f9bf161f000866/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">-->
+<!--                                </div>-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/924d3446fdf97bd234a604132d712262/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">-->
+<!--                                </div>-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/58fdaa40d7c5285510755e5c10921d02/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">-->
+<!--                                </div>-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/80d6d2a3738b866af78beeda8bf140fa/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash;户型图&ndash;&gt;-->
+<!--                            <div class="switch_list" id="hx_pic_wrap">-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/69e9214909068a9cd439a5300ded0cac/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash;环境图&ndash;&gt;-->
+<!--                            <div class="switch_list" id="surround_pic_wrap">-->
+<!--                                <div class="img_wrap">-->
+<!--                                    <img src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-deft-img.png" alt="暂无图片" height="450">-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="switch_list zhankeng_last" id="zhankeng_last">-->
+<!--                                <div class="img_wrap zhankeng_img1"><img data-src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" alt="" height="450"></div>-->
+<!--                                <div class="img_wrap zhankeng_img2"><img data-src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" alt="" height="450"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+<!--                </div>-->
                 <div class="switch_with_map">
                     <div class="inner_switcher" id="inner_switcher">
                         <div class="switch_mask switch_left_mask" id="switch_left_mask" data-track="pc_fydy_switch_qh">
@@ -2330,37 +2394,37 @@
                         </div>
                         <div class="switch_wrap" id="switch_wrap" style="left: -1105px;">
                             <div class="switch_list zhankeng_first" id="zhankeng_first">
-                                <div class="img_wrap zhankeng_img1"><img data-src="https://pic1.ajkimg.com/display/anjuke/69e9214909068a9cd439a5300ded0cac/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/69e9214909068a9cd439a5300ded0cac/600x450c.jpg?t=1" alt="" height="450"></div>
+                                <div class="img_wrap zhankeng_img1"><img data-src="https://pic1.ajkimg.com/display/anjuke/9f87adf11e7040697faf3d54441992a4/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/9f87adf11e7040697faf3d54441992a4/600x450c.jpg?t=1" alt="" height="450"></div>
                                 <div class="img_wrap zhankeng_img2"><img src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-deft-img.png" alt="暂无图片" height="450"></div>
                             </div>
                             <!--室内图-->
                             <div class="switch_list" id="room_pic_wrap">
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/c3f6b1cf3f6f29e7f17bf8ae2d35b1ae/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/c3f6b1cf3f6f29e7f17bf8ae2d35b1ae/600x450c.jpg?t=1" alt="" height="450">
                                 </div>
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/1a94149ca29b46561f842d8561526d07/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/1a94149ca29b46561f842d8561526d07/600x450c.jpg?t=1" alt="" height="450">
                                 </div>
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/bd439cfe57786282c194fe3152908785/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/f506ff01c4ac85b60dfd3bee898a2e87/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/f506ff01c4ac85b60dfd3bee898a2e87/600x450c.jpg?t=1" alt="" height="450">
                                 </div>
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/dc8da8abd0a2fe11f4f9bf161f000866/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/49b359cd75e511c21471cf5a50310801/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/49b359cd75e511c21471cf5a50310801/600x450c.jpg?t=1" alt="" height="450">
                                 </div>
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/924d3446fdf97bd234a604132d712262/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/04e1afb330396ac0e940ae4446ada842/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
                                 </div>
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/58fdaa40d7c5285510755e5c10921d02/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/ca0615de69607d31f7ddd2eb6c015105/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
                                 </div>
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/80d6d2a3738b866af78beeda8bf140fa/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/ac1bff9a08c5d5e3344e09fb416b1df9/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
                                 </div>
                             </div>
                             <!--户型图-->
                             <div class="switch_list" id="hx_pic_wrap">
                                 <div class="img_wrap">
-                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/69e9214909068a9cd439a5300ded0cac/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
+                                    <img data-src="https://pic1.ajkimg.com/display/anjuke/9f87adf11e7040697faf3d54441992a4/600x450c.jpg?t=1" src="https://pages.anjukestatic.com/usersite/site/img/global/defaultImg/big-load-img2.png" alt="" height="450">
                                 </div>
                             </div>
 
@@ -2372,13 +2436,11 @@
                             </div>
 
                             <div class="switch_list zhankeng_last" id="zhankeng_last">
-                                <div class="img_wrap zhankeng_img1"><img data-src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/fab7017f6ed1efd116a9fa39d48cec41/600x450c.jpg?t=1" alt="" height="450"></div>
-                                <div class="img_wrap zhankeng_img2"><img data-src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/e5177930c72b67d25a8115a6aec90e31/600x450c.jpg?t=1" alt="" height="450"></div>
+                                <div class="img_wrap zhankeng_img1"><img data-src="https://pic1.ajkimg.com/display/anjuke/c3f6b1cf3f6f29e7f17bf8ae2d35b1ae/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/c3f6b1cf3f6f29e7f17bf8ae2d35b1ae/600x450c.jpg?t=1" alt="" height="450"></div>
+                                <div class="img_wrap zhankeng_img2"><img data-src="https://pic1.ajkimg.com/display/anjuke/1a94149ca29b46561f842d8561526d07/600x450c.jpg?t=1" src="https://pic1.ajkimg.com/display/anjuke/1a94149ca29b46561f842d8561526d07/600x450c.jpg?t=1" alt="" height="450"></div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="switch_tab_wrap" id="switch_tab_wrap">
                     <a class="switch_tag switch_tag_now" href="javascript:;" data-track="pc_fydy_switch_snt" id="room_tab">
@@ -2389,14 +2451,14 @@
                         <i class="switch-icon iconfont switch-hx-icon"></i>
                         <em class="title">户型图<span class="num">(1)</span></em>
                     </a>
-<!--                    <a class="switch_tag" href="javascript:;" data-track="pc_zfdy_xc_hjt_click" id="surround_tab">-->
-<!--                        <i class="switch-icon iconfont switch-surd-icon"></i>-->
-<!--                        <em class="title">环境图<span class="num">(0)</span></em>-->
-<!--                    </a>-->
-<!--                    <a class="switch_tag " href="javascript:;" data-track="pc_zfdy_xc_zbdt_click" id="map_tab" style="height: 109px;">-->
-<!--                        <i class="switch-icon iconfont"></i>-->
-<!--                        <em class="title">周边地图</em>-->
-<!--                    </a>-->
+                    <!--                    <a class="switch_tag" href="javascript:;" data-track="pc_zfdy_xc_hjt_click" id="surround_tab">-->
+                    <!--                        <i class="switch-icon iconfont switch-surd-icon"></i>-->
+                    <!--          loginpage.html              <em class="title">环境图<span class="num">(0)</span></em>-->
+                    <!--                    </a>-->
+                    <!--                    <a class="switch_tag " href="javascript:;" data-track="pc_zfdy_xc_zbdt_click" id="map_tab" style="height: 109px;">-->
+                    <!--                        <i class="switch-icon iconfont"></i>-->
+                    <!--                        <em class="title">周边地图</em>-->
+                    <!--                    </a>-->
                 </div>
             </div>
 
@@ -2406,17 +2468,17 @@
             </div>
             <ul class="house-info-zufang cf">
                 <li class="full-line cf">
-                    <span class="price"><em><b class="strongbox" style="font-weight: normal;">800</b></em>元/天</span>
-                    <span class="type">付1押1</span>
+                    <span class="price"><em><b class="strongbox" style="font-weight: normal;">{{roomDisplay.price}}</b></em>元/天</span>
+                    <span class="type">优惠价格</span>
 
                 </li>
                 <li class="house-info-item l-width">
                     <span class="type">户型：</span>
-                    <span class="info"><b class="strongbox" style="font-weight: normal;">龒</b>室<b class="strongbox" style="font-weight: normal;">閏</b>厅<b class="strongbox" style="font-weight: normal;">閏</b>卫</span>
+                    <span class="info"><b class="strongbox" style="font-weight: normal;">1</b>室<b class="strongbox" style="font-weight: normal;">1</b>厅<b class="strongbox" style="font-weight: normal;">1</b>卫</span>
                 </li>
                 <li class="house-info-item">
                     <span class="type">面积：</span>
-                    <span class="info"><b class="strongbox" style="font-weight: normal;">84平方米</b></span>
+                    <span class="info"><b class="strongbox" style="font-weight: normal;">{{roomDisplay.mianji}}平方米</b></span>
                 </li>
                 <li class="house-info-item">
                     <span class="type">朝向：</span>
@@ -2781,5 +2843,10 @@
         Copyright&nbsp;©&nbsp;2007-2020 www.anjuke.com All Rights Reserved   <a href="https://www.anjuke.com/sitemap-miibeian" rel="nofollow">ICP号：沪 B2-20090008</a>
     </div>
 </div>
+</div>
 </body>
+<script type="text/javascript" src="/layui/vue.js"></script>
+<script type="text/javascript" src="/layui/axios.min.js"></script>
+<script type="text/javascript" src="/layui/getUrlParam.js"></script>
+<script type="text/javascript" src="/layui/display.js"></script>
 </html>
