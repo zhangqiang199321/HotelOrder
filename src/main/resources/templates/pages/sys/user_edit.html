@@ -95,7 +95,7 @@
  }//json 格式的javascript对象*/
  $(document).ready(function(){
 	 //页面加载完成以后加载角色信息并初始化页面
-	  //doLoadRoles();
+	  doLoadRoles();
 	 //事件注册
 	 $(".box-footer")
 	 .on("click",".btn-cancel",doCancel)
@@ -144,7 +144,7 @@
 	 var rowData=$("#mainContentId").data("rowData");
 	 //1.获取表单数据
 	 var params=doGetEditFormData();
-	 if(rowData)params.id=rowData.user.id;
+	 if(rowData)params.employeeId=rowData.user.employeeId;
 	 //2.发起异步请求
 	 var insertUrl="user/doSaveObject";
 	 var updateUrl="user/doUpdateObject";
@@ -185,35 +185,37 @@
 	 params.roleIds=roleIds.toString();*/
 	 return params;
  }
- /*function doLoadRoles(){
-	 var url="role/doFindRoles"
-	 $.getJSON(url,function(result){
-		 if(result.state==1){
-		  doInitPageRoles(result.data);
-		  doInitFormData();//修改时
-		 }else{
-		  alert(result.message);
-		 }
-	 })
- }*/
- /*function doInitFormData(){
+ function doLoadRoles(){
+     doInitFormData();
+	 // var url="role/doFindRoles"
+	 // $.getJSON(url,function(result){
+		//  if(result.state==1){
+		//   // doInitPageRoles(result.data);
+		//   doInitFormData();//修改时
+		//  }else{
+		//   alert(result.message);
+		//  }
+	 // })
+ }
+ function doInitFormData(){
      var data=$("#mainContentId").data("rowData");
      if(!data)return;
-     $("#pwdDiv").remove();
+     // $("#pwdDiv").remove();
 	 console.log(data);
 	 //初始化用户信息 
-	 $("#usernameId").val(data.user.username);
+	 $("#employeeName").val(data.user.employeeName);
 	 $("#deptId").val(data.user.sysDept?data.user.sysDept.name:'');
 	 $("#deptId").data("deptId",data.user.sysDept?data.user.sysDept.id:'');
-	 $("#emailId").val(data.user.email);
-	 $("#phoneId").val(data.user.mobile);
+	 $("#employeeAge").val(data.user.employeeAge);
+     $("#employeePosition").val(data.user.employeePosition);
+	 $("#employeePhone").val(data.user.employeePhone);
 	 //初始化用户角色信息
 	 var ids=data.roleIds;
 	 for(var i in ids){
 	  $("#rolesId input[value='"+ids[i]+"']")
 	  .prop("checked",true);
 	 }
- }*/
+ }
 /*function doInitPageRoles(data){
 	 //1.获取角色要显示的位置对象
 	 var div=$("#rolesId");
