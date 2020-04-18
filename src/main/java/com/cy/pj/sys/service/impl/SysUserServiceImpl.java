@@ -31,7 +31,7 @@ import com.cy.pj.sys.vo.SysUserDeptVo;
 public class SysUserServiceImpl implements SysUserService {
 	@Autowired 
 	private SysUserDao sysUserDao;
-	
+
 	@Override
 	public int updateObject(SysUser entity) {
         System.out.println(entity);

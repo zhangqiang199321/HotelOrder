@@ -53,11 +53,11 @@
    <select id="findObjectById"
            parameterType="long"
            resultMap="employeeVo">
-           select * 
+           select *
            from employee
            where EMPLOYEE_ID=#{id}
    </select>
-    
+
     <insert id="insertObject"
            parameterType="com.cy.pj.sys.entity.SysUser">
       <!-- 说明,selectKey一般用户获取id主键值 -->
