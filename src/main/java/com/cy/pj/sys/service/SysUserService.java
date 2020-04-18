@@ -7,12 +7,14 @@ import com.cy.pj.sys.vo.SysUserDeptVo;
 
 public interface SysUserService 
    extends PageService<SysUserDeptVo>{
-	int updateObject(SysUser entity,Integer[] roleIds);
+	int updateObject(SysUser entity);
+	//int updateObject(SysUser entity,Integer[] roleIds);
 	Map<String, Object> findObjectById(
-			Integer userId);
+			Long userId);
 
-	int saveObject(SysUser entity,
-			Integer[]roleIds);
+	int saveObject(SysUser entity);
+	/*int saveObject(SysUser entity,
+				   Integer[]roleIds);*/
 	
 	int validById(Integer id,
 			Integer valid,

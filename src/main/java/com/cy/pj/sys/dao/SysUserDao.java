@@ -12,7 +12,8 @@ import com.cy.pj.sys.vo.SysUserDeptVo;
 @Mapper
 public interface SysUserDao {
 	  int updateObject(SysUser entity);
-	  SysUserDeptVo findObjectById(Integer id);
+    EmployeeVo findObjectById(Long id);
+	/*SysUserDeptVo findObjectById(Integer id);*/
 	   /**
 	    * 保存用户自身信息
 	    * @param entity

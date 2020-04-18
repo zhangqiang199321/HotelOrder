@@ -31,58 +31,98 @@ import com.cy.pj.sys.vo.SysUserDeptVo;
 public class SysUserServiceImpl implements SysUserService {
 	@Autowired 
 	private SysUserDao sysUserDao;
-	@Autowired
-	private SysUserRoleDao sysUserRoleDao;
-	
+
 	@Override
-	public int updateObject(SysUser entity,Integer[] roleIds) {
+	public int updateObject(SysUser entity) {
+        System.out.println(entity);
 		//1.参数有效性验证
 		if(entity==null)
 			throw new IllegalArgumentException("保存对象不能为空");
-		if(StringUtils.isEmpty(entity.getUsername()))
+		if(StringUtils.isEmpty(entity.getEmployeeName()))
 			throw new IllegalArgumentException("用户名不能为空");
-		if(roleIds==null||roleIds.length==0)
-			throw new IllegalArgumentException("必须为其指定角色");
-		//其它验证自己实现，例如用户名已经存在，密码长度，...
 		//2.更新用户自身信息
 		int rows=sysUserDao.updateObject(entity);
-		//3.保存用户与角色关系数据
-		sysUserRoleDao.deleteObjectsByUserId(entity.getId());
-		sysUserRoleDao.insertObjects(entity.getId(),
-				roleIds);
-	
 		//4.返回结果
 		return rows;
-	}	
-
-	//readOnly表示大家可以并发访问数据
-	@Transactional(readOnly = true)
-	@Override
-	public Map<String, Object> findObjectById(
-			Integer userId) {
-		//1.合法性验证
-		if(userId==null||userId<=0)
-		throw new ServiceException("参数数据不合法,userId="+userId);
-		//2.业务查询
-		SysUserDeptVo user=
-		sysUserDao.findObjectById(userId);
-		if(user==null)
-		throw new ServiceException("此用户已经不存在");
-		List<Integer> roleIds=
-		sysUserRoleDao.findRoleIdsByUserId(userId);
-		//3.数据封装
-		Map<String,Object> map=new HashMap<>();
-		map.put("user", user);
-		map.put("roleIds", roleIds);
-		return map;
 	}
+
+/*    @Override
+    public int updateObject(SysUser entity,Integer[] roleIds) {
+        //1.参数有效性验证
+        if(entity==null)
+            throw new IllegalArgumentException("保存对象不能为空");
+        if(StringUtils.isEmpty(entity.getUsername()))
+            throw new IllegalArgumentException("用户名不能为空");
+        if(roleIds==null||roleIds.length==0)
+            throw new IllegalArgumentException("必须为其指定角色");
+        //其它验证自己实现，例如用户名已经存在，密码长度，...
+        //2.更新用户自身信息
+        int rows=sysUserDao.updateObject(entity);
+        //3.保存用户与角色关系数据
+        sysUserRoleDao.deleteObjectsByUserId(entity.getId());
+        sysUserRoleDao.insertObjects(entity.getId(),
+                roleIds);
+
+        //4.返回结果
+        return rows;
+    }*/
+
+    //readOnly表示大家可以并发访问数据
+	@Transactional(readOnly = true)
+    @Override
+    public Map<String, Object> findObjectById(
+            Long employeeId) {
+        //1.合法性验证
+        if(employeeId==null||employeeId<=0)
+            throw new ServiceException("参数数据不合法,userId="+employeeId);
+        //2.业务查询
+        EmployeeVo employee=
+                sysUserDao.findObjectById(employeeId);
+        if(employee==null)
+            throw new ServiceException("此用户已经不存在");
+        //3.数据封装
+        Map<String,Object> map=new HashMap<>();
+        map.put("user", employee);
+        return map;
+    }
+/*    @Transactional(readOnly = true)
+    @Override
+    public Map<String, Object> findObjectById(
+            Integer userId) {
+        //1.合法性验证
+        if(userId==null||userId<=0)
+            throw new ServiceException("参数数据不合法,userId="+userId);
+        //2.业务查询
+        SysUserDeptVo user=
+                sysUserDao.findObjectById(userId);
+        if(user==null)
+            throw new ServiceException("此用户已经不存在");
+        List<Integer> roleIds=
+                sysUserRoleDao.findRoleIdsByUserId(userId);
+        //3.数据封装
+        Map<String,Object> map=new HashMap<>();
+        map.put("user", user);
+        map.put("roleIds", roleIds);
+        return map;
+    }*/
 	//@Transactional //TransactionInterceptor,DataSourceTransactionManager
 	@Override
+	public int saveObject(SysUser entity) {
+		//1.参数校验
+		if(entity==null)
+			throw new ServiceException("保存对象不能为空");
+		if(StringUtils.isEmpty(entity.getEmployeeName()))
+			throw new ServiceException("用户名不能为空");
+		//2.将对象写入到数据库
+		int rows=sysUserDao.insertObject(entity);
+		return rows;
+	}
+/*	@Override
 	public int saveObject(SysUser entity, Integer[] roleIds) {
 		//1.参数校验
 		if(entity==null)
 			throw new ServiceException("保存对象不能为空");
-		if(StringUtils.isEmpty(entity.getUsername()))
+		if(StringUtils.isEmpty(entity.getEmployeeName()))
 			throw new ServiceException("用户名不能为空");
 		if(StringUtils.isEmpty(entity.getPassword()))
 			throw new ServiceException("密码不能为空");
@@ -100,10 +140,10 @@ public class SysUserServiceImpl implements SysUserService {
 		//3.将对象写入到数据库
 		int rows=sysUserDao.insertObject(entity);
 		int count=sysUserRoleDao.insertObjects(entity.getId(), roleIds);
-		//if(count>0)
-	    //throw new ServiceException("关系数据保存失败");
+		if(count>0)
+			throw new ServiceException("关系数据保存失败");
 		return rows;
-	}
+	}*/
 	@Override
 	public int validById(Integer id, 
 			Integer valid, 

@@ -23,12 +23,16 @@ public class SysUserController {
 	}
 	@RequestMapping("doSaveObject")
 	@ResponseBody
-	public JsonResult doSaveObject(
-			SysUser entity,
-			Integer[] roleIds) {
-		sysUserService.saveObject(entity, roleIds);
+	public JsonResult doSaveObject(SysUser entity) {
+		sysUserService.saveObject(entity);
 		return new JsonResult("insert ok");
 	}
+	/*@RequestMapping("doSaveObject")
+	@ResponseBody
+	public JsonResult doSaveObject(SysUser entity, Integer[] roleIds) {
+		sysUserService.saveObject(entity, roleIds);
+		return new JsonResult("insert ok");
+	}*/
 
 	@RequestMapping("doValidById")
 	@ResponseBody
@@ -46,20 +50,34 @@ public class SysUserController {
 	@RequestMapping("doFindObjectById")
 	@ResponseBody
 	public JsonResult doFindObjectById(
-			Integer id){
+			Long id){
 		Map<String,Object> map=
 				sysUserService.findObjectById(id);
 		return new JsonResult(map);
 	}
+    /*@RequestMapping("doFindObjectById")
+    @ResponseBody
+    public JsonResult doFindObjectById(
+            Integer id){
+        Map<String,Object> map=
+                sysUserService.findObjectById(id);
+        return new JsonResult(map);
+    }*/
 
 	@RequestMapping("doUpdateObject")
+	@ResponseBody
+	public JsonResult doUpdateObject(SysUser entity){
+		sysUserService.updateObject(entity);
+		return new JsonResult("update ok");
+	}
+	/*@RequestMapping("doUpdateObject")
 	@ResponseBody
 	public JsonResult doUpdateObject(
 			SysUser entity,Integer[] roleIds){
 		sysUserService.updateObject(entity,
 				roleIds);
 		return new JsonResult("update ok");
-	}
+	}*/
 
 
 }

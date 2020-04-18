@@ -4,28 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cy.pj.sys.dao.SysUserDao">
 	<update id="updateObject"
-		parameterType="com.cy.pj.sys.vo.EmployeeVo">
+		parameterType="com.cy.pj.sys.entity.SysUser">
 		update employee
 		<set>
-			<if test="employeeId!=null and employeeId!=''">
-                employeeId=#{employeeId},
-			</if>
 			<if test="employeeName!=null and employeeName!=''">
-                employeeName=#{employeeName},
+                EMPLOYEE_NAME=#{employeeName},
 			</if>
 			<if test="employeeAge!=null and employeeAge!=''">
-                employeeAge=#{employeeAge},
+                EMPLOYEE_AGE=#{employeeAge},
 			</if>
 			<if test="employeePosition!=null and employeePosition!=''">
-                employeePosition=#{employeePosition},
+                EMPLOYEE_POSITION=#{employeePosition},
 			</if>
 
 			<if test="employeePhone!=null and employeePhone!=''">
-                employeePhone=#{employeePhone},
+                EMPLOYEE_PHONE=#{employeePhone},
 			</if>
-			modifiedTime=now()
+            MODIFIED_TIME=now()
 		</set>
-		where employeeId=#{employeeId}
+		where EMPLOYEE_ID=#{employeeId}
 	</update>
 
     <!--<update id="updateObject"
@@ -54,27 +51,27 @@
     </update>-->
    
    <select id="findObjectById"
-           parameterType="int"
+           parameterType="long"
            resultMap="employeeVo">
-           select * 
+           select *
            from employee
-           where employeeId=#{id}
+           where EMPLOYEE_ID=#{id}
    </select>
-    
+
     <insert id="insertObject"
-           parameterType="com.cy.pj.sys.vo.EmployeeVo">
+           parameterType="com.cy.pj.sys.entity.SysUser">
       <!-- 说明,selectKey一般用户获取id主键值 -->
-      <selectKey keyProperty="id"
+      <!--<selectKey keyProperty="employeeId"
                  resultType="int"
-                 order="AFTER"><!-- order表示在insert之前还是之后 -->
-            <!-- 获取自增最后的id值(假如id不是自增,则如下函数无效) -->
+                 order="AFTER">&lt;!&ndash; order表示在insert之前还是之后 &ndash;&gt;
+            &lt;!&ndash; 获取自增最后的id值(假如id不是自增,则如下函数无效) &ndash;&gt;
             select last_insert_id()
-      </selectKey>
-      insert into sys_users
-      (employeeId,employeeName,employeeAge,employeePosition,employeePhone,
-      createTime,modifiedTime)
+      </selectKey>-->
+      insert into employee
+      (EMPLOYEE_NAME,EMPLOYEE_AGE,EMPLOYEE_POSITION,EMPLOYEE_PHONE,
+        CREATE_TIME,MODIFIED_TIME)
       values
-      (#{employeeId},#{employeeName},#{employeeAge},#{employeePosition},#{employeePhone},
+      (#{employeeName},#{employeeAge},#{employeePosition},#{employeePhone},
       now(),now())
    </insert>
 

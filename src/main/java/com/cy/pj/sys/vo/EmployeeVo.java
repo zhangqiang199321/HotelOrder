@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 public class EmployeeVo {
     private static final long serialVersionUID = -1385472527241996140L;
-    private String employeeId;
+    private Long employeeId;
     private String employeeName;
     private int employeeAge;
     private String employeePosition;
