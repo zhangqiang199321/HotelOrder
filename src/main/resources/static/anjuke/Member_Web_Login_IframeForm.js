@@ -2861,7 +2861,7 @@ window.Messenger = (function(){
                                 top.location.href = $('#redirect_uri').val();
                             } else {
                                 setTimeout(function(){
-                                    location.href = location.origin + '/login/success' + location.search;
+                                    window.parent.location.href = location.origin + '/index' + location.search;
                                 },300);
                             }
                         } else if (response.code == 18) {
