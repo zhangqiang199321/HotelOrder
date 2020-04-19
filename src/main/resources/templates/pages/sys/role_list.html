@@ -2,12 +2,14 @@
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">角色管理</h3>
-
+				<h3 class="box-title">客房类型管理</h3>
+				<!--<h3 class="box-title">角色管理</h3>-->
 				<div class="box-tools">
 					<div class="input-group input-group-sm" style="width: 350px;">
-						<input type="text" name="table_search" id="searchNameId"
-							class="form-control pull-right" placeholder="角色名">
+						<input type="text" name="table_search" id="searchTypeId"
+							class="form-control pull-right" placeholder="客房类型">
+						<!--<input type="text" name="table_search" id="searchNameId"
+							   class="form-control pull-right" placeholder="角色名">-->
 
 						<div class="input-group-btn">
 							<button type="button" class="btn btn-default btn-search">
@@ -25,13 +27,22 @@
 					<thead>
 						<tr>
 						    <th>序号</th>
+							<th>客房编号</th>
+							<th>客房类型</th>
+							<th>客房位置</th>
+                            <th>客房状态</th>
+                            <th>是否预订</th>
+                            <th>旅客人数</th>
+							<th>修改时间</th>
+                            <th>操作</th>
+							<!--<th>序号</th>
 							<th>角色名称</th>
 							<th>备注</th>
 							<th>创建时间</th>
 							<th>修改时间</th>
 							<th>创建用户</th>
 							<th>修改用户</th>
-							<th>操作</th>
+							<th>操作</th>-->
 						</tr>
 					</thead>
 					<tbody id="tbodyId">
@@ -122,8 +133,10 @@
 	   //var params="pageCurrrent="+pageCurrent;
 	   var params={"pageCurrent":pageCurrent};
 	   //获取查询时用户输入的名字
-	   var name=$("#searchNameId").val();
-	   if(name)params.name=name;
+	   var type=$("#searchTypeId").val();
+	   if(type)params.hotelType=type;
+       /*var name=$("#searchNameId").val();
+       if(name)params.name=name;*/
 	   //2.url
 	   var url="role/doFindPageObjects";
 	   //3.ajax request
@@ -178,14 +191,29 @@
    function doCreateTds(row,i){
 	   var tds=
        "<td>"+(parseInt(i)+1)+"</td>"+
-	   "<td>"+row.name+"</td>"+
-       "<td>"+row.note+"</td>"+
-       "<td>"+new Date(row.createdTime).toLocaleString()+"</td>"+
+	   "<td>"+row.hotelNum+"</td>"+
+       "<td>"+row.hotelType+"</td>"+
+       "<td>"+row.hotelLocation+"</td>"+
+       "<td>"+row.status+"</td>"+
+       "<td>"+row.occupyFlag+"</td>"+
+       "<td>"+row.visitorNum+"</td>"+
        "<td>"+new Date(row.modifiedTime).toLocaleString()+"</td>"+
-       "<td>"+row.createdUser+"</td>"+
-       "<td>"+row.modifiedUser+"</td>"+
        "<td><a class='btn-delete'>delete</a>"+
        "&nbsp;<a class='btn-update'>update</a></td>";
        return tds;
    }
+
+   /*function doCreateTds(row,i){
+       var tds=
+           "<td>"+(parseInt(i)+1)+"</td>"+
+           "<td>"+row.name+"</td>"+
+           "<td>"+row.note+"</td>"+
+           "<td>"+new Date(row.createdTime).toLocaleString()+"</td>"+
+           "<td>"+new Date(row.modifiedTime).toLocaleString()+"</td>"+
+           "<td>"+row.createdUser+"</td>"+
+           "<td>"+row.modifiedUser+"</td>"+
+           "<td><a class='btn-delete'>delete</a>"+
+           "&nbsp;<a class='btn-update'>update</a></td>";
+       return tds;
+   }*/
 </script>

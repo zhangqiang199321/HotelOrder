@@ -8,25 +8,67 @@
       <form class="form-horizontal">
         <div class="box-body">
           <div class="form-group">
-            <label for="nameId" class="col-sm-2 control-label">名称</label>
+            <label for="hotelNum" class="col-sm-2 control-label">客房编号</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="name" id="nameId" placeholder="名称">
+              <input type="text" class="form-control" name="hotelNum" id="hotelNum" placeholder="客房编号">
             </div>
           </div>
           <div class="form-group">
-            <label for="noteId" class="col-sm-2 control-label">描述</label>
+            <label for="hotelType" class="col-sm-2 control-label">客房类型</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="note" id="noteId" placeholder="描述">
+              <input type="text" class="form-control" name="hotelType" id="hotelType" placeholder="客房类型">
             </div>
           </div>
+
           <div class="form-group">
-				<label class="col-sm-2 control-label">授权</label>
-				<div class="col-sm-10">
-						<ul id="menuTree" class="ztree"></ul>
-				</div>
-		  </div>
+                <label for="hotelLocation" class="col-sm-2 control-label">客房位置</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="hotelLocation" id="hotelLocation" placeholder="客房位置">
+                </div>
+          </div>
+
+          <div class="form-group">
+                <label for="status" class="col-sm-2 control-label">客房状态</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="status" id="status" placeholder="客房状态">
+                </div>
+          </div>
+
+            <div class="form-group">
+                <label for="occupyFlag" class="col-sm-2 control-label">是否预订</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="occupyFlag" id="occupyFlag" placeholder="是否预订">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="visitorNum" class="col-sm-2 control-label">旅客人数</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="visitorNum" id="visitorNum" placeholder="旅客人数">
+                </div>
+            </div>
+
+            <!--<div class="form-group">
+                <label for="nameId" class="col-sm-2 control-label">名称</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" id="nameId" placeholder="名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="noteId" class="col-sm-2 control-label">描述</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="note" id="noteId" placeholder="描述">
+                </div>
+            </div>-->
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -36,9 +78,9 @@
         <!-- /.box-footer -->
       </form>
     </div>
-    <script type="text/javascript" src="bower_components/ztree/jquery.ztree.all.min.js"></script>
+    <!--<script type="text/javascript" src="bower_components/ztree/jquery.ztree.all.min.js"></script>-->
     <script type="text/javascript">
-    var zTree; 
+    /*var zTree;
     var setting = {
    	data : {
    	    simpleData : {
@@ -52,7 +94,7 @@
    		enable:true,
    		nocheckInherit:true
    	}//此配置提供复选框操作(可查官方zTree)
-    }
+    }*/
     $(function(){
     	//异步加载菜单信息,初始化页面菜单
     	doLoadSysMenus();
@@ -61,7 +103,7 @@
     	.on("click",".btn-cancel",doCancel);
     	
     });
-    function doInitEditFormData(data){
+    /*function doInitEditFormData(data){
     	console.log("data",data);
     	//1.初始化角色自身信息
     	$("#nameId").val(data.name);
@@ -79,7 +121,7 @@
     	  //让节点选中
     	  zTree.checkNode(node,true,false);
     	}
-    }
+    }*/
     function doCancel(){
     	var url="role/doRoleListUI";
     	$("#mainContentId")
@@ -118,22 +160,28 @@
     function doGetEditFormData(){
     	//1.获取角色自身信息
     	var params={
-    		name:$("#nameId").val(),
-    		note:$("#noteId").val()
+            hotelNum:$("#hotelNum").val(),
+            hotelType:$("#hotelType").val(),
+            hotelLocation:$("#hotelLocation").val(),
+            status:$("#status").val(),
+            occupyFlag:$("#occupyFlag").val(),
+            visitorNum:$("#visitorNum").val()
+            /*name:$("#nameId").val(),
+            note:$("#noteId").val()*/
     	}
     	//2.获取选中菜单信息
-    	var menuIds=[];
+    	/*var menuIds=[];
     	console.log(zTree)
     	var checkedNodes=
     	zTree.getCheckedNodes(true);
     	for(var i in checkedNodes){
     		menuIds.push(checkedNodes[i].id);
     	}
-    	params.menuIds=menuIds.toString();
+    	params.menuIds=menuIds.toString();*/
     	return params;
     }
     //页面加载完成时初始化zTree
-    function doLoadSysMenus(){
+/*    function doLoadSysMenus(){
     	var url="menu/doFindZtreeMenuNodes"
     	$.getJSON(url,function(result){
     	 console.log(result);
@@ -147,7 +195,7 @@
     		alert(result.message);
     	 }
     });
-}
+}*/
 </script>
     
     

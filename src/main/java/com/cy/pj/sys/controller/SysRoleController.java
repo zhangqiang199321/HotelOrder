@@ -12,6 +12,7 @@ import com.cy.pj.sys.service.SysRoleService;
 @Controller
 @RequestMapping("/role/")
 public class SysRoleController {
+	//todo 客房类型管理
 	@Autowired
     private SysRoleService sysRoleService;
 	@RequestMapping("doRoleListUI")
@@ -55,9 +56,9 @@ public class SysRoleController {
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
 	public JsonResult doFindPageObjects(
-			String name,Integer pageCurrent) {
+			String hotelType,Integer pageCurrent) {
 		return new JsonResult(
 		sysRoleService.findPageObjects(
-				name, pageCurrent));
+                hotelType, pageCurrent));
 	}
 }

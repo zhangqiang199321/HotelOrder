@@ -28,9 +28,9 @@ public interface SysRoleDao {
 	  @Delete("delete from sys_roles where id=#{id}")
 	  int deleteObject(Integer id);
 	
-	  int getRowCount(@Param("name")String name);
+	  int getRowCount(@Param("hotelType")String hotelType);
 	  List<SysRole> findPageObjects(
-			  @Param("name")String name,
+			  @Param("hotelType")String hotelType,
 			  @Param("startIndex")Integer startIndex,
 			  @Param("pageSize")Integer pageSize);
 }
