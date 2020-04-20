@@ -31,8 +31,8 @@ var elems =  new Vue({
         userDate:{
             'user_id':'',
             'menu_list':[
-                [1],
-                [2]
+                {url:'123',name:'sss'},
+                {url:'123',name:'aaa'}
             ],
             'entry_url':'123',
             'user_name':'123',
@@ -122,6 +122,8 @@ var elems =  new Vue({
             var self = this;
             self.userbox = document.getElementById('userbox');
             if (self.getCookie('ajkAuthTicket')) {
+                var cookie = self.getCookie('ajkAuthTicket');
+                // this.userDate.menu_list=[cookie,123];
                 self.updateUserInfo();
             }
         },
@@ -143,9 +145,10 @@ var elems =  new Vue({
             var dropDownContent = "";
             for( var i = 0, iLength = menuList.length; i < iLength; i++) {
                 var items =  menuList[i];
-                for(var j = 0, jLength = items.length; j < jLength; j++){
-                    dropDownContent = dropDownContent + '<li><a href="'+items[j].url+'">'+items[j].name+'</a></li>';
-                }
+                dropDownContent = dropDownContent + '<li><a href="'+items.url+'">'+items.name+'</a></li>';
+                // for(var j = 0, jLength = items.length; j < jLength; j++){
+                //     dropDownContent = dropDownContent + '<li><a href="'+items.url+'">'+items.name+'</a></li>';
+                // }
                 if(i < iLength-1){
                     dropDownContent = dropDownContent + '<li class="hr"></li>';
                 }

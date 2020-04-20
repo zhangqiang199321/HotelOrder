@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class IndexController {
     }
     @RequestMapping("ajk/mobile/pc/login")
     @ResponseBody
-    public String login(Request request){
+    public String login(Request request,HttpServletResponse response){
         LoginEntity loginEntity = new LoginEntity();
         loginEntity.setAction("1");
         loginEntity.setRequesthost("cloud-passport.anjuke.com");
@@ -28,6 +29,11 @@ public class IndexController {
         jsonResult.setCode(772);
         jsonResult.setMessage("该用户名与密码不符");
         jsonResult.setData(loginEntity);
+        Cookie ck=new Cookie("ajkAuthTicket","userName");
+        ck.setDomain("localhost");  //10.200.152.22
+        ck.setPath("/");
+        response.addCookie(ck);
+        response.setHeader("location","index.html");
         String sss = "<script type=\"text/javascript\">document.domain='localhost';\n" +
                 "parent.SDK_CALLBACK_FUN.successFun({\"code\":0,\"data\":{\"action\":\"1\",\"requesthost\":\"cloud-passport.anjuke.com\"},\"msg\":\"该用户名与密码不符\"})</script>";
         return sss;
