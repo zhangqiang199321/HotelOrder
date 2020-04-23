@@ -31,8 +31,7 @@ var elems =  new Vue({
         userDate:{
             'user_id':'',
             'menu_list':[
-                {url:'123',name:'sss'},
-                {url:'123',name:'aaa'}
+                {url:'/loginout',name:'退出'}
             ],
             'entry_url':'123',
             'user_name':'123',
