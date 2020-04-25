@@ -23,7 +23,7 @@ public interface SysRoleDao {
 	   * @param id
 	   * @return
 	   */
-	  SysRole findObjectById(Integer id);
+	  SysRole findObjectById(Long id);
 
     /**
      * 基于角色id获取角色以及对应的菜单信息

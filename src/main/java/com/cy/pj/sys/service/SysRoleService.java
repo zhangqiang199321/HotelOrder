@@ -23,7 +23,7 @@ public interface SysRoleService {
 	 * @param id
 	 * @return
 	 */
-	SysRole findObjectById(Integer id);
+	SysRole findObjectById(Long id);
 
 	/**
 	 * 基于角色id查询角色以及对应的菜单信息

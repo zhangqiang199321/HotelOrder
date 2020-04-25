@@ -33,9 +33,9 @@ public class SysRoleServiceImpl implements SysRoleService {
 	
 
 	@Override
-	public SysRole findObjectById(Integer id) {
+	public SysRole findObjectById(Long id) {
 		//1.参数校验
-		if(id==null||id<1)
+		if(id==null || id<1)
 			throw new IllegalArgumentException("id值无效");
 		//2.查询角色以及菜单
 		SysRole rm=sysRoleDao.findObjectById(id);

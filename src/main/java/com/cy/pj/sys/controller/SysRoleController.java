@@ -31,7 +31,7 @@ public class SysRoleController {
 	
 	@RequestMapping("doFindObjectById")
     @ResponseBody
-    public JsonResult doFindObjectById(Integer id) {
+    public JsonResult doFindObjectById(Long id) {
         return new JsonResult(sysRoleService.findObjectById(id));
     }
 
