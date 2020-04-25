@@ -20,10 +20,10 @@ public interface SysRoleService {
 	
 	/**
 	 * 基于角色id查询客房
-	 * @param id
+	 * @param hotelId
 	 * @return
 	 */
-	SysRole findObjectById(Integer id);
+	SysRole findObjectById(Long hotelId);
 
 	/**
 	 * 基于角色id查询角色以及对应的菜单信息
@@ -50,10 +50,10 @@ public interface SysRoleService {
 	
 	/**
 	 * 基于角色id删除角色以及对应的关系数据
-	 * @param id
+	 * @param hotelId
 	 * @return
 	 */
-	int deleteObject(Integer id);
+	int deleteObject(Long hotelId);
 	
 	/**
 	 * 执行分页查询

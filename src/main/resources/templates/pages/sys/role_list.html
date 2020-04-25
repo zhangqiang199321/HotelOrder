@@ -78,7 +78,7 @@
 		   doLoadPageUI(title);
 	   }else{
 		   title="修改客房信息"
-		   var id=$(this).parents("tr").data("hotelId");
+		   var id=$(this).parents("tr").data("id");
 		   var params={"hotelId":id};
 		   var url="role/doFindObjectById";
 		   $.getJSON(url,params,function(result){
@@ -90,20 +90,6 @@
 				  alert(result.message); 
 			   }
 		   });
-
-          /* title="修改客房信息"
-           var id=$(this).parents("tr").data("id");
-           var params={"id":id};
-           var url="role/doFindObjectById";
-           $.getJSON(url,params,function(result){
-               if(result.state==1){
-                   result.data.id=id;//在结果中动态追加id
-                   $("#mainContentId").data("data",result.data);
-                   doLoadPageUI(title);//异步加载页面
-               }else{
-                   alert(result.message);
-               }
-           });*/
 
 	   }
    }
@@ -141,10 +127,10 @@
    
    
    function doDeleteObject(){
-	   debugger
+	   //debugger
 	   //1.params
 	   var id=$(this).parents("tr").data("id");
-	   var params={"id":id};
+	   var params={"hotelId":id};
 	   //2.url
 	   var url="role/doDeleteObject"
 	   //3.ajax request
@@ -217,7 +203,7 @@
 	   for(var i in records){
 		  //2.1构建tr对象
 		  var tr=$("<tr></tr>");
-		  tr.data("id",records[i].id);
+		  tr.data("id",records[i].hotelId);
 		  //2.2构建tds对象
 		  var tds=doCreateTds(records[i],i);
 		  //2.3将tds对象追加到tr中
@@ -226,6 +212,26 @@
 		  tBody.append(tr);
 	   }
    }
+
+   /*function doSetTableBodyRows(records){
+
+       //获取tbody对象,并清空
+       var tBody=$("#tbodyId");
+       tBody.empty();
+       //2.迭代数据,并追加到tBody
+       for(var i in records){
+           //2.1构建tr对象
+           var tr=$("<tr></tr>");
+           tr.data("id",records[i].id);
+           //2.2构建tds对象
+           var tds=doCreateTds(records[i],i);
+           //2.3将tds对象追加到tr中
+           tr.append(tds);
+           //2.4将tr追加到tbody中
+           tBody.append(tr);
+       }
+   }*/
+
    function doCreateTds(row,i){
 	   var tds=
        "<td>"+(parseInt(i)+1)+"</td>"+

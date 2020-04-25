@@ -9,7 +9,7 @@ public class SysRole implements Serializable{
     //todo 客房信息
 	private static final long serialVersionUID = 5444781487816683086L;
 	//客房id
-	private Integer hotelId;
+	private Long hotelId;
 	//客房编号
 	private String hotelNum;
 	//客房状态
