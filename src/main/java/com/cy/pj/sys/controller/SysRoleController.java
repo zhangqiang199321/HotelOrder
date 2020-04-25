@@ -31,8 +31,8 @@ public class SysRoleController {
 	
 	@RequestMapping("doFindObjectById")
     @ResponseBody
-    public JsonResult doFindObjectById(Long id) {
-        return new JsonResult(sysRoleService.findObjectById(id));
+    public JsonResult doFindObjectById(Long hotelId) {
+        return new JsonResult(sysRoleService.findObjectById(hotelId));
     }
 
     /*@RequestMapping("doFindObjectById")
@@ -65,10 +65,18 @@ public class SysRoleController {
 
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
-	public JsonResult doDeleteObject(Integer id) {
-		sysRoleService.deleteObject(id);
+	public JsonResult doDeleteObject(Long hotelId) {
+		sysRoleService.deleteObject(hotelId);
 		return new JsonResult("delete ok");
 	}
+
+    /*@RequestMapping("doDeleteObject")
+    @ResponseBody
+    public JsonResult doDeleteObject(Integer id) {
+        sysRoleService.deleteObject(id);
+        return new JsonResult("delete ok");
+    }*/
+
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
 	public JsonResult doFindPageObjects(

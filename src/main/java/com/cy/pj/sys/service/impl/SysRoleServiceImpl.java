@@ -33,12 +33,12 @@ public class SysRoleServiceImpl implements SysRoleService {
 	
 
 	@Override
-	public SysRole findObjectById(Long id) {
+	public SysRole findObjectById(Long hotelId) {
 		//1.参数校验
-		if(id==null || id<1)
+		if(hotelId==null || hotelId<1)
 			throw new IllegalArgumentException("id值无效");
 		//2.查询角色以及菜单
-		SysRole rm=sysRoleDao.findObjectById(id);
+		SysRole rm=sysRoleDao.findObjectById(hotelId);
 		//3.返回结果
 		if(rm==null)
 			throw new ServiceException("没有找到对应结果");
@@ -125,21 +125,35 @@ public class SysRoleServiceImpl implements SysRoleService {
     }*/
 	
 	@Override
-	public int deleteObject(Integer id) {
+	public int deleteObject(Long hotelId) {
 		//1.校验参数
-		if(id==null||id<1)
+		if(hotelId==null||hotelId<1)
 		throw new IllegalArgumentException("id值无效");
 		//2.执行删除(假如物理上没有关系,如下删除顺序没关系)
-		//2.1删除角色和菜单的关系数据
-		sysRoleMenuDao.deleteObjectsByRoleId(id);
-		//2.2删除角色和用户的关系数据
-		sysUserRoleDao.deleteObjectsByRoleId(id);
 		//2.3删除角色自身信息
-		int rows=sysRoleDao.deleteObject(id);
+		int rows=sysRoleDao.deleteObject(hotelId);
 		//3.返回结果
 		if(rows==0)throw new ServiceException("记录可能已经不存在");
 		return rows;
 	}
+
+   /* @Override
+    public int deleteObject(Integer id) {
+        //1.校验参数
+        if(id==null||id<1)
+            throw new IllegalArgumentException("id值无效");
+        //2.执行删除(假如物理上没有关系,如下删除顺序没关系)
+        //2.1删除角色和菜单的关系数据
+        sysRoleMenuDao.deleteObjectsByRoleId(id);
+        //2.2删除角色和用户的关系数据
+        sysUserRoleDao.deleteObjectsByRoleId(id);
+        //2.3删除角色自身信息
+        int rows=sysRoleDao.deleteObject(id);
+        //3.返回结果
+        if(rows==0)throw new ServiceException("记录可能已经不存在");
+        return rows;
+    }
+	*/
 	@RequiredLog("日志查询")
 	@Override
 	public PageObject<SysRole> findPageObjects(

@@ -20,10 +20,10 @@ public interface SysRoleDao {
 
 	  /**
 	   * 基于角色id获取客房信息
-	   * @param id
+	   * @param hotelId
 	   * @return
 	   */
-	  SysRole findObjectById(Long id);
+	  SysRole findObjectById(Long hotelId);
 
     /**
      * 基于角色id获取角色以及对应的菜单信息
@@ -36,8 +36,12 @@ public interface SysRoleDao {
 	  int insertObject(SysRole entity);
 
 	  /**基于id执行角色id删除*/
-	  @Delete("delete from sys_roles where id=#{id}")
-	  int deleteObject(Integer id);
+	  @Delete("delete from hotel_info where HOTEL_ID=#{hotelId}")
+	  int deleteObject(Long hotelId);
+
+    /**基于id执行角色id删除*/
+   /* @Delete("delete from sys_roles where id=#{id}")
+    int deleteObject(Integer id);*/
 	
 	  int getRowCount(@Param("hotelType")String hotelType);
 	  List<SysRole> findPageObjects(

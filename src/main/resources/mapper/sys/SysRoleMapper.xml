@@ -34,7 +34,7 @@
            resultMap="sysRole">
         select HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM
         from hotel_info
-        where HOTEL_ID=#{id}
+        where HOTEL_ID=#{hotelId}
    </select>
 
 
