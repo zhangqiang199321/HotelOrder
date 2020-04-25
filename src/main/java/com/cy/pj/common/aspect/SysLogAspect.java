@@ -29,22 +29,22 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class SysLogAspect {
-	/* *//**
+		/**
 	  * @Pointcut注解用于定义切入点
 	  * bean表达式为切入点表达式,
 	  * bean表达式内部指定的bean对象中
 	    *   所有方法为切入点(进行功能扩展的点)
-	  *//*
-	 //@Pointcut("bean(sysRoleServiceImpl)")
+	  */
+//	 @Pointcut("bean(sysRoleServiceImpl)")
 	 @Pointcut("@annotation(com.cy.pj.common.annotation.RequiredLog)")
 	 public void logPointCut() {}
-	 *//**
+	 /**
 	  * @Around 描述的方法为环绕通知,用于功能增强
 	    *   环绕通知(目标方法执行之前和之后都可以执行)
 	  * @param jp 连接点 (封装了要执行的目标方法信息)
 	  * @return 目标方法的执行结果
 	  * @throws Throwable
-	  *//*
+	  */
 	 @Around("logPointCut()")
 	 public Object around(ProceedingJoinPoint jp)
 	 throws Throwable{
@@ -111,7 +111,7 @@ public class SysLogAspect {
 		 .writeValueAsString(args);
 		 }
 		return params;
-	}*/
+	}
 }
 
 

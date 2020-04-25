@@ -31,7 +31,7 @@ import com.cy.pj.sys.vo.SysUserDeptVo;
 public class SysUserServiceImpl implements SysUserService {
 	@Autowired 
 	private SysUserDao sysUserDao;
-
+	@RequiredLog("update user")
 	@Override
 	public int updateObject(SysUser entity) {
         System.out.println(entity);
@@ -106,6 +106,7 @@ public class SysUserServiceImpl implements SysUserService {
         return map;
     }*/
 	//@Transactional //TransactionInterceptor,DataSourceTransactionManager
+	@RequiredLog("save user")
 	@Override
 	public int saveObject(SysUser entity) {
 		//1.参数校验

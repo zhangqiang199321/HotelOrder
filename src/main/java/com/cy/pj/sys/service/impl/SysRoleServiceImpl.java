@@ -57,7 +57,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 			throw new ServiceException("没有找到对应结果");
 		return rm;
 	}*/
-
+	@RequiredLog("save hotel")
 	@Override
 	public int saveObject(SysRole entity) {
 		//1.参数校验
@@ -89,7 +89,7 @@ public class SysRoleServiceImpl implements SysRoleService {
         //3.返回结果
         return rows;
     }*/
-
+   @RequiredLog("update hotel")
 	@Override
 	public int updateObject(SysRole entity, Integer[] menuIds) {
 		//1.参数校验
@@ -123,7 +123,7 @@ public class SysRoleServiceImpl implements SysRoleService {
         //3.返回结果
         return rows;
     }*/
-	
+	@RequiredLog("delete hotel")
 	@Override
 	public int deleteObject(Integer id) {
 		//1.校验参数
@@ -140,7 +140,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 		if(rows==0)throw new ServiceException("记录可能已经不存在");
 		return rows;
 	}
-	@RequiredLog("日志查询")
+	@RequiredLog("query hotel")
 	@Override
 	public PageObject<SysRole> findPageObjects(
 			String hotelType, Integer pageCurrent) {
