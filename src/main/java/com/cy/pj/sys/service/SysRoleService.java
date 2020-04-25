@@ -19,12 +19,20 @@ public interface SysRoleService {
 	List<CheckBox> findObjects();
 	
 	/**
+	 * 基于角色id查询客房
+	 * @param id
+	 * @return
+	 */
+	SysRole findObjectById(Integer id);
+
+	/**
 	 * 基于角色id查询角色以及对应的菜单信息
 	 * @param id
 	 * @return
 	 */
-	SysRoleMenuVo findObjectById(Integer id);
-	
+
+	/*SysRoleMenuVo findObjectById(Integer id);*/
+
 	/**
 	 * 更新角色以及对应的菜单信息
 	 * @param entity
@@ -36,10 +44,9 @@ public interface SysRoleService {
 	/**
 	 * 保存角色以及对应的菜单信息
 	 * @param entity
-	 * @param menuIds
 	 * @return
 	 */
-	int saveObject(SysRole entity,Integer[] menuIds);
+	int saveObject(SysRole entity);
 	
 	/**
 	 * 基于角色id删除角色以及对应的关系数据

@@ -16,14 +16,25 @@ public interface SysRoleDao {
 	  List<CheckBox> findObjects();
 	  /**更新角色自身信息*/
 	  int updateObject(SysRole entity);
+
+
 	  /**
-	   * 基于角色id获取角色以及对应的菜单信息
+	   * 基于角色id获取客房信息
 	   * @param id
 	   * @return
 	   */
-	  SysRoleMenuVo findObjectById(Integer id);
-	  /**保存角色自身信息*/
+	  SysRole findObjectById(Integer id);
+
+    /**
+     * 基于角色id获取角色以及对应的菜单信息
+     * @param id
+     * @return
+     */
+    /*SysRoleMenuVo findObjectById(Integer id);*/
+
+	  /**保存客房自身信息*/
 	  int insertObject(SysRole entity);
+
 	  /**基于id执行角色id删除*/
 	  @Delete("delete from sys_roles where id=#{id}")
 	  int deleteObject(Integer id);

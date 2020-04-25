@@ -31,28 +31,41 @@ public class SysRoleServiceImpl implements SysRoleService {
 		return sysRoleDao.findObjects();
 	}
 	
+
 	@Override
+	public SysRole findObjectById(Integer id) {
+		//1.参数校验
+		if(id==null||id<1)
+			throw new IllegalArgumentException("id值无效");
+		//2.查询角色以及菜单
+		SysRole rm=sysRoleDao.findObjectById(id);
+		//3.返回结果
+		if(rm==null)
+			throw new ServiceException("没有找到对应结果");
+		return rm;
+	}
+
+	/*@Override
 	public SysRoleMenuVo findObjectById(Integer id) {
 		//1.参数校验
 		if(id==null||id<1)
-		throw new IllegalArgumentException("id值无效");
+			throw new IllegalArgumentException("id值无效");
 		//2.查询角色以及菜单
 		SysRoleMenuVo rm=sysRoleDao.findObjectById(id);
 		//3.返回结果
 		if(rm==null)
-		throw new ServiceException("没有找到对应结果");
+			throw new ServiceException("没有找到对应结果");
 		return rm;
-	}
-	
+	}*/
+
 	@Override
-	public int saveObject(SysRole entity, Integer[] menuIds) {
+	public int saveObject(SysRole entity) {
 		//1.参数校验
 		if(entity==null)
 		throw new IllegalArgumentException("保存对象不能为空");
 		if(StringUtils.isEmpty(entity.getHotelType()))
 		throw new IllegalArgumentException("房间类型不能为空");
 		//2.保存数据
-		//2.1保存角色自身信息
 		int rows=sysRoleDao.insertObject(entity);
 		//3.返回结果
 		return rows;

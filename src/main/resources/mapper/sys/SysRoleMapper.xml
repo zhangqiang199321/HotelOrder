@@ -13,24 +13,37 @@
       where id=#{id}
    </update>
    <!-- 自定义结果映射 -->
-   <resultMap type="com.cy.pj.sys.vo.SysRoleMenuVo"
-              id="sysRoleMenuVo">
-          <!-- one2many
-                             基于角色id获取角色对应的菜单信息,并封装到SysRoleMenuVo
-                             对象的menuIds属性上.-->
-          <collection property="menuIds"
-                      column="id"
-                      select="com.cy.pj.sys.dao.SysRoleMenuDao.findMenuIdsByRoleId">
-          </collection> 
-          <!-- 问题:映射文件中有元素id,此时在dao中一定要有对应方法吗?不一定 -->
+   <resultMap type="com.cy.pj.sys.entity.SysRole"
+              id="sysRole">
    </resultMap>
+
+    <!--<resultMap type="com.cy.pj.sys.vo.SysRoleMenuVo"
+               id="sysRoleMenuVo">
+        &lt;!&ndash; one2many
+                           基于角色id获取角色对应的菜单信息,并封装到SysRoleMenuVo
+                           对象的menuIds属性上.&ndash;&gt;
+        <collection property="menuIds"
+                    column="id"
+                    select="com.cy.pj.sys.dao.SysRoleMenuDao.findMenuIdsByRoleId">
+        </collection>
+        &lt;!&ndash; 问题:映射文件中有元素id,此时在dao中一定要有对应方法吗?不一定 &ndash;&gt;
+    </resultMap>-->
+
    <!-- 何时使用resultMap?(自己定义映射规则或关联查询映射) -->
    <select id="findObjectById"
-           resultMap="sysRoleMenuVo">
+           resultMap="sysRole">
+        select HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM
+        from hotel_info
+        where HOTEL_ID=#{id}
+   </select>
+
+
+   <!-- <select id="findObjectById"
+            resultMap="sysRoleMenuVo">
         select id,name,note
         from sys_roles
-        where id=#{id}        
-   </select>
+        where id=#{id}
+   </select>-->
    
    <!-- 向表中写入数据
     1)useGeneratedKeys 表示获取写入到数据库的主键值
@@ -39,16 +52,27 @@
    <insert id="insertObject"
            parameterType="com.cy.pj.sys.entity.SysRole"
            useGeneratedKeys="true"
-           keyProperty="id">
+           keyProperty="hotelId">
+      insert into hotel_info
+      (HOTEL_NUM,HOTEL_TYPE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,CREATE_TIME,MODIFIED_TIME)
+      values
+      (#{hotelNum},#{hotelType},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},now(),now())
+   </insert>
+
+    <!--<insert id="insertObject"
+            parameterType="com.cy.pj.sys.entity.SysRole"
+            useGeneratedKeys="true"
+            keyProperty="id">
       insert into sys_roles
       (name,note,createdTime,modifiedTime,createdUser,modifiedUser)
       values
       (#{name},#{note},now(),now(),#{createdUser},#{modifiedUser})
-   </insert>
+   </insert>-->
+
    
    <!-- sql元素一般用于定义sql语句的共性 -->
    <sql id="queryWhereId">
-      from hoteltype
+      from hotel_info
       <where>
        <if test="hotelType!=null and hotelType!=''">
           HOTEL_TYPE like concat("%",#{hotelType},"%")

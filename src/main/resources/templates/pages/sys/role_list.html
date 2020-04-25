@@ -74,24 +74,62 @@
    function doLoadEditUI(){
 	   var title;
 	   if($(this).hasClass('btn-add')){
-		   title="添加角色";
+		   title="添加客房信息";
 		   doLoadPageUI(title);
 	   }else{
-		   title="修改角色"
-		   var id=$(this).parents("tr").data("id");
-		   var params={"id":id};
+		   title="修改客房信息"
+		   var id=$(this).parents("tr").data("hotelId");
+		   var params={"hotelId":id};
 		   var url="role/doFindObjectById";
 		   $.getJSON(url,params,function(result){
 			   if(result.state==1){
-				  result.data.id=id;//在结果中动态追加id
+				  result.data.hotelId=id;//在结果中动态追加id
 				  $("#mainContentId").data("data",result.data);
 				  doLoadPageUI(title);//异步加载页面  
 			   }else{
 				  alert(result.message); 
 			   }
 		   });
+
+          /* title="修改客房信息"
+           var id=$(this).parents("tr").data("id");
+           var params={"id":id};
+           var url="role/doFindObjectById";
+           $.getJSON(url,params,function(result){
+               if(result.state==1){
+                   result.data.id=id;//在结果中动态追加id
+                   $("#mainContentId").data("data",result.data);
+                   doLoadPageUI(title);//异步加载页面
+               }else{
+                   alert(result.message);
+               }
+           });*/
+
 	   }
    }
+
+   /*function doLoadEditUI(){
+       var title;
+       if($(this).hasClass('btn-add')){
+           title="添加角色";
+           doLoadPageUI(title);
+       }else{
+           title="修改角色"
+           var id=$(this).parents("tr").data("id");
+           var params={"id":id};
+           var url="role/doFindObjectById";
+           $.getJSON(url,params,function(result){
+               if(result.state==1){
+                   result.data.id=id;//在结果中动态追加id
+                   $("#mainContentId").data("data",result.data);
+                   doLoadPageUI(title);//异步加载页面
+               }else{
+                   alert(result.message);
+               }
+           });
+       }
+   }*/
+
    function doLoadPageUI(title){
 	   var url="role/doRoleEditUI"
 	   $("#mainContentId")

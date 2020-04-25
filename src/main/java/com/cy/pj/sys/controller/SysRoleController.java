@@ -30,10 +30,17 @@ public class SysRoleController {
 	}
 	
 	@RequestMapping("doFindObjectById")
-	@ResponseBody
-	public JsonResult doFindObjectById(Integer id) {
-		return new JsonResult(sysRoleService.findObjectById(id));
-	}
+    @ResponseBody
+    public JsonResult doFindObjectById(Integer id) {
+        return new JsonResult(sysRoleService.findObjectById(id));
+    }
+
+    /*@RequestMapping("doFindObjectById")
+    @ResponseBody
+    public JsonResult doFindObjectById(Integer id) {
+        return new JsonResult(sysRoleService.findObjectById(id));
+    }*/
+
 	@RequestMapping("doUpdateObject")
 	@ResponseBody
 	public JsonResult doUpdateObject(SysRole entity,Integer[]menuIds) {
@@ -43,10 +50,19 @@ public class SysRoleController {
 	
 	@RequestMapping("doSaveObject")
 	@ResponseBody
-	public JsonResult doSaveObject(SysRole entity,Integer[]menuIds) {
-		sysRoleService.saveObject(entity, menuIds);
+	public JsonResult doSaveObject(SysRole entity) {
+		sysRoleService.saveObject(entity);
 		return new JsonResult("save  ok");
 	}
+
+    /*@RequestMapping("doSaveObject")
+    @ResponseBody
+    public JsonResult doSaveObject(SysRole entity,Integer[]menuIds) {
+        sysRoleService.saveObject(entity, menuIds);
+        return new JsonResult("save  ok");
+    }*/
+
+
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
 	public JsonResult doDeleteObject(Integer id) {

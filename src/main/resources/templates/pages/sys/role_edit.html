@@ -1,7 +1,7 @@
 <!-- Horizontal Form -->
  <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">添加角色</h3>
+        <h3 class="box-title">添加客房信息</h3>
       </div>
       <!-- /.box-header -->
       <!-- form start -->
@@ -97,7 +97,7 @@
     }*/
     $(function(){
     	//异步加载菜单信息,初始化页面菜单
-    	doLoadSysMenus();
+    	//doLoadSysMenus();
     	$(".box-footer")
     	.on("click",".btn-save",doSaveOrUpdate)
     	.on("click",".btn-cancel",doCancel);
@@ -133,12 +133,8 @@
     function doSaveOrUpdate(){
     	//1.参数(表单数据)
     	var params=doGetEditFormData();
-    	if(!params.name.trim()){
-    		alert("角色名不能为空");
-    		return;
-    	}
-    	if(!params.menuIds.trim()){
-    		alert("请为角色赋予权限")
+    	if(!params.hotelType.trim()){
+    		alert(" 客房类型不能为空");
     		return;
     	}
     	var data=$("#mainContentId").data("data");
@@ -156,6 +152,33 @@
     		   alert(result.message);
     		}
     	})
+
+        /*//1.参数(表单数据)
+        var params=doGetEditFormData();
+        if(!params.name.trim()){
+            alert("角色名不能为空");
+            return;
+        }
+        if(!params.menuIds.trim()){
+            alert("请为角色赋予权限")
+            return;
+        }
+        var data=$("#mainContentId").data("data");
+        if(data)params.id=data.id;
+        //2.url
+        var insertUrl="role/doSaveObject";
+        var updateUrl="role/doUpdateObject";
+        var url=data?updateUrl:insertUrl;
+        //3.ajax request
+        $.post(url,params,function(result){
+            if(result.state==1){
+                alert(result.message);
+                doCancel();
+            }else{
+                alert(result.message);
+            }
+        })*/
+
     }
     function doGetEditFormData(){
     	//1.获取角色自身信息
