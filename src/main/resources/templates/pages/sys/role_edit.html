@@ -97,12 +97,22 @@
     }*/
     $(function(){
     	//异步加载菜单信息,初始化页面菜单
-    	//doLoadSysMenus();
+    	doLoadSysMenus();
     	$(".box-footer")
     	.on("click",".btn-save",doSaveOrUpdate)
     	.on("click",".btn-cancel",doCancel);
     	
     });
+
+   /* $(function(){
+        //异步加载菜单信息,初始化页面菜单
+        doLoadSysMenus();
+        $(".box-footer")
+            .on("click",".btn-save",doSaveOrUpdate)
+            .on("click",".btn-cancel",doCancel);
+
+    });*/
+
     /*function doInitEditFormData(data){
     	console.log("data",data);
     	//1.初始化角色自身信息
@@ -138,7 +148,7 @@
     		return;
     	}
     	var data=$("#mainContentId").data("data");
-    	if(data)params.id=data.id;
+    	if(data)params.hotelId=data.id;
     	//2.url
     	var insertUrl="role/doSaveObject";
     	var updateUrl="role/doUpdateObject";
@@ -204,21 +214,37 @@
     	return params;
     }
     //页面加载完成时初始化zTree
-/*    function doLoadSysMenus(){
-    	var url="menu/doFindZtreeMenuNodes"
-    	$.getJSON(url,function(result){
-    	 console.log(result);
-    	 if(result.state==1){
-    		zTree=$.fn.zTree.init(
-    		$("#menuTree"),setting,result.data);
-    		//修改时添加如下代码(注意先后顺序)
-    		var rowData=$("#mainContentId").data("data");
-    	    if(rowData)doInitEditFormData(rowData);
-    	 }else{
-    		alert(result.message);
-    	 }
-    });
-}*/
+    function doLoadSysMenus(){
+        doInitEditFormData();
+}
+    function doInitEditFormData(){
+        var data=$("#mainContentId").data("rowData");
+        if(!data)return;
+        // $("#pwdDiv").remove();
+        console.log(data);
+        //初始化用户信息
+        $("#hotelNum").val(data.hotelNum);
+        $("#hotelType").val(data.hotelType);
+        $("#hotelLocation").data(data.hotelLocation);
+        $("#status").val(data.status);
+        $("#occupyFlag").val(data.occupyFlag);
+        $("#visitorNum").val(data.visitorNum);
+    }
+   /* function doLoadSysMenus(){
+        var url="menu/doFindZtreeMenuNodes"
+        $.getJSON(url,function(result){
+            console.log(result);
+            if(result.state==1){
+                zTree=$.fn.zTree.init(
+                    $("#menuTree"),setting,result.data);
+                //修改时添加如下代码(注意先后顺序)
+                var rowData=$("#mainContentId").data("data");
+                if(rowData)doInitEditFormData(rowData);
+            }else{
+                alert(result.message);
+            }
+        });
+    }*/
 </script>
     
     
