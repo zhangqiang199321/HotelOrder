@@ -125,17 +125,17 @@ public class SysRoleServiceImpl implements SysRoleService {
     }*/
 	
 	@Override
-	public int deleteObject(Integer id) {
+	public int deleteObject(Long hotelId) {
 		//1.校验参数
-		if(id==null||id<1)
+		if(hotelId==null||hotelId<1)
 		throw new IllegalArgumentException("id值无效");
 		//2.执行删除(假如物理上没有关系,如下删除顺序没关系)
 		//2.1删除角色和菜单的关系数据
-		sysRoleMenuDao.deleteObjectsByRoleId(id);
+		sysRoleMenuDao.deleteObjectsByRoleId(hotelId);
 		//2.2删除角色和用户的关系数据
-		sysUserRoleDao.deleteObjectsByRoleId(id);
+		sysUserRoleDao.deleteObjectsByRoleId(hotelId);
 		//2.3删除角色自身信息
-		int rows=sysRoleDao.deleteObject(id);
+		int rows=sysRoleDao.deleteObject(hotelId);
 		//3.返回结果
 		if(rows==0)throw new ServiceException("记录可能已经不存在");
 		return rows;

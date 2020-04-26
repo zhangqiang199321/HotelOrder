@@ -20,7 +20,7 @@ public interface SysUserRoleDao {
 			 @Param("userId")Integer userId,
 			 @Param("roleIds")Integer[] roleIds);
 	 @Delete("delete from sys_user_roles where role_id=#{roleId}")
-	 int deleteObjectsByRoleId(Integer roleId);
+	 int deleteObjectsByRoleId(Long roleId);
 	 @Delete("delete from sys_user_roles where user_id=#{userId}")
 	 int deleteObjectsByUserId(Integer userId);
 }
