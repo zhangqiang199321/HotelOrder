@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cy.pj.common.vo.Node;
+import com.cy.pj.common.vo.PageObject;
 import com.cy.pj.sys.entity.SysMenu;
 
 public interface SysMenuService {
@@ -20,8 +21,14 @@ public interface SysMenuService {
 	 int saveObject(SysMenu entity);
 	
 	 /**查询所有菜单信息并呈现treegrid中*/
-	 List<Map<String,Object>> findObjects();
+	 /*List<Map<String,Object>> findObjects();*/
 	 /**查询所有菜单id,name,parentId呈现在zTree中*/
 	 List<Node> findZtreeMenuNodes();
-	 
+
+	PageObject<SysMenu> doFindPageObjects(
+			String account,
+			Integer pageCurrent);
+
+    Map<String, Object> findObjectById(
+            Long id);
 }

@@ -246,7 +246,7 @@
 
   function doCancel(){
       $("#mainContentId").removeData("rowData");
-      $("#mainContentId").load("vip/doUserListUI");
+      $("#mainContentId").load("vip/doMenuListUI");
   }
   function doSaveOrUpdate(){
       var rowData=$("#mainContentId").data("rowData");
@@ -286,12 +286,6 @@
       //初始化用户信息
       $("#account").val(data.account);
       $("#password").val(data.password);
-      //初始化用户角色信息
-      var ids=data.roleIds;
-      for(var i in ids){
-          $("#rolesId input[value='"+ids[i]+"']")
-              .prop("checked",true);
-      }
   }
 
 
