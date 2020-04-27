@@ -16,6 +16,12 @@ public class SysRole implements Serializable{
 	private String status;
 	//客房类型
     private String hotelType;
+
+    private Double price;
+
+    private String title;
+
+    private String topic;
     //客房位置
     private String hotelLocation;
     //是否预订

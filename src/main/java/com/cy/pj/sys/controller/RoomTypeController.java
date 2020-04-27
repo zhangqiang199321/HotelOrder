@@ -3,6 +3,7 @@ package com.cy.pj.sys.controller;
 import com.cy.pj.common.vo.JsonResult;
 import com.cy.pj.sys.entity.RoomDisplay;
 import com.cy.pj.sys.entity.RoomEntity;
+import com.cy.pj.sys.entity.SysRole;
 import com.cy.pj.sys.service.IRoomDisplayService;
 import com.cy.pj.sys.service.IRoomTypeService;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 查找需求房型
@@ -28,7 +30,7 @@ public class RoomTypeController {
     @RequestMapping("/jiangninga/{type}")
     @ResponseBody
     public JsonResult get(@PathVariable String type){
-        List<RoomEntity> roomList = iRoomTypeService.getRoomType(type);
+        List<SysRole> roomList = iRoomTypeService.getRoomType(type);
         JsonResult ok = new JsonResult(roomList);
         return ok;
     }
@@ -36,7 +38,7 @@ public class RoomTypeController {
     @RequestMapping("/display/{from}")
     @ResponseBody
     public JsonResult getDisplay(@PathVariable String from){
-        RoomDisplay roomDisplay = iRoomDisplayService.getRoomDisplay(from);
+        SysRole roomDisplay = iRoomDisplayService.getRoomDisplay(from);
         JsonResult jsonResult = new JsonResult(roomDisplay);
         return jsonResult;
     }

@@ -79,14 +79,14 @@
                    rel="nofollow" @click="price(index,value,'myPrice')">{{key}}</a>
                 <div class="pricecond">
                     <!--两个输入框的长度width需要在加载时传入参数计算：数字长度小于等于3位时，width:24px 数字长度n大于3位时，width: 8*n px-->
-                    <form action="https://nj.zu.anjuke.com/fangyuan/jiangninga/zj201-fx2-x2/" id="price_range_form"
-                          onsubmit="">
-                        <input id="from-price" class="from-price yell" type="text" name="from_price" maxlength="5"
-                               value="0" style="width:32px;" autocomplete="off"> -
-                        <input id="to-price" class="to-price yell" type="text" name="to_price" maxlength="5" value="500"
-                               style="width:32px;" autocomplete="off">&nbsp;<span class="">元</span>
-                        <input class="smit" id="pricerange_search" style="" type="button" value="确定">
-                    </form>
+<!--                    <form action="/fangyuan/jiangninga/" id="price_range_form"-->
+<!--                          onsubmit="">-->
+<!--                        <input id="from-price" class="from-price yell" type="text" name="from_price" maxlength="5"-->
+<!--                               value="0" style="width:32px;" autocomplete="off"> - -->
+<!--                        <input id="to-price" class="to-price yell" type="text" name="to_price" maxlength="5" value="500"-->
+<!--                               style="width:32px;" autocomplete="off">&nbsp;<span class="">元</span>-->
+<!--                        <input class="smit" id="pricerange_search" style="" type="button" value="确定">-->
+<!--                    </form>-->
                 </div>
             </span>
         </div>
@@ -253,16 +253,16 @@
             </div>
             <!--房源列表豆腐块-->
             <!--区域板块租房房源列表页-->
-            <div v-for="(value,key,index) in room" class="zu-itemmod" link="/display" :_soj="value.roomUrl">
-                <a data-company="" class="img" :_soj="value.roomUrl" data-sign="true" href="/display" target="_blank"
+            <div v-for="(value,key,index) in room" class="zu-itemmod" link="/display" :_soj="value.hotelId">
+                <a data-company="" class="img" :_soj="value.hotelId" data-sign="true" href="/display" target="_blank"
                    hidefocus="true">
                     <img class="thumbnail" lazy_src="" src="/layui/images/imgs/123113.jpg" width="180" height="135" data-loaded="true">
                     <span class="many-icons iconfont"></span>
                 </a>
                 <div class="zu-info">
                     <h3>
-                        <a target="_blank" :_soj="value.roomUrl" href="/display">
-                            <b class="strongbox">{{value.name}}</b>
+                        <a target="_blank" :_soj="value.hotelId" href="/display">
+                            <b class="strongbox">{{value.hotelType}}</b>
                         </a>
                         <em class="anxvan-ico"></em>
                     </h3>
