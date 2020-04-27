@@ -271,10 +271,8 @@
   function doGetEditFormData(){
       //获取用户输入的数据
       var params={
-          employeeName:$("#employeeName").val(),
-          employeeAge:$("#employeeAge").val(),
-          employeePosition:$("#employeePosition").val(),
-          employeePhone:$("#employeePhone").val()
+          account:$("#account").val(),
+          password:$("#password").val()
       }
       return params;
   }
@@ -286,12 +284,8 @@
       if(!data)return;
       console.log(data);
       //初始化用户信息
-      $("#employeeName").val(data.user.employeeName);
-      $("#deptId").val(data.user.sysDept?data.user.sysDept.name:'');
-      $("#deptId").data("deptId",data.user.sysDept?data.user.sysDept.id:'');
-      $("#employeeAge").val(data.user.employeeAge);
-      $("#employeePosition").val(data.user.employeePosition);
-      $("#employeePhone").val(data.user.employeePhone);
+      $("#account").val(data.account);
+      $("#password").val(data.password);
       //初始化用户角色信息
       var ids=data.roleIds;
       for(var i in ids){

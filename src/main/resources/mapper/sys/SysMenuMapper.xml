@@ -5,6 +5,23 @@
 <mapper namespace="com.cy.pj.sys.dao.SysMenuDao">
 	<!-- cache表示使用二级缓存 -->
 	<update id="updateObject">
+	     update vip_info
+         set
+           ACCOUNT=#{account},
+           PASSWORD=#{password},
+           MODIFIED_TIME=now()
+        where id=#{id}
+	</update>
+	
+	<insert id="insertObject"
+		parameterType="com.cy.pj.sys.entity.SysMenu">
+		insert into vip_info
+		(ACCOUNT,PASSWORD,CREATE_TIME,MODIFIED_TIME)
+		values
+		(#{account},#{password},now(),now())
+	</insert>
+
+	<!--<update id="updateObject">
 	     update sys_menus
          set
            name=#{name},
@@ -17,15 +34,16 @@
            modifiedTime=now()
         where id=#{id}
 	</update>
-	
+
 	<insert id="insertObject"
-		parameterType="com.cy.pj.sys.entity.SysMenu">
+			parameterType="com.cy.pj.sys.entity.SysMenu">
 		insert into sys_menus
 		(name,url,type,sort,note,parentId,permission,
 		createdTime,modifiedTime,createdUser,modifiedUser)
 		values
 		(#{name},#{url},#{type},#{sort},#{note},#{parentId},#{permission},
 		now(),now(),#{createdUser},#{modifiedUser})
-	</insert>
+	</insert>-->
+
 </mapper>
 

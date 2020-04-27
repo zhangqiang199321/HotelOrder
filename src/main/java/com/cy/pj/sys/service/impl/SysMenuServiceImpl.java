@@ -20,12 +20,23 @@ public class SysMenuServiceImpl implements SysMenuService {
     	//1.参数校验
     	if(entity==null)
     	throw new IllegalArgumentException("保存对象不能为空");
-    	if(StringUtils.isEmpty(entity.getName()))
-    	throw new IllegalArgumentException("菜单名不能为空");
-    	if(StringUtils.isEmpty(entity.getPermission()))
-    	throw new IllegalArgumentException("权限标识不能为空");
+    	if(StringUtils.isEmpty(entity.getAccount()))
+    	throw new IllegalArgumentException("用户名不能为空");
+    	if(StringUtils.isEmpty(entity.getPassword()))
+    	throw new IllegalArgumentException("密码不能为空");
     	//2.持久化数据
     	int rows=sysMenuDao.insertObject(entity);
+
+		/*//1.参数校验
+		if(entity==null)
+			throw new IllegalArgumentException("保存对象不能为空");
+		if(StringUtils.isEmpty(entity.getName()))
+			throw new IllegalArgumentException("菜单名不能为空");
+		if(StringUtils.isEmpty(entity.getPermission()))
+			throw new IllegalArgumentException("权限标识不能为空");
+		//2.持久化数据
+		int rows=sysMenuDao.insertObject(entity);*/
+
     	//3.返回结果
     	return rows;
     }
@@ -34,12 +45,23 @@ public class SysMenuServiceImpl implements SysMenuService {
     	//1.参数校验
     	if(entity==null)
     		throw new IllegalArgumentException("保存对象不能为空");
-    	if(StringUtils.isEmpty(entity.getName()))
-    		throw new IllegalArgumentException("菜单名不能为空");
-    	if(StringUtils.isEmpty(entity.getPermission()))
-    		throw new IllegalArgumentException("权限标识不能为空");
+    	if(StringUtils.isEmpty(entity.getAccount()))
+    		throw new IllegalArgumentException("用户名不能为空");
+    	if(StringUtils.isEmpty(entity.getPassword()))
+    		throw new IllegalArgumentException("密码不能为空");
     	//2.持久化数据
     	int rows=sysMenuDao.updateObject(entity);
+
+       /* //1.参数校验
+        if(entity==null)
+            throw new IllegalArgumentException("保存对象不能为空");
+        if(StringUtils.isEmpty(entity.getName()))
+            throw new IllegalArgumentException("菜单名不能为空");
+        if(StringUtils.isEmpty(entity.getPermission()))
+            throw new IllegalArgumentException("权限标识不能为空");
+        //2.持久化数据
+        int rows=sysMenuDao.updateObject(entity);*/
+
     	//3.返回结果
     	return rows;
     }

@@ -10,7 +10,7 @@ public class SysMenu implements Serializable{
 	private Long id;
 	private String account;
 	private String password;
-	private Date createdTime;
+	private Date createTime;
 	private Date modifiedTime;
     private String ext1;
     private String ext2;

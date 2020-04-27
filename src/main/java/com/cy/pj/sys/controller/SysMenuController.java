@@ -8,7 +8,8 @@ import com.cy.pj.common.vo.JsonResult;
 import com.cy.pj.sys.entity.SysMenu;
 import com.cy.pj.sys.service.SysMenuService;
 @Controller
-@RequestMapping("/menu/")
+@RequestMapping("/vip/")
+/*@RequestMapping("/menu/")*/
 public class SysMenuController {
 	 @Autowired
 	 private SysMenuService sysMenuService;

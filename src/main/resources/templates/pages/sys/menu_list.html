@@ -345,7 +345,7 @@ function doGetObjects(){
     var pageCurrent=$("#pageId").data("pageCurrent");
     if(!pageCurrent)pageCurrent=1;
     var params={"pageCurrent":pageCurrent}
-    params.username=$("#searchNameId").val().trim();
+    params.account=$("#searchNameId").val().trim();
     console.log(params);
     $.getJSON(url,params,function(result){
         console.log(result);
@@ -406,11 +406,9 @@ function doSetTableBodyRows(records){
 function doCreateTds(data){
     console.log(data);
     var tds=
-        "<td><input type='radio' name='radioId' value='"+data.employeeId+"'/></td>"+
-        "<td>"+data.employeeName+"</td>"+
-        "<td>"+data.employeeAge+"</td>"+
-        "<td>"+data.employeePosition+"</td>"+
-        "<td>"+data.employeePhone+"</td>"+
+        "<td><input type='radio' name='radioId' value='"+data.id+"'/></td>"+
+        "<td>"+data.account+"</td>"+
+        "<td>"+data.password+"</td>"+
         "<td>"+new Date(data.createTime).toLocaleString()+"</td>"+
         "<td>"+new Date(data.modifiedTime).toLocaleString()+"</td>";
     return tds;
