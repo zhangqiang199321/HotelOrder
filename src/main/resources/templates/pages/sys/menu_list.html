@@ -296,7 +296,7 @@ function doGetCheckedId(){
     return $("tbody input[name='radioId']:checked").val();
 }
 function doLoadPage(title){
-    var url="vip/doUserEditUI"
+    var url="vip/doMenuListUI"
     $("#mainContentId").load(url,function(){
         $(".box-title").html(title);
     })
