@@ -14,9 +14,5 @@ public interface RoomDisplayDao {
 
     int setOccupy(@Param("type")String type);
 
-    List<SysRole> findObjectByPrice(@Param("start")Integer start, @Param("end")Integer end,@Param("topic")Integer topic,@Param("type")Integer type);
-
-    List<SysRole> findObjectByTopic(@Param("topic")Integer topic);
-
-    List<SysRole> findObjectByType(@Param("type")Integer type);
+    List<SysRole> findObjectByPrice(@Param("start")Integer start, @Param("end")Integer end,@Param("topic")String topic,@Param("type")String type);
 }

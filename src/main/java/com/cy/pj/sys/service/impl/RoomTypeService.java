@@ -24,10 +24,10 @@ public class RoomTypeService implements IRoomTypeService {
     @Override
     public List<SysRole> getRoomType(String need) {
         List<SysRole> roomList = new ArrayList<SysRole>();
-        Integer start = null;
-        Integer end = null;
-        Integer topic = null;
-        Integer type = null;
+        Integer start = 0;
+        Integer end = 9999;
+        String topic = null;
+        String type = null;
         if(null != need){
             String[] split = need.split("-");
             for (int i = 0; i < split.length; i++) {
@@ -57,22 +57,25 @@ public class RoomTypeService implements IRoomTypeService {
                         end = 9999;
                         break;
                     case "x0":
-                        topic = 0;
+                        topic = null;
                         break;
                     case "x1":
-                        topic = 1;
+                        topic = "优惠";
                         break;
                     case "x2":
-                        topic = 2;
+                        topic = "主题";
                         break;
                     case "fx0":
-                        type = 0;
+                        type = null;
                         break;
                     case "fx1":
-                        type = 1;
+                        type = "标间";
                         break;
                     case "fx2":
-                        type = 2;
+                        type = "大床房";
+                        break;
+                    case "fx3":
+                        type = "三床房";
                         break;
                 }
             }
@@ -81,26 +84,10 @@ public class RoomTypeService implements IRoomTypeService {
         return roomList;
     }
 
-    private List<SysRole> getRoomByPrice(Integer start,Integer end,Integer topic,Integer type,List<SysRole> value) {
+    private List<SysRole> getRoomByPrice(Integer start,Integer end,String topic,String type,List<SysRole> value) {
         List<SysRole> objectByPrice = roomDisplayDao.findObjectByPrice(start, end,topic,type);
         for (int i = 0; i < objectByPrice.size(); i++) {
             value.add(objectByPrice.get(i));
-        }
-        return value;
-    }
-
-    private List<SysRole> getRoomByTopic(int topic,List<SysRole> value) {
-        List<SysRole> objectByTopic = roomDisplayDao.findObjectByTopic(topic);
-        for (int i = 0; i < objectByTopic.size(); i++) {
-            value.add(objectByTopic.get(i));
-        }
-        return value;
-    }
-
-    private Set<SysRole> getRoomByType(int type,Set<SysRole> value) {
-        List<SysRole> objectByTopic = roomDisplayDao.findObjectByType(type);
-        for (int i = 0; i < objectByTopic.size(); i++) {
-            value.add(objectByTopic.get(i));
         }
         return value;
     }

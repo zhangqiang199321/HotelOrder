@@ -3,8 +3,9 @@ var elems =  new Vue({
     data:{
         typeData:{
             '全部':'/fangyuan/jiangninga/fx0',
-            '单人床':'/fangyuan/jiangninga/fx1',
-            '双人床':'/fangyuan/jiangninga/fx2'
+            '标间':'/fangyuan/jiangninga/fx1',
+            '大床房':'/fangyuan/jiangninga/fx2',
+            '三床房':'/fangyuan/jiangninga/fx3',
         },
         topicData:{
             '全部':'/fangyuan/jiangninga/x0',
