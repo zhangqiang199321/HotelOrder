@@ -68,10 +68,10 @@
 	   //1.判定点击的对象
 	   var title;
 	   if($(this).hasClass("btn-add")){
-		   title="添加用户";
+		   title="添加员工信息";
 		   doLoadPage(title);
 	   }else if($(this).hasClass("btn-update")){
-		   title="修改用户";
+		   title="修改员工信息";
 		   var id=doGetCheckedId();
 		   console.log("id="+id)
 		   if(!id){
