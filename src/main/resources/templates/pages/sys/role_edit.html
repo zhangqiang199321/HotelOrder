@@ -7,40 +7,51 @@
       <!-- form start -->
       <form class="form-horizontal">
         <div class="box-body">
-          <div class="form-group">
-            <label for="hotelNum" class="col-sm-2 control-label">客房编号</label>
 
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="hotelNum" id="hotelNum" placeholder="客房编号">
-            </div>
-          </div>
           <div class="form-group">
-            <label for="hotelType" class="col-sm-2 control-label">客房类型</label>
-
+            <label for="hotelNum" class="col-sm-2 control-label">编号</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="hotelType" id="hotelType" placeholder="客房类型">
+              <input type="text" class="form-control" name="hotelNum" id="hotelNum" placeholder="编号">
             </div>
           </div>
 
           <div class="form-group">
-                <label for="hotelLocation" class="col-sm-2 control-label">客房位置</label>
+            <label for="hotelType" class="col-sm-2 control-label">类型</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="hotelType" id="hotelType" placeholder="类型">
+            </div>
+          </div>
 
+            <div class="form-group">
+                <label for="price" class="col-sm-2 control-label">价格</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="hotelLocation" id="hotelLocation" placeholder="客房位置">
+                    <input type="text" class="form-control" name="price" id="price" placeholder="价格">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="square" class="col-sm-2 control-label">面积</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="square" id="square" placeholder="面积">
+                </div>
+            </div>
+
+          <div class="form-group">
+                <label for="hotelLocation" class="col-sm-2 control-label">位置</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="hotelLocation" id="hotelLocation" placeholder="位置">
                 </div>
           </div>
 
           <div class="form-group">
-                <label for="status" class="col-sm-2 control-label">客房状态</label>
-
+                <label for="status" class="col-sm-2 control-label">状态</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="status" id="status" placeholder="客房状态">
+                    <input type="text" class="form-control" name="status" id="status" placeholder="状态">
                 </div>
           </div>
 
             <div class="form-group">
                 <label for="occupyFlag" class="col-sm-2 control-label">是否预订</label>
-
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="occupyFlag" id="occupyFlag" placeholder="是否预订">
                 </div>
@@ -48,12 +59,24 @@
 
             <div class="form-group">
                 <label for="visitorNum" class="col-sm-2 control-label">旅客人数</label>
-
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="visitorNum" id="visitorNum" placeholder="旅客人数">
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">标题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="标题">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="topic" class="col-sm-2 control-label">主题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="topic" id="topic" placeholder="主题">
+                </div>
+            </div>
             <!--<div class="form-group">
                 <label for="nameId" class="col-sm-2 control-label">名称</label>
 
@@ -195,10 +218,14 @@
     	var params={
             hotelNum:$("#hotelNum").val(),
             hotelType:$("#hotelType").val(),
+            price:$("#price").val(),
+            square:$("#square").val(),
             hotelLocation:$("#hotelLocation").val(),
             status:$("#status").val(),
             occupyFlag:$("#occupyFlag").val(),
-            visitorNum:$("#visitorNum").val()
+            visitorNum:$("#visitorNum").val(),
+            title:$("#title").val(),
+            topic:$("#topic").val()
             /*name:$("#nameId").val(),
             note:$("#noteId").val()*/
     	}
@@ -225,10 +252,14 @@
         //初始化用户信息
         $("#hotelNum").val(data.hotelNum);
         $("#hotelType").val(data.hotelType);
+        $("#hotelType").val(data.price);
+        $("#hotelType").val(data.square);
         $("#hotelLocation").data(data.hotelLocation);
         $("#status").val(data.status);
         $("#occupyFlag").val(data.occupyFlag);
         $("#visitorNum").val(data.visitorNum);
+        $("#hotelType").val(data.title);
+        $("#hotelType").val(data.topic);
     }
    /* function doLoadSysMenus(){
         var url="menu/doFindZtreeMenuNodes"
