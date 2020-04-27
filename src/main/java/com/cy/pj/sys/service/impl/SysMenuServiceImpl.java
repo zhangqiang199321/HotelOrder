@@ -1,12 +1,14 @@
 package com.cy.pj.sys.service.impl;
 import java.util.List;
-import java.util.Map;
 
+import com.cy.pj.common.exception.ServiceException;
+import com.cy.pj.common.util.PageUtil;
+import com.cy.pj.common.vo.PageObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.cy.pj.common.annotation.RequiredCache;
 import com.cy.pj.common.vo.Node;
 import com.cy.pj.sys.dao.SysMenuDao;
 import com.cy.pj.sys.entity.SysMenu;
@@ -66,16 +68,41 @@ public class SysMenuServiceImpl implements SysMenuService {
     	return rows;
     }
    
-	@Override
+	/*@Override
 	public List<Map<String, Object>> findObjects() {
 		List<Map<String, Object>> list=
 		sysMenuDao.findObjects();
 		return list;
-	}
+	}*/
 	@Override
 	public List<Node> findZtreeMenuNodes() {
 		return sysMenuDao.findZtreeMenuNodes();
 	}
+
+
+    @Transactional(readOnly = false)
+    @Override
+    public PageObject<SysMenu> doFindPageObjects(String account, Integer pageCurrent) {
+        //1.参数校验
+        if(pageCurrent==null||pageCurrent<1)
+            throw new IllegalArgumentException("页码不正确");
+        //2.查询总记录数并进行校验
+        int rowCount=sysMenuDao.getRowCount(account);
+        if(rowCount==0)
+            throw new ServiceException("记录不存在");
+        //3.查询当前页要呈现的记录
+        //3.1页面大小,例如每页最多显示3条
+        int pageSize= PageUtil.getPageSize();
+        //3.2当前页起始位置
+        int startIndex=PageUtil.getStartIndex(pageCurrent);
+        List<SysMenu> records=
+                sysMenuDao.findPageObjects(account,
+                        startIndex,pageSize);
+        System.out.println(records);
+        //4.对查询结果进行计算和封装并返回
+        return PageUtil.newPageObject(
+                pageCurrent, rowCount, pageSize, records);
+    }
 }
 
 

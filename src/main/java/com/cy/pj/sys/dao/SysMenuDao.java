@@ -2,8 +2,10 @@ package com.cy.pj.sys.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.cy.pj.sys.vo.EmployeeVo;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.cy.pj.common.vo.Node;
@@ -29,6 +31,14 @@ public interface SysMenuDao {
 	 * 2)多行记录会对应多个node,然后将node存在list集合*/
 	@Select("select id,name,parentId from sys_menus")
 	List<Node> findZtreeMenuNodes();
+
+
+    List<SysMenu> findPageObjects(
+            @Param("account")String account,
+            @Param("startIndex")Integer startIndex,
+            @Param("pageSize")Integer pageSize);
+
+    int getRowCount(@Param("account")String account);
 }
 
 

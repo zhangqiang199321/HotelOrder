@@ -39,13 +39,19 @@ public class SysMenuController {
 	 public JsonResult doFindZtreeMenuNodes() {
 		 return new JsonResult(sysMenuService.findZtreeMenuNodes());
 	 }
-	 
-	 @RequestMapping("doFindObjects")
+
+	 /*@RequestMapping("doFindObjects")
 	 @ResponseBody
 	 public JsonResult doFindObjects() {
 		 return new JsonResult(
 		 sysMenuService.findObjects());
-	 }
+	 }*/
+
+    @RequestMapping("doFindPageObjects")
+    @ResponseBody
+    public JsonResult doFindPageObjects(String account, Integer pageCurrent) {
+        return new JsonResult(sysMenuService.doFindPageObjects(account, pageCurrent));
+    }
 	  
 }
 
