@@ -1,9 +1,12 @@
 package com.cy.pj.sys.service.impl;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.cy.pj.common.exception.ServiceException;
 import com.cy.pj.common.util.PageUtil;
 import com.cy.pj.common.vo.PageObject;
+import com.cy.pj.sys.vo.EmployeeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -102,6 +105,22 @@ public class SysMenuServiceImpl implements SysMenuService {
         //4.对查询结果进行计算和封装并返回
         return PageUtil.newPageObject(
                 pageCurrent, rowCount, pageSize, records);
+    }
+
+    @Override
+    public Map<String, Object> findObjectById(Long id) {
+        //1.合法性验证
+        if(id==null||id<=0)
+            throw new ServiceException("参数数据不合法,id="+id);
+        //2.业务查询
+        SysMenu sysMenu=
+                sysMenuDao.findObjectById(id);
+        if(sysMenu==null)
+            throw new ServiceException("此用户已经不存在");
+        //3.数据封装
+        Map<String,Object> map=new HashMap<>();
+        map.put("sysMenu", sysMenu);
+        return map;
     }
 }
 

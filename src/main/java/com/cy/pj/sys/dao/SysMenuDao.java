@@ -39,6 +39,8 @@ public interface SysMenuDao {
             @Param("pageSize")Integer pageSize);
 
     int getRowCount(@Param("account")String account);
+
+    SysMenu findObjectById(Long id);
 }
 
 

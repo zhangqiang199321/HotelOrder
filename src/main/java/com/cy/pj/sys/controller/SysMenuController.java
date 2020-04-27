@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cy.pj.common.vo.JsonResult;
 import com.cy.pj.sys.entity.SysMenu;
 import com.cy.pj.sys.service.SysMenuService;
+
+import java.util.Map;
+
 @Controller
 @RequestMapping("/vip/")
 /*@RequestMapping("/menu/")*/
@@ -52,7 +55,16 @@ public class SysMenuController {
     public JsonResult doFindPageObjects(String account, Integer pageCurrent) {
         return new JsonResult(sysMenuService.doFindPageObjects(account, pageCurrent));
     }
-	  
+
+    @RequestMapping("doFindObjectById")
+    @ResponseBody
+    public JsonResult doFindObjectById(
+            Long id){
+        Map<String,Object> map=
+                sysMenuService.findObjectById(id);
+        return new JsonResult(map);
+    }
+
 }
 
 

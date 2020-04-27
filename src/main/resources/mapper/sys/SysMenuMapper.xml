@@ -72,6 +72,13 @@
         limit #{startIndex},#{pageSize}
     </select>
 
+    <select id="findObjectById"
+            parameterType="long"
+            resultMap="SysMenu">
+           select *
+           from vip_info
+           where ID=#{id}
+   </select>
 
 </mapper>
 

@@ -28,5 +28,7 @@ public interface SysMenuService {
 	PageObject<SysMenu> doFindPageObjects(
 			String account,
 			Integer pageCurrent);
-	 
+
+    Map<String, Object> findObjectById(
+            Long id);
 }
