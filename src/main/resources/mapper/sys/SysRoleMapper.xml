@@ -32,7 +32,7 @@
    <!-- 何时使用resultMap?(自己定义映射规则或关联查询映射) -->
    <select id="findObjectById"
            resultMap="sysRole">
-        select HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM
+        select HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC
         from hotel_info
         where HOTEL_ID=#{hotelId}
    </select>
@@ -54,9 +54,9 @@
            useGeneratedKeys="true"
            keyProperty="hotelId">
       insert into hotel_info
-      (HOTEL_NUM,HOTEL_TYPE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,CREATE_TIME,MODIFIED_TIME)
+      (HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC,CREATE_TIME,MODIFIED_TIME)
       values
-      (#{hotelNum},#{hotelType},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},now(),now())
+      (#{hotelNum},#{hotelType},#{price},#{square},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},#{title},#{topic},now(),now())
    </insert>
 
     <!--<insert id="insertObject"
