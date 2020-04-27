@@ -23,7 +23,7 @@
             and PRICE &lt; #{end}
         </if>
         <if test="topic != null and topic != ''">
-            and HOTEL_TOPIC like concat("%",#{topic},"%")
+            and TOPIC like concat("%",#{topic},"%")
         </if>
         <if test="type != null and type != ''">
             and HOTEL_TYPE like concat("%",#{type},"%")
@@ -33,7 +33,7 @@
     <select id="findObjectByTopic"
             resultType="com.cy.pj.sys.entity.SysRole">
          select * from hotel_info
-        where HOTEL_TOPIC like concat("%",#{topic},"%")
+        where TOPIC like concat("%",#{topic},"%")
     </select>
 
     <select id="findObjectByType"

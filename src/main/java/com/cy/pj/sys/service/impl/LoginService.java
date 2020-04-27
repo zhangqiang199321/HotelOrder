@@ -2,7 +2,7 @@ package com.cy.pj.sys.service.impl;
 
 import com.cy.pj.sys.dao.LoginDao;
 import com.cy.pj.sys.entity.Request;
-import com.cy.pj.sys.entity.VisitorEntity;
+import com.cy.pj.sys.entity.SysMenu;
 import com.cy.pj.sys.service.ILoginService;
 import org.springframework.stereotype.Service;
 
@@ -36,10 +36,10 @@ public class LoginService implements ILoginService {
         String username = request.getUsername();
         Integer numByUsername = loginDao.findNumByUsername(username);
         if(numByUsername == 0){
-            VisitorEntity visitorEntity = new VisitorEntity();
-            visitorEntity.setUsername(request.getUsername());
-            visitorEntity.setPassword(request.getPassword());
-            Integer isRegister = loginDao.insertUsername(visitorEntity);
+            SysMenu sysMenu = new SysMenu();
+            sysMenu.setAccount(request.getUsername());
+            sysMenu.setPassword(request.getPassword());
+            Integer isRegister = loginDao.insertUsername(sysMenu);
             if(isRegister == 1){
                 return true;
             }
