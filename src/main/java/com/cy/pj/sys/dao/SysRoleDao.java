@@ -36,7 +36,6 @@ public interface SysRoleDao {
 	  int insertObject(SysRole entity);
 
 	  /**基于id执行角色id删除*/
-	  @Delete("delete from hotel_info where HOTEL_ID=#{hotelId}")
 	  int deleteObject(Long hotelId);
 
     /**基于id执行角色id删除*/

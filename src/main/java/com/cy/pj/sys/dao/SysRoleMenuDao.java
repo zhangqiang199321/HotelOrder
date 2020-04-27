@@ -20,6 +20,6 @@ public interface SysRoleMenuDao {
 			 @Param("roleId")Integer roleId,
 			 @Param("menuIds")Integer[]menuIds);
 	
-	 @Delete("delete from sys_role_menus where role_id=#{role_id}")
-	 int deleteObjectsByRoleId(Long roleId);
+	 @Delete("delete from hotel_info where HOTEL_ID=#{hotelId}")
+	 int deleteObjectsByRoleId(Long hotelId);
 }

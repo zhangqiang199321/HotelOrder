@@ -245,21 +245,22 @@
         doInitEditFormData();
 }
     function doInitEditFormData(){
-        var data=$("#mainContentId").data("rowData");
+        var data=$("#mainContentId").data("data");
+        console.log(data);
         if(!data)return;
         // $("#pwdDiv").remove();
         console.log(data);
         //初始化用户信息
         $("#hotelNum").val(data.hotelNum);
         $("#hotelType").val(data.hotelType);
-        $("#hotelType").val(data.price);
-        $("#hotelType").val(data.square);
-        $("#hotelLocation").data(data.hotelLocation);
+        $("#price").val(data.price);
+        $("#square").val(data.square);
+        $("#hotelLocation").val(data.hotelLocation);
         $("#status").val(data.status);
         $("#occupyFlag").val(data.occupyFlag);
         $("#visitorNum").val(data.visitorNum);
-        $("#hotelType").val(data.title);
-        $("#hotelType").val(data.topic);
+        $("#title").val(data.title);
+        $("#topic").val(data.topic);
     }
    /* function doLoadSysMenus(){
         var url="menu/doFindZtreeMenuNodes"

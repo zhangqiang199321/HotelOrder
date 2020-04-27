@@ -19,8 +19,8 @@ public interface SysUserRoleDao {
 	 int insertObjects(
 			 @Param("userId")Integer userId,
 			 @Param("roleIds")Integer[] roleIds);
-	 @Delete("delete from sys_user_roles where role_id=#{roleId}")
-	 int deleteObjectsByRoleId(Long roleId);
+	 @Delete("delete from hotel_info where HOTEL_ID=#{hotelId}")
+	 int deleteObjectsByRoleId(Long hotelId);
 	 @Delete("delete from sys_user_roles where user_id=#{userId}")
 	 int deleteObjectsByUserId(Integer userId);
 }

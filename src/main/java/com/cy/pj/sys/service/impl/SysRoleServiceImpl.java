@@ -131,9 +131,9 @@ public class SysRoleServiceImpl implements SysRoleService {
 		throw new IllegalArgumentException("id值无效");
 		//2.执行删除(假如物理上没有关系,如下删除顺序没关系)
 		//2.1删除角色和菜单的关系数据
-		sysRoleMenuDao.deleteObjectsByRoleId(hotelId);
+//		sysRoleMenuDao.deleteObjectsByRoleId(hotelId);
 		//2.2删除角色和用户的关系数据
-		sysUserRoleDao.deleteObjectsByRoleId(hotelId);
+//		sysUserRoleDao.deleteObjectsByRoleId(hotelId);
 		//2.3删除角色自身信息
 		int rows=sysRoleDao.deleteObject(hotelId);
 		//3.返回结果

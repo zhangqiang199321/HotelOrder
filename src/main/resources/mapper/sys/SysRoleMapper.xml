@@ -32,7 +32,7 @@
    <!-- 何时使用resultMap?(自己定义映射规则或关联查询映射) -->
    <select id="findObjectById"
            resultMap="sysRole">
-        select HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC
+        select *
         from hotel_info
         where HOTEL_ID=#{hotelId}
    </select>
@@ -54,9 +54,9 @@
            useGeneratedKeys="true"
            keyProperty="hotelId">
       insert into hotel_info
-      (HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC,CREATE_TIME,MODIFIED_TIME)
+      (HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC,CREATE_TIME,MODIFIED_TIME)
       values
-      (#{hotelNum},#{hotelType},#{price},#{square},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},#{title},#{topic},now(),now())
+      (#{hotelNum},#{hotelNum},#{hotelType},#{price},#{square},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},#{title},#{topic},now(),now())
    </insert>
 
     <!--<insert id="insertObject"
@@ -102,6 +102,9 @@
       order by CREATE_TIME desc
       limit #{startIndex},#{pageSize}     
    </select>
-   
+    <delete id="deleteObject">
+        delete from hotel_info
+        where HOTEL_ID = #{hotelId}
+    </delete>
   
 </mapper>
