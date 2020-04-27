@@ -3,8 +3,9 @@ var elems =  new Vue({
     data:{
         typeData:{
             '全部':'/fangyuan/jiangninga/fx0',
-            '单人床':'/fangyuan/jiangninga/fx1',
-            '双人床':'/fangyuan/jiangninga/fx2'
+            '标间':'/fangyuan/jiangninga/fx1',
+            '大床房':'/fangyuan/jiangninga/fx2',
+            '三床房':'/fangyuan/jiangninga/fx3',
         },
         topicData:{
             '全部':'/fangyuan/jiangninga/x0',
@@ -70,7 +71,6 @@ var elems =  new Vue({
             }).then(function(res){
                 _this.room=res.data.data;
             });
-            console.log(this.room[0].name);
             if('myPrice'== click){
                 this.currentPriceIndex = index;
             }else if('topic'== click){
@@ -123,6 +123,7 @@ var elems =  new Vue({
             if (self.getCookie('ajkAuthTicket')) {
                 var cookie = self.getCookie('ajkAuthTicket');
                 // this.userDate.menu_list=[cookie,123];
+                this.userDate.user_name = cookie;
                 self.updateUserInfo();
             }
         },
@@ -181,7 +182,7 @@ var elems =  new Vue({
         var _this = this;
         axios({
             method:'get',
-            url:'/fangyuan/jiangninga/111',
+            url:'/fangyuan/jiangninga/zj200-x0-fx0',
         }).then(function(res){
             _this.room=res.data.data;
         });

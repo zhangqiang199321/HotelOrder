@@ -2276,7 +2276,7 @@
 <div class="wrapper">
 
     <h3 class="house-title">
-        <div class="strongbox" style="font-weight: normal;">{{roomDisplay.special}}</div>
+        <div class="strongbox" style="font-weight: normal;">{{roomDisplay.title}}</div>
     </h3>
     <div class="title-basic-info clearfix">
 
@@ -2285,7 +2285,7 @@
         <span class="info-tag">
             <em><b class="strongbox" style="font-weight: normal;">1</b></em>室<em><b class="strongbox" style="font-weight: normal;">1</b></em>卫
         </span>
-        <span class="info-tag no-line"><em><b class="strongbox" style="font-weight: normal;">{{roomDisplay.mianji}}</b></em>平方米</span>
+        <span class="info-tag no-line"><em><b class="strongbox" style="font-weight: normal;">{{roomDisplay.hotelLocation}}</b></em>方位</span>
         <ul class="title-label cf">
 
             <li class="title-label-item fy">入口检疫                <i class="wrap">
@@ -2402,8 +2402,8 @@
                     <span class="info"><b class="strongbox" style="font-weight: normal;">1</b>室<b class="strongbox" style="font-weight: normal;">1</b>厅<b class="strongbox" style="font-weight: normal;">1</b>卫</span>
                 </li>
                 <li class="house-info-item">
-                    <span class="type">面积：</span>
-                    <span class="info"><b class="strongbox" style="font-weight: normal;">{{roomDisplay.mianji}}平方米</b></span>
+                    <span class="type">位置：</span>
+                    <span class="info"><b class="strongbox" style="font-weight: normal;">{{roomDisplay.hotelLocation}}</b></span>
                 </li>
                 <li class="house-info-item">
                     <span class="type">朝向：</span>
@@ -2707,20 +2707,53 @@
 <script type="text/javascript" src="/layui/display.js"></script>
 <script type="text/javascript">
 function f() {
-    var roomid = document.getElementById("roomid").innerHTML;
-    var action = "/dingyue";
-    ajax(roomid,action);
+    var action = "/login/dingyue/"+getCookie("hotelId");
+    ajax(action);
 }
-function ajax(param, action) {
+ function getCookie(check_name) {
+    // first we'll split this cookie up into name/value pairs
+    // note: document.cookie only returns name=value, not the other components
+    var a_all_cookies = document.cookie.split( ';' );
+    var a_temp_cookie = '';
+    var cookie_name = '';
+    var cookie_value = '';
+    var b_cookie_found = false; // set boolean t/f default f
+
+    for (i = 0; i < a_all_cookies.length; i++) {
+        // now we'll split apart each name=value pair
+        a_temp_cookie = a_all_cookies[i].split( '=' );
+
+        // and trim left/right whitespace while we're at it
+        cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+
+        // if the extracted name matches passed check_name
+        if (cookie_name == check_name) {
+            b_cookie_found = true;
+            // we need to handle case where cookie has no value but exists (no = sign, that is):
+            if (a_temp_cookie.length > 1) {
+                cookie_value = unescape(a_temp_cookie[1].replace(/^\s+|\s+$/g, ''));
+            }
+            // note that in cases where cookie is initialized but no value, null is returned
+            return cookie_value;
+            break;
+        }
+        a_temp_cookie = null;
+        cookie_name = '';
+    }
+    if (!b_cookie_found) {
+        return null;
+    }
+}
+function ajax(action) {
     var ajax = null;
     if (window.XMLHttpRequest) {
         ajax = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
         ajax = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    ajax.open('post',action);
+    ajax.open('get',action);
     ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    ajax.send(param);
+    ajax.send();
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4 && ajax.status == 200) {
             alert(ajax.responseText);

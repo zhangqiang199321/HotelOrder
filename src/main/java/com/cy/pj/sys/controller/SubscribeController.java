@@ -3,8 +3,10 @@ package com.cy.pj.sys.controller;
 import com.cy.pj.common.vo.JsonResult;
 import com.cy.pj.sys.entity.LoginEntity;
 import com.cy.pj.sys.entity.RoomDisplay;
+import com.cy.pj.sys.entity.SysRole;
 import com.cy.pj.sys.service.IRoomDisplayService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,12 +34,17 @@ public class SubscribeController {
         return "index";
     }
 
-    @RequestMapping("/dingyue")
+    @RequestMapping("/dingyue/{type}")
     @ResponseBody
-    public JsonResult getDisplay(){
-        String type ="";
-        RoomDisplay roomDisplay = iRoomDisplayService.getRoomDisplay(type);
-        JsonResult jsonResult = new JsonResult(roomDisplay);
-        return jsonResult;
+    public JsonResult getDisplay(@PathVariable String type){
+        Boolean aBoolean = iRoomDisplayService.subscribeRoom(type);
+        if(aBoolean){
+            JsonResult jsonResult = new JsonResult("预定成功");
+            return jsonResult;
+        }else{
+            JsonResult jsonResult = new JsonResult("预定失败");
+            return jsonResult;
+        }
+
     }
 }

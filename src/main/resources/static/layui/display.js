@@ -4,6 +4,7 @@ var elems =  new Vue({
     data:{
         roomDisplay:{
             title:'123',
+            hotelId:"111",
         },
         userDate:{
             'user_id':'',
@@ -99,12 +100,12 @@ var elems =  new Vue({
 },
     mounted:function() {
         var _this = this;
+        paramValues = this.getCookie("hotelId");
         axios({
             method:'get',
             url:'/fangyuan/display/'+paramValues,
         }).then(function(res){
             _this.roomDisplay=res.data.data;
-            console.log(_this.roomDisplay)
         });
         this.$nextTick(function () {
             this.init()

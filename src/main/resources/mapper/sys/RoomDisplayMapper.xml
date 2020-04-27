@@ -4,9 +4,42 @@
 <mapper namespace="com.cy.pj.sys.dao.RoomDisplayDao">
 
     <select id="findRoomDisplayByHotelId"
-            resultType="com.cy.pj.sys.entity.RoomDisplay">
-         select * from roomDisplay
-        where hotelId=#{hotelId}
+            resultType="com.cy.pj.sys.entity.SysRole">
+         select * from hotel_info
+        where HOTEL_ID=#{hotelId}
+    </select>
+
+    <update id="setOccupy">
+         update hotel_info
+      set OCCUPY_FLAG="true"
+      where HOTEL_ID=#{type}
+    </update>
+
+    <select id="findObjectByPrice"
+            resultType="com.cy.pj.sys.entity.SysRole">
+         select * from hotel_info where
+         PRICE &gt; #{start}
+        <if test="end != null and end != ''">
+            and PRICE &lt; #{end}
+        </if>
+        <if test="topic != null and topic != ''">
+            and TOPIC like concat("%",#{topic},"%")
+        </if>
+        <if test="type != null and type != ''">
+            and HOTEL_TYPE like concat("%",#{type},"%")
+        </if>
+    </select>
+
+    <select id="findObjectByTopic"
+            resultType="com.cy.pj.sys.entity.SysRole">
+         select * from hotel_info
+        where TOPIC like concat("%",#{topic},"%")
+    </select>
+
+    <select id="findObjectByType"
+            resultType="com.cy.pj.sys.entity.SysRole">
+         select * from hotel_info
+        where HOTEL_TYPE like concat("%",#{type},"%")
     </select>
 </mapper>
 

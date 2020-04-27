@@ -1,8 +1,10 @@
 package com.cy.pj.sys.service;
 
 import com.cy.pj.sys.entity.RoomEntity;
+import com.cy.pj.sys.entity.SysRole;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author xiaozui
@@ -15,5 +17,5 @@ public interface IRoomTypeService {
      * @param Type
      * @return
      */
-    List<RoomEntity> getRoomType(String Type);
+    List<SysRole> getRoomType(String Type);
 }
