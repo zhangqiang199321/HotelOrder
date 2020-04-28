@@ -64,7 +64,7 @@
 	 var rowData=$("#mainContentId").data("rowData");
 	 //1.获取表单数据
 	 var params=doGetEditFormData();
-	 if(rowData)params.employeeId=rowData.user.employeeId;
+	 if(rowData)params.employeeId=rowData.employee.employeeId;
 	 //2.发起异步请求
 	 var insertUrl="employee/doSaveObject";
 	 var updateUrl="employee/doUpdateObject";
@@ -99,12 +99,12 @@
      if(!data)return;
 	 console.log(data);
 	 //初始化员工信息
-	 $("#employeeName").val(data.user.employeeName);
-	 $("#deptId").val(data.user.sysDept?data.user.sysDept.name:'');
-	 $("#deptId").data("deptId",data.user.sysDept?data.user.sysDept.id:'');
-	 $("#employeeAge").val(data.user.employeeAge);
-     $("#employeePosition").val(data.user.employeePosition);
-	 $("#employeePhone").val(data.user.employeePhone);
+	 $("#employeeName").val(data.employee.employeeName);
+	 $("#deptId").val(data.employee.sysDept?data.employee.sysDept.name:'');
+	 $("#deptId").data("deptId",data.employee.sysDept?data.employee.sysDept.id:'');
+	 $("#employeeAge").val(data.employee.employeeAge);
+     $("#employeePosition").val(data.employee.employeePosition);
+	 $("#employeePhone").val(data.employee.employeePhone);
  }
 </script>
     
