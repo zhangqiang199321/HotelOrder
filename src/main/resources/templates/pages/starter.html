@@ -264,7 +264,7 @@ desired effect
           <ul class="treeview-menu">
             <li><a id="load-menu-id">会员管理</a></li>
             <li><a id="load-role-id">客房综合管理</a></li>
-            <li><a id="load-user-id">员工管理</a></li>
+            <li><a id="load-employee-id">员工管理</a></li>
             <li><a id="load-log-id"> 日志管理</a></li>
             <!--<li><a id="load-pwd-id"> 修改密码</a></li>-->
           </ul>
@@ -428,7 +428,12 @@ desired effect
 	   doLoadUI("load-menu-id","vip/doMenuListUI");
 	   doLoadUI("load-dept-id","dept/doDeptListUI");
 	   doLoadUI("load-role-id","role/doRoleListUI");
-	   doLoadUI("load-user-id","user/doUserListUI");
+	   doLoadUI("load-employee-id","employee/doEmployeeListUI");
+
+       /*doLoadUI("load-menu-id","vip/doMenuListUI");
+       doLoadUI("load-dept-id","dept/doDeptListUI");
+       doLoadUI("load-role-id","role/doRoleListUI");
+       doLoadUI("load-user-id","user/doUserListUI");*/
    });
    //提取共性
    function doLoadUI(id,url){

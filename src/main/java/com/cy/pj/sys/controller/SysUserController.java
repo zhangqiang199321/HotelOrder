@@ -9,18 +9,18 @@ import com.cy.pj.sys.entity.SysUser;
 import com.cy.pj.sys.service.SysUserService;
 
 @Controller
-@RequestMapping("/user/")
+@RequestMapping("/employee/")
 public class SysUserController {
 	//todo 员工管理
 	@Autowired
 	private SysUserService sysUserService;
-	@RequestMapping("doUserListUI")
-	public String doUserListUI() {
-		return "sys/user_list";
+	@RequestMapping("doEmployeeListUI")
+	public String doEmployeeListUI() {
+		return "employee_list";
 	}
-	@RequestMapping("doUserEditUI")
-	public String doUserEditUI() {
-		return "sys/user_edit";
+	@RequestMapping("doEmployeeEditUI")
+	public String doEmployeeEditUI() {
+		return "employee_edit";
 	}
 	@RequestMapping("doSaveObject")
 	@ResponseBody
@@ -28,13 +28,6 @@ public class SysUserController {
 		sysUserService.saveObject(entity);
 		return new JsonResult("insert ok");
 	}
-	/*@RequestMapping("doSaveObject")
-	@ResponseBody
-	public JsonResult doSaveObject(SysUser entity, Integer[] roleIds) {
-		sysUserService.saveObject(entity, roleIds);
-		return new JsonResult("insert ok");
-	}*/
-
 	@RequestMapping("doValidById")
 	@ResponseBody
 	public JsonResult doValidById(
@@ -56,14 +49,6 @@ public class SysUserController {
 				sysUserService.findObjectById(id);
 		return new JsonResult(map);
 	}
-    /*@RequestMapping("doFindObjectById")
-    @ResponseBody
-    public JsonResult doFindObjectById(
-            Integer id){
-        Map<String,Object> map=
-                sysUserService.findObjectById(id);
-        return new JsonResult(map);
-    }*/
 
 	@RequestMapping("doUpdateObject")
 	@ResponseBody
