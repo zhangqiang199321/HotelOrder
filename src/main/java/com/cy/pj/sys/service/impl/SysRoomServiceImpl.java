@@ -12,20 +12,13 @@ import org.springframework.util.StringUtils;
 import com.cy.pj.common.annotation.RequiredLog;
 import com.cy.pj.common.exception.ServiceException;
 import com.cy.pj.common.util.PageUtil;
-import com.cy.pj.common.vo.CheckBox;
 import com.cy.pj.common.vo.PageObject;
-import com.cy.pj.sys.dao.SysUserRoleDao;
+
 
 @Service
 public class SysRoomServiceImpl implements SysRoomService {
 	@Autowired
 	private SysRoomDao sysRoomDao;//has a
-
-	@Override
-	public List<CheckBox> findObjects() {
-		return sysRoomDao.findObjects();
-	}
-
 
 	@Override
 	public SysRoom findObjectById(Long hotelId) {

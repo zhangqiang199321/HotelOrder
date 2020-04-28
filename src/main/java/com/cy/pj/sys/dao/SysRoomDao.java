@@ -4,18 +4,12 @@ import java.util.List;
 import com.cy.pj.sys.entity.SysRoom;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
-import com.cy.pj.common.vo.CheckBox;
 
 @Mapper
 public interface SysRoomDao {
 
-	  /**查询所有角色信息*/
-	  @Select("select id,name from sys_roles")
-	  List<CheckBox> findObjects();
-
-	  /**更新角色自身信息*/
+	  /**更新信息*/
 	  int updateObject(SysRoom entity);
 
 	  /**
@@ -28,7 +22,7 @@ public interface SysRoomDao {
 	  /**保存客房自身信息*/
 	  int insertObject(SysRoom entity);
 
-	  /**基于id执行角色id删除*/
+	  /**基于id执行删除*/
 	  int deleteObject(Long hotelId);
 
 	
