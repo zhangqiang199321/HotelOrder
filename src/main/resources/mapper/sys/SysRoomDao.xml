@@ -17,7 +17,7 @@
           TOPIC=#{topic},
           CREATE_TIME=#{createTime},
           MODIFIED_TIME=#{modifiedTime}
-      where HOTEL_NUM=#{hotelNum}
+      where HOTEL_ID=#{hotelId}
    </update>
    <!-- 自定义结果映射 -->
    <resultMap type="com.cy.pj.sys.entity.SysRoom"
