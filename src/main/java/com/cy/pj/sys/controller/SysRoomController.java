@@ -24,11 +24,6 @@ public class SysRoomController {
 	public String doRoomEditUI() {
 		return "sys/room_edit";
 	}
-	@RequestMapping("doFindRoles")
-	@ResponseBody
-	public JsonResult doFindRooms() {
-		return new JsonResult(sysRoomService.findObjects());
-	}
 	
 	@RequestMapping("doFindObjectById")
     @ResponseBody

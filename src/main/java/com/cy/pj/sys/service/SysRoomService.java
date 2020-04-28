@@ -1,8 +1,5 @@
 package com.cy.pj.sys.service;
 
-import java.util.List;
-
-import com.cy.pj.common.vo.CheckBox;
 import com.cy.pj.common.vo.PageObject;
 import com.cy.pj.sys.entity.SysRoom;
 
@@ -11,11 +8,6 @@ import com.cy.pj.sys.entity.SysRoom;
  * @author Administrator
  */
 public interface SysRoomService {
-	/**
-	 * 查询所有角色id,name
-	 * @return
-	 */
-	List<CheckBox> findObjects();
 	
 	/**
 	 * 基于角色id查询客房
