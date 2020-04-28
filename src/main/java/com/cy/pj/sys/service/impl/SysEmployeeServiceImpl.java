@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.cy.pj.sys.entity.SysEmployee;
-import com.cy.pj.sys.vo.EmployeeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -73,22 +72,6 @@ public class SysEmployeeServiceImpl implements SysEmployeeService {
 		return rows;
 	}
 
-	@Override
-	public int validById(Integer id, 
-			Integer valid, 
-			String modifiedUser) {
-		//1.参数校验
-		if(id==null||id<1)
-			throw new IllegalArgumentException("id值不正确");
-		if(valid!=1&&valid!=0)
-			throw new IllegalArgumentException("状态值不正确");
-		//2.修改状态
-		int rows= sysEmployeeDao.validById(id, valid, modifiedUser);
-		//3.返回结果
-		if(rows==0)
-			throw new ServiceException("记录可能已经不存在");
-		return rows;
-	}
 	@RequiredLog("query user")
 	@Transactional(readOnly = false)
 	@Override

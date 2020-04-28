@@ -30,14 +30,7 @@ public class SysEmployeeController {
 		sysEmployeeService.saveObject(entity);
 		return new JsonResult("insert ok");
 	}
-	@RequestMapping("doValidById")
-	@ResponseBody
-	public JsonResult doValidById(
-			Integer id,Integer valid) {
-		sysEmployeeService.validById(id,
-				valid,"admin");
-		return new JsonResult("update ok");
-	}
+
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
 	public JsonResult doFindPageObjects(String employeeName, Integer pageCurrent) {
@@ -45,10 +38,8 @@ public class SysEmployeeController {
 	}
 	@RequestMapping("doFindObjectById")
 	@ResponseBody
-	public JsonResult doFindObjectById(
-			Long id){
-		Map<String,Object> map=
-				sysEmployeeService.findObjectById(id);
+	public JsonResult doFindObjectById(Long id){
+		Map<String,Object> map= sysEmployeeService.findObjectById(id);
 		return new JsonResult(map);
 	}
 

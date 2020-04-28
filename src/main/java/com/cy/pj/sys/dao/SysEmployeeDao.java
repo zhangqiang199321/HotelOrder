@@ -2,7 +2,6 @@ package com.cy.pj.sys.dao;
 import java.util.List;
 
 import com.cy.pj.sys.entity.SysEmployee;
-import com.cy.pj.sys.vo.EmployeeVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
