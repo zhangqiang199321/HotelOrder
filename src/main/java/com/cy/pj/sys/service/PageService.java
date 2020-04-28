@@ -1,7 +1,7 @@
 package com.cy.pj.sys.service;
 
 import com.cy.pj.common.vo.PageObject;
-import com.cy.pj.sys.vo.EmployeeVo;
+import com.cy.pj.sys.entity.SysEmployee;
 
 /**
   *  用户行为日志业务
@@ -10,13 +10,11 @@ import com.cy.pj.sys.vo.EmployeeVo;
 public interface PageService<T> {
 	/**
 	 * 执行分页查询
-	 * @param username
+	 * @param employeeName
 	 * @param pageCurrent
 	 * @return
 	 */
-	PageObject<EmployeeVo> findPageObjects(
-			 String username,
-			 Integer pageCurrent);
+	PageObject<SysEmployee> findPageObjects(String employeeName, Integer pageCurrent);
 	
 }
 

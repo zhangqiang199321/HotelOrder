@@ -104,7 +104,7 @@
 	   var pageCurrent=$("#pageId").data("pageCurrent");
 	   if(!pageCurrent)pageCurrent=1;
 	   var params={"pageCurrent":pageCurrent}
-	   params.username=$("#searchNameId").val().trim();
+	   params.employeeName=$("#searchNameId").val().trim();
 	   console.log(params);
 	   $.getJSON(url,params,function(result){
 		   console.log(result);

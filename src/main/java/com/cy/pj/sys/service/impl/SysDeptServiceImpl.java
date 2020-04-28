@@ -18,7 +18,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 	@Autowired
 	private SysDeptDao sysDeptDao;
 	//@Autowired
-	//private SysUserDao sysUserDao;
+	//private SysEmployeeDao sysUserDao;
 	
 	@Override
 	public int updateObject(SysDept entity) {

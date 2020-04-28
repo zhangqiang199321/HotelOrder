@@ -1,14 +1,11 @@
 package com.cy;
+import com.cy.pj.sys.service.SysEmployeeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.cy.pj.common.vo.PageObject;
-import com.cy.pj.sys.service.SysUserService;
-import com.cy.pj.sys.vo.SysUserDeptVo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -17,9 +14,9 @@ public class AopTests {
 	 private ApplicationContext ctx;
 	 @Test
 	 public void testSysUserService() {
-		 SysUserService userService=
+		 SysEmployeeService userService=
 		 ctx.getBean("sysUserServiceImpl",
-				 SysUserService.class);
+				 SysEmployeeService.class);
 		 //JDK proxy:com.sun.proxy.$Proxy101
 		 //CGLIB:$$EnhancerBySpringCGLIB$$4606b6ef
 		 System.out.println(userService.getClass());

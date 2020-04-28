@@ -1,25 +1,24 @@
 package com.cy.pj.sys.dao;
 import java.util.List;
-import java.util.Map;
 
+import com.cy.pj.sys.entity.SysEmployee;
 import com.cy.pj.sys.vo.EmployeeVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
-import com.cy.pj.sys.entity.SysUser;
-import com.cy.pj.sys.vo.SysUserDeptVo;
 @Mapper
-public interface SysUserDao {
-	  int updateObject(SysUser entity);
-    EmployeeVo findObjectById(Long id);
-	/*SysUserDeptVo findObjectById(Integer id);*/
+public interface SysEmployeeDao {
+	  int updateObject(SysEmployee entity);
+
+    SysEmployee findObjectById(Long id);
+
 	   /**
 	    * 保存用户自身信息
 	    * @param entity
 	    * @return
 	    */
-	   int insertObject(SysUser entity);
+	   int insertObject(SysEmployee entity);
 	   /**
 	    * 禁用启用用户信息
 	    * @param id 用户id
@@ -33,9 +32,7 @@ public interface SysUserDao {
 			   @Param("valid")Integer valid,
 			   @Param("modifiedUser")String modifiedUser);
 	   
-	   int getRowCount(@Param("username")String username);
-	   List<EmployeeVo> findPageObjects(
-			   @Param("username")String username,
-			   @Param("startIndex")Integer startIndex,
-			   @Param("pageSize")Integer pageSize);
+	   int getRowCount(@Param("employeeName")String employeeName);
+
+	   List<SysEmployee> findPageObjects(@Param("employeeName")String employeeName, @Param("startIndex")Integer startIndex, @Param("pageSize")Integer pageSize);
 }
