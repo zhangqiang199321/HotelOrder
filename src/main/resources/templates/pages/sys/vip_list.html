@@ -1,0 +1,178 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">
+				
+				会员管理</h3>
+
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 350px;">
+                        <input type="text" name="table_search" id="searchNameId"
+                               class="form-control pull-right" placeholder="会员账号">
+
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <button type="button" class="btn btn-default btn-add">添加</button>
+                            <button type="button" class="btn btn-default btn-update">修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			<!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>会员ID</th>
+                        <th>会员账号</th>
+                        <th>会员密码</th>
+                        <th>创建时间</th>
+                        <th>修改时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbodyId"></tbody>
+                </table>
+            </div>
+            <div id="pageId" class="box-footer clearfix">
+            </div>
+
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+
+<script type="text/javascript">
+/**
+ * 初始化表格的列
+ */
+$(document).ready(function(){
+    $("#pageId").load("doPageUI",function(){
+        doGetObjects();
+    });
+    $(".input-group-btn")
+        .on("click",".btn-search",doQueryObjects)
+        .on("click",".btn-add,.btn-update",doLoadEditUI);
+});
+
+function doLoadEditUI(){
+    //1.定义标题
+    var title;
+    if($(this).hasClass("btn-add")){
+        title="添加会员信息";
+    }else{
+        //设置标题
+        title="修改会员信息";
+        //获取选中的当前行的记录(从tr对象上获取)
+        var rowData=doGetCheckedItem();
+        if(!rowData){
+            alert("请先选择");
+            return;
+        }
+        console.log("list.rowData",rowData);
+        //重新绑定数据到$("#mainContentId")
+        $("#mainContentId").data("rowData",rowData);
+    }
+    //2.异步加载编辑页面
+    var url="vip/doVipEditUI";
+    $("#mainContentId").load(url,function(){
+        $(".box-title").html(title);
+    });//假如"#mainContentId"这个位置有页面则replace
+}
+
+function doGetCheckedItem(){
+    var tr=$("tbody input[type='radio']:checked")
+        .parents("tr");
+    //这个值是在jquery.treegrid.extension.js中绑定的
+    if(tr)return tr.data("rowData");
+}
+function doFindObjectById(id,title){
+    //1.params
+    var params={"id":id};
+    //2.url
+    var url="vip/doFindObjectById";
+    //3.ajax request
+    $.getJSON(url,params,function(result){//JsonResult
+        if(result.state==1){
+            $("#mainContentId").data("rowData",result.data);
+            doLoadPage(title);
+        }else{
+            alert(result.message);
+        }
+    });
+}
+
+function doGetCheckedId(){
+    return $("tbody input[name='radioId']:checked").val();
+}
+function doLoadPage(title){
+    var url="vip/doVipListUI"
+    $("#mainContentId").load(url,function(){
+        $(".box-title").html(title);
+    })
+}
+//处理查询按钮事件
+function doQueryObjects(){
+    $("#pageId").data("pageCurrent",1);
+    doGetObjects();
+}
+//页面加载完成异步加载当前页数据
+function doGetObjects(){
+    var url="vip/doFindPageObjects";
+    var pageCurrent=$("#pageId").data("pageCurrent");
+    if(!pageCurrent)pageCurrent=1;
+    var params={"pageCurrent":pageCurrent}
+    params.account=$("#searchNameId").val().trim();
+    console.log(params);
+    $.getJSON(url,params,function(result){
+        console.log(result);
+        doHandleResponseResult(result);
+    });
+}
+function doHandleResponseResult(result){
+    if(result.state==1){
+        doSetTableBodyRows(result.data.records);
+        doSetPagination(result.data);
+    }else{
+        alert(result.message);
+    }
+}
+
+//通过服务端返回的数据初始化页面
+function doSetTableBodyRows(records){
+    //1.获取tbody对象，并清空内容
+    var tBody=$("#tbodyId");
+    tBody.empty();
+    //2.迭代data内容将数据追加到tbody中
+    for(var i in records){
+        var tr=$("<tr></tr>");
+        tr.data("rowData",records[i]);
+        var tds=doCreateTds(records[i]);
+        tr.append(tds);
+        tBody.append(tr);
+    }
+}
+function doCreateTds(data){
+    console.log(data);
+    var tds=
+        "<td><input type='radio' name='radioId' value='"+data.id+"'/></td>"+
+        "<td>"+data.account+"</td>"+
+        "<td>"+data.password+"</td>"+
+        "<td>"+new Date(data.createTime).toLocaleString()+"</td>"+
+        "<td>"+new Date(data.modifiedTime).toLocaleString()+"</td>";
+    return tds;
+}
+
+</script>
+
+
+
+
+
+
+
+
+

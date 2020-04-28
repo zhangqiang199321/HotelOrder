@@ -15,7 +15,7 @@
         where ACCOUNT=#{username}
     </select>
 
-    <insert id="insertUsername" parameterType="com.cy.pj.sys.entity.SysMenu">
+    <insert id="insertUsername" parameterType="com.cy.pj.sys.entity.Vip">
         insert into vip_info
         (ACCOUNT,PASSWORD,CREATE_TIME,MODIFIED_TIME)
         values

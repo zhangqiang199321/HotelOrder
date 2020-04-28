@@ -7,25 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.cy.pj.sys.dao.SysLogDao;
-import com.cy.pj.sys.entity.SysLog;
+import com.cy.pj.sys.dao.LogDao;
+import com.cy.pj.sys.entity.Log;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SysLogDaoTests {
+public class LogDaoTests {
 	@Autowired
-	private SysLogDao sysLogDao;
+	private LogDao logDao;
 	
 	@Test
 	public void testGetRowCount() {
 	  int rowCount=
-	  sysLogDao.getRowCount("admin");
+	  logDao.getRowCount("admin");
 	  System.out.println(rowCount);
 	}
 	
 	@Test
 	public void testFindPageObjects() {
-		List<SysLog> list=
-		sysLogDao.findPageObjects(
+		List<Log> list=
+		logDao.findPageObjects(
 		"admin",0, 3);
 		System.out.println(list.size());
 	}
@@ -33,13 +33,13 @@ public class SysLogDaoTests {
 	
 	@Test
 	public void testDeleteObject() {
-		int rows=sysLogDao.deleteObject(16);
+		int rows= logDao.deleteObject(16);
 		System.out.println(rows);
 	}
 	@Test
 	public void testDeleteObjects() {
 		int rows=
-		sysLogDao.deleteObjects(17,18);
+		logDao.deleteObjects(17,18);
 		System.out.println(rows);
 	}
 }

@@ -5,10 +5,10 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.cy.pj.sys.entity.SysLog;
+import com.cy.pj.sys.entity.Log;
 @Mapper
-public interface SysLogDao {
-	int insertObject(SysLog entity);
+public interface LogDao {
+	int insertObject(Log entity);
 	/**按条件查询日志总记录数
 	 * @param username 查询条件
 	 */
@@ -21,7 +21,7 @@ public interface SysLogDao {
 	 * 显示多少条数据)
 	 * @return
 	 */
-	List<SysLog> findPageObjects(
+	List<Log> findPageObjects(
 			@Param("username")String username,
 			@Param("startIndex")Integer startIndex,
 			@Param("pageSize")Integer pageSize);

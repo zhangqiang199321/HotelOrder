@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import com.cy.pj.common.exception.ServiceException;
 import com.cy.pj.common.util.PageUtil;
 import com.cy.pj.common.vo.PageObject;
-import com.cy.pj.sys.dao.SysLogDao;
-import com.cy.pj.sys.entity.SysLog;
-import com.cy.pj.sys.service.SysLogService;
+import com.cy.pj.sys.dao.LogDao;
+import com.cy.pj.sys.entity.Log;
+import com.cy.pj.sys.service.LogService;
 
 import lombok.extern.slf4j.Slf4j;
 @Service //===map.put("sysLogServiceImpl",object instance)
 @Slf4j
-public class SysLogServiceImpl implements SysLogService {
+public class LogServiceImpl implements LogService {
 	//当我们使用了lombok插件以后,在类上使用了
 	//@Slf4j注解,此时下面的日志对象创建可省略
 	//底层自动帮我们生成如下语句.
@@ -23,15 +23,15 @@ public class SysLogServiceImpl implements SysLogService {
 	//Spring 按属性类型查找bean,然后进行DI
 	@Autowired 
 	//@Qualifier("sysLogDao")
-	private SysLogDao sysLogDao;
+	private LogDao logDao;
 	@Override
-	public PageObject<SysLog> findPageObjects(
+	public PageObject<Log> findPageObjects(
 		String username, Integer pageCurrent) {
 		//1.参数校验
 		if(pageCurrent==null||pageCurrent<1)
 		throw new IllegalArgumentException("页码不正确");
 		//2.查询总记录数并进行校验
-		int rowCount=sysLogDao.getRowCount(username);
+		int rowCount= logDao.getRowCount(username);
 		if(rowCount==0)
 		throw new ServiceException("记录不存在");
 		//3.查询当前页要呈现的记录
@@ -39,8 +39,8 @@ public class SysLogServiceImpl implements SysLogService {
 		int pageSize=PageUtil.getPageSize();
 		//3.2当前页起始位置
 		int startIndex=PageUtil.getStartIndex(pageCurrent);
-		List<SysLog> records=
-		sysLogDao.findPageObjects(username,
+		List<Log> records=
+		logDao.findPageObjects(username,
 				startIndex,pageSize);
 		//4.对查询结果进行计算和封装并返回
 		return PageUtil.newPageObject(
@@ -51,7 +51,7 @@ public class SysLogServiceImpl implements SysLogService {
 	public int deleteObjects(Integer... ids) {
 		//1.参数校验(参数校验)
 		//2.执行删除
-		int rows=sysLogDao.deleteObjects(ids);
+		int rows= logDao.deleteObjects(ids);
 		if(rows>0) {
 		log.info("delete ok,rows="+rows);
 		}
