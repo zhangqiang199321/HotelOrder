@@ -2,8 +2,6 @@ package com.cy.pj.sys.controller;
 
 import com.cy.pj.common.vo.JsonResult;
 import com.cy.pj.sys.entity.LoginEntity;
-import com.cy.pj.sys.entity.RoomDisplay;
-import com.cy.pj.sys.entity.SysRole;
 import com.cy.pj.sys.service.IRoomDisplayService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

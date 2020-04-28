@@ -1,17 +1,13 @@
 package com.cy.pj.sys.service.impl;
 
-import com.cy.pj.common.vo.JsonResult;
 import com.cy.pj.sys.dao.RoomDisplayDao;
-import com.cy.pj.sys.entity.RoomEntity;
-import com.cy.pj.sys.entity.SysRole;
+import com.cy.pj.sys.entity.SysRoom;
 import com.cy.pj.sys.service.IRoomTypeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 根据前端的需求类型返回相应的房型信息
@@ -22,8 +18,8 @@ public class RoomTypeService implements IRoomTypeService {
     @Resource
     RoomDisplayDao roomDisplayDao;
     @Override
-    public List<SysRole> getRoomType(String need) {
-        List<SysRole> roomList = new ArrayList<SysRole>();
+    public List<SysRoom> getRoomType(String need) {
+        List<SysRoom> roomList = new ArrayList<SysRoom>();
         Integer start = 0;
         Integer end = 9999;
         String topic = null;
@@ -84,8 +80,8 @@ public class RoomTypeService implements IRoomTypeService {
         return roomList;
     }
 
-    private List<SysRole> getRoomByPrice(Integer start,Integer end,String topic,String type,List<SysRole> value) {
-        List<SysRole> objectByPrice = roomDisplayDao.findObjectByPrice(start, end,topic,type);
+    private List<SysRoom> getRoomByPrice(Integer start, Integer end, String topic, String type, List<SysRoom> value) {
+        List<SysRoom> objectByPrice = roomDisplayDao.findObjectByPrice(start, end,topic,type);
         for (int i = 0; i < objectByPrice.size(); i++) {
             value.add(objectByPrice.get(i));
         }

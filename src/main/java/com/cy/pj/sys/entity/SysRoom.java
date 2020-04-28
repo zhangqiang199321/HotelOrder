@@ -5,7 +5,7 @@ import java.util.Date;
 
 import lombok.Data;
 @Data
-public class SysRole implements Serializable{
+public class SysRoom implements Serializable{
     //todo 客房信息
 	private static final long serialVersionUID = 5444781487816683086L;
 	//客房id
@@ -34,12 +34,5 @@ public class SysRole implements Serializable{
 	private Date modifiedTime;
 	private String ext1;
 	private String ext2;
-	/*private Integer id;
-	private String name;
-	private String note;
-	private Date createdTime;
-	private Date modifiedTime;
-	private String createdUser;
-	private String modifiedUser;*/
 
 }

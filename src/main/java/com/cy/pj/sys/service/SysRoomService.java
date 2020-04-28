@@ -4,14 +4,13 @@ import java.util.List;
 
 import com.cy.pj.common.vo.CheckBox;
 import com.cy.pj.common.vo.PageObject;
-import com.cy.pj.sys.entity.SysRole;
-import com.cy.pj.sys.vo.SysRoleMenuVo;
+import com.cy.pj.sys.entity.SysRoom;
 
 /**
   *  用户行为日志业务
  * @author Administrator
  */
-public interface SysRoleService {
+public interface SysRoomService {
 	/**
 	 * 查询所有角色id,name
 	 * @return
@@ -23,30 +22,22 @@ public interface SysRoleService {
 	 * @param hotelId
 	 * @return
 	 */
-	SysRole findObjectById(Long hotelId);
-
-	/**
-	 * 基于角色id查询角色以及对应的菜单信息
-	 * @param id
-	 * @return
-	 */
-
-	/*SysRoleMenuVo findObjectById(Integer id);*/
+	SysRoom findObjectById(Long hotelId);
 
 	/**
 	 * 更新角色以及对应的菜单信息
 	 * @param entity
-	 * @param menuIds
+	 * @param
 	 * @return
 	 */
-	int updateObject(SysRole entity,Integer[] menuIds);
+	int updateObject(SysRoom entity);
 	
 	/**
 	 * 保存角色以及对应的菜单信息
 	 * @param entity
 	 * @return
 	 */
-	int saveObject(SysRole entity);
+	int saveObject(SysRoom entity);
 	
 	/**
 	 * 基于角色id删除角色以及对应的关系数据
@@ -57,11 +48,11 @@ public interface SysRoleService {
 	
 	/**
 	 * 执行分页查询
-	 * @param username
+	 * @param
 	 * @param pageCurrent
 	 * @return
 	 */
-	PageObject<SysRole> findPageObjects(
+	PageObject<SysRoom> findPageObjects(
 			 String hotelType,
 			 Integer pageCurrent);
 	

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Aspect
 public class SysTimeAspect {
-	@Pointcut("bean(sysUserServiceImpl)")
+	@Pointcut("bean(sysEmployeeServiceImpl)")
 	public void doTime(){}
 
 	@Before("doTime()")

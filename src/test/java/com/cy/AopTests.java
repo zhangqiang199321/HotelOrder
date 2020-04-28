@@ -15,7 +15,7 @@ public class AopTests {
 	 @Test
 	 public void testSysUserService() {
 		 SysEmployeeService userService=
-		 ctx.getBean("sysUserServiceImpl",
+		 ctx.getBean("sysEmployeeServiceImpl",
 				 SysEmployeeService.class);
 		 //JDK proxy:com.sun.proxy.$Proxy101
 		 //CGLIB:$$EnhancerBySpringCGLIB$$4606b6ef

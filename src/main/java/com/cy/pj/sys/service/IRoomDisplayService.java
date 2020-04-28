@@ -1,9 +1,9 @@
 package com.cy.pj.sys.service;
 
-import com.cy.pj.sys.entity.SysRole;
+import com.cy.pj.sys.entity.SysRoom;
 
 public interface IRoomDisplayService {
-    SysRole getRoomDisplay(String from);
+    SysRoom getRoomDisplay(String from);
 
     Boolean subscribeRoom(String type);
 }
