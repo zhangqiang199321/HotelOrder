@@ -2,25 +2,25 @@ package com.cy.pj.sys.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.cy.pj.sys.vo.EmployeeVo;
+import com.cy.pj.sys.entity.Vip;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.cy.pj.common.vo.Node;
-import com.cy.pj.sys.entity.SysMenu;
+
 /**
   * 菜单的数据访问层对象
  * @author Administrator
  */
 @Mapper
 @CacheNamespace
-public interface SysMenuDao {
+public interface VipDao {
 	/**将菜单信息更新到数据库*/
-	int updateObject(SysMenu entity);
+	int updateObject(Vip entity);
 	/**将菜单信息写入到数据库*/
-	int insertObject(SysMenu entity);
+	int insertObject(Vip entity);
 	/**查询所有菜单信息
 	 * 1)一行菜单信息映射为一个map对象(key为记录中的字段名)
 	 * 2)多行记录会对应多个map,然后将map存在list集合*/
@@ -33,14 +33,14 @@ public interface SysMenuDao {
 	List<Node> findZtreeMenuNodes();
 
 
-    List<SysMenu> findPageObjects(
+    List<Vip> findPageObjects(
             @Param("account")String account,
             @Param("startIndex")Integer startIndex,
             @Param("pageSize")Integer pageSize);
 
     int getRowCount(@Param("account")String account);
 
-    SysMenu findObjectById(Long id);
+    Vip findObjectById(Long id);
 }
 
 

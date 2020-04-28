@@ -12,7 +12,7 @@ import lombok.ToString;
  */
 @Data //自动生成 set/get/
 @ToString //自动生成toString
-public class SysLog implements Serializable {
+public class Log implements Serializable {
 	private static final long serialVersionUID = 8924387722922123121L;
 	private Integer id;
 	/**用户名*/

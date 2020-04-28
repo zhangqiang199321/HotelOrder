@@ -1,6 +1,6 @@
 package com.cy.pj.sys.dao;
 
-import com.cy.pj.sys.entity.SysMenu;
+import com.cy.pj.sys.entity.Vip;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,5 +10,5 @@ public interface LoginDao {
 
     Integer findNumByUsername(@Param("username")String username);
 
-    int insertUsername(SysMenu sysMenu);
+    int insertUsername(Vip vip);
 }

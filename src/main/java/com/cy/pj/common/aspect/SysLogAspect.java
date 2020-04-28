@@ -8,13 +8,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import com.cy.pj.common.annotation.RequiredLog;
 import com.cy.pj.common.util.IPUtils;
-import com.cy.pj.sys.dao.SysLogDao;
-import com.cy.pj.sys.entity.SysLog;
+import com.cy.pj.sys.dao.LogDao;
+import com.cy.pj.sys.entity.Log;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -62,7 +61,7 @@ public class SysLogAspect {
 		 }
 	 }
 	 @Autowired
-	 private SysLogDao sysLogDao;
+	 private LogDao logDao;
 	 //????
 	 private void saveObject(ProceedingJoinPoint jp,long time)throws Exception {
 		 //1.获取用户行为信息
@@ -79,7 +78,7 @@ public class SysLogAspect {
 		 //1.2.3获取操作名
 		 String operation = getOperation(targetCls, ms);
 		 //2.封装用户行为信息
-		 SysLog log=new SysLog();
+		 Log log=new Log();
 		 log.setIp(IPUtils.getIpAddr());
 		 log.setUsername("admin");
 		 log.setMethod(methodName);//类全名+方法
@@ -88,7 +87,7 @@ public class SysLogAspect {
 		 log.setTime(time);
 		 log.setCreatedTime(new Date());
 		 //3.将用户行为信息存储到数据库
-		 sysLogDao.insertObject(log);
+		 logDao.insertObject(log);
 	 }
 	private String getOperation(Class<?> targetCls, MethodSignature ms) throws NoSuchMethodException {
 		String operation="operation";

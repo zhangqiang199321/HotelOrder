@@ -414,18 +414,10 @@ desired effect
 <script type="text/javascript">
    //页面加载完成以后执行
    $(function(){
-	   //点击事件注册
-	   //当点击指定id对应的对象时,执行某个操作(页面加载)
-	  /*  $("#load-log-id").click(function(){
-		   var url="log/doLogListUI";
-		   //load函数为一个jquery中的异步加载函数
-		   //可以基于url异步加载资源并添加到指定位置
-		   $("#mainContentId").load(url);
-	   })  */
 	   doLoadUI("load-log-id","log/doLogListUI");
 	   //点击事件注册
 	   //当点击指定id对应的对象时,执行某个操作(页面加载)
-	   doLoadUI("load-menu-id","vip/doMenuListUI");
+	   doLoadUI("load-menu-id","vip/doVipListUI");
 	   doLoadUI("load-dept-id","dept/doDeptListUI");
 	   doLoadUI("load-role-id","role/doRoleListUI");
 	   doLoadUI("load-employee-id","employee/doEmployeeListUI");

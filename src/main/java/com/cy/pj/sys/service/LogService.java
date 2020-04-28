@@ -1,20 +1,20 @@
 package com.cy.pj.sys.service;
 
 import com.cy.pj.common.vo.PageObject;
-import com.cy.pj.sys.entity.SysLog;
+import com.cy.pj.sys.entity.Log;
 
 /**
   *  用户行为日志业务
  * @author Administrator
  */
-public interface SysLogService {
+public interface LogService {
 	/**
 	 * 执行分页查询
 	 * @param username
 	 * @param pageCurrent
 	 * @return
 	 */
-	PageObject<SysLog> findPageObjects(
+	PageObject<Log> findPageObjects(
 			 String username,
 			 Integer pageCurrent);
 	
