@@ -22,7 +22,7 @@ import com.cy.pj.sys.service.SysEmployeeService;
 @Transactional(timeout = 30, readOnly = false, isolation = Isolation.READ_COMMITTED, rollbackFor = Throwable.class,
                propagation = Propagation.REQUIRED)
 @Service 
-public class SysUserServiceImpl implements SysEmployeeService {
+public class SysEmployeeServiceImpl implements SysEmployeeService {
 	@Autowired 
 	private SysEmployeeDao sysEmployeeDao;
 

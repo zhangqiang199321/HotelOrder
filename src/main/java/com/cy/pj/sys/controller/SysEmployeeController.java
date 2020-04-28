@@ -15,6 +15,7 @@ public class SysEmployeeController {
 	//todo 员工管理
 	@Autowired
 	private SysEmployeeService sysEmployeeService;
+
 	@RequestMapping("doEmployeeListUI")
 	public String doEmployeeListUI() {
 		return "sys/employee_list";
