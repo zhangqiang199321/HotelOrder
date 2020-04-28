@@ -5,12 +5,19 @@
 <mapper namespace="com.cy.pj.sys.dao.SysRoleDao">
    <cache readOnly="false"/>
    <update id="updateObject">
-      update sys_roles
-      set name=#{name},
-          note=#{note},
-          modifiedUser=#{modifiedUser},
-          modifiedTime=now()
-      where id=#{id}
+      update hotel_info
+      set HOTEL_NUM=#{hotelNum},
+          HOTEL_TYPE=#{hotelType},
+          PRICE=#{price},
+          SQUARE=#{square},
+          HOTEL_LOCATION=#{hotelLocation},
+          STATUS=#{status},OCCUPY_FLAG=#{occupyFlag},
+          VISITOR_NUM=#{visitorNum},
+          TITLE=#{title},
+          TOPIC=#{topic},
+          CREATE_TIME=#{createTime},
+          MODIFIED_TIME=#{modifiedTime}
+      where HOTEL_NUM=#{hotelNum}
    </update>
    <!-- 自定义结果映射 -->
    <resultMap type="com.cy.pj.sys.entity.SysRole"
@@ -54,9 +61,9 @@
            useGeneratedKeys="true"
            keyProperty="hotelId">
       insert into hotel_info
-      (HOTEL_ID,HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC,CREATE_TIME,MODIFIED_TIME)
+      (HOTEL_NUM,HOTEL_TYPE,PRICE,SQUARE,HOTEL_LOCATION,STATUS,OCCUPY_FLAG,VISITOR_NUM,TITLE,TOPIC,CREATE_TIME,MODIFIED_TIME)
       values
-      (#{hotelNum},#{hotelNum},#{hotelType},#{price},#{square},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},#{title},#{topic},now(),now())
+      (#{hotelNum},#{hotelType},#{price},#{square},#{hotelLocation},#{status},#{occupyFlag},#{visitorNum},#{title},#{topic},now(),now())
    </insert>
 
     <!--<insert id="insertObject"
