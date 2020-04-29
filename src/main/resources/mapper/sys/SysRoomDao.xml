@@ -24,7 +24,7 @@
               id="SysRoom">
    </resultMap>
 
-   <!-- 何时使用resultMap?(自己定义映射规则或关联查询映射) -->
+
    <select id="findObjectById"
            resultMap="SysRoom">
         select *

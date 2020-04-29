@@ -25,7 +25,7 @@ public class SysEmployeeServiceImpl implements SysEmployeeService {
 	@Autowired 
 	private SysEmployeeDao sysEmployeeDao;
 
-	@RequiredLog("update user")
+	@RequiredLog("update employee")
 	@Override
 	public int updateObject(SysEmployee entity) {
         System.out.println(entity);
@@ -59,7 +59,7 @@ public class SysEmployeeServiceImpl implements SysEmployeeService {
         return map;
     }
 
-	@RequiredLog("save user")
+	@RequiredLog("save employee")
 	@Override
 	public int saveObject(SysEmployee entity) {
 		//1.参数校验
@@ -72,7 +72,7 @@ public class SysEmployeeServiceImpl implements SysEmployeeService {
 		return rows;
 	}
 
-	@RequiredLog("query user")
+	@RequiredLog("query employee")
 	@Transactional(readOnly = false)
 	@Override
 	public PageObject<SysEmployee> findPageObjects(String employeeName, Integer pageCurrent) {

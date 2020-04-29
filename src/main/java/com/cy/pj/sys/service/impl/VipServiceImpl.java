@@ -19,6 +19,7 @@ import com.cy.pj.sys.service.VipService;
 public class VipServiceImpl implements VipService {
     @Autowired
 	private VipDao vipDao;
+
     @Override
     public int saveObject(Vip entity) {
     	//1.参数校验
@@ -45,11 +46,6 @@ public class VipServiceImpl implements VipService {
     	int rows= vipDao.updateObject(entity);
     	return rows;
     }
-   
-	@Override
-	public List<Node> findZtreeMenuNodes() {
-		return vipDao.findZtreeMenuNodes();
-	}
 
 
     @Transactional(readOnly = false)
@@ -82,13 +78,12 @@ public class VipServiceImpl implements VipService {
         if(id==null||id<=0)
             throw new ServiceException("参数数据不合法,id="+id);
         //2.业务查询
-        Vip vip =
-                vipDao.findObjectById(id);
+        Vip vip = vipDao.findObjectById(id);
         if(vip ==null)
             throw new ServiceException("此用户已经不存在");
         //3.数据封装
         Map<String,Object> map=new HashMap<>();
-        map.put("sysMenu", vip);
+        map.put("sysVip", vip);
         return map;
     }
 }

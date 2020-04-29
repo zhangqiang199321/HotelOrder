@@ -16,5 +16,7 @@ public class SysEmployee implements Serializable{
 	private String employeePhone;
 	private Date createTime;
 	private Date modifiedTime;
+	private String ext1;
+	private String ext2;
 
 }

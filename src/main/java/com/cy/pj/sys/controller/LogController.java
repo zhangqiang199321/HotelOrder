@@ -10,6 +10,7 @@ import com.cy.pj.sys.service.LogService;
 public class LogController {
 	 @Autowired
      private LogService logService;
+
 	 /**返回日志列表页面*/
 	 @RequestMapping("doLogListUI")
 	 public String doLogListUI() {

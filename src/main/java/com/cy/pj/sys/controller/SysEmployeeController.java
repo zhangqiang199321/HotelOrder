@@ -20,10 +20,12 @@ public class SysEmployeeController {
 	public String doEmployeeListUI() {
 		return "sys/employee_list";
 	}
+
 	@RequestMapping("doEmployeeEditUI")
 	public String doEmployeeEditUI() {
 		return "sys/employee_edit";
 	}
+
 	@RequestMapping("doSaveObject")
 	@ResponseBody
 	public JsonResult doSaveObject(SysEmployee entity) {
@@ -36,6 +38,7 @@ public class SysEmployeeController {
 	public JsonResult doFindPageObjects(String employeeName, Integer pageCurrent) {
 		return new JsonResult(sysEmployeeService.findPageObjects(employeeName, pageCurrent));
 	}
+
 	@RequestMapping("doFindObjectById")
 	@ResponseBody
 	public JsonResult doFindObjectById(Long id){
