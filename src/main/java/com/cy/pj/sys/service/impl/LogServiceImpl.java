@@ -15,15 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service //===map.put("sysLogServiceImpl",object instance)
 @Slf4j
 public class LogServiceImpl implements LogService {
-	//当我们使用了lombok插件以后,在类上使用了
-	//@Slf4j注解,此时下面的日志对象创建可省略
-	//底层自动帮我们生成如下语句.
-	//private static final Logger log=
-	//LoggerFactory.getLogger(SysLogServiceImpl.class);
-	//Spring 按属性类型查找bean,然后进行DI
-	@Autowired 
-	//@Qualifier("sysLogDao")
+
+	@Autowired
 	private LogDao logDao;
+
 	@Override
 	public PageObject<Log> findPageObjects(
 		String username, Integer pageCurrent) {

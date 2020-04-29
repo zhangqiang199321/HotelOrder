@@ -36,11 +36,11 @@
     </select>
 
     <resultMap type="com.cy.pj.sys.entity.Vip"
-               id="SysMenu">
+               id="SysVip">
     </resultMap>
     <!-- 查询当前页数据-->
     <select id="findPageObjects"
-            resultMap="SysMenu">
+            resultMap="SysVip">
         select *
         from vip_info
         <include refid="queryWhereId"/>
@@ -50,7 +50,7 @@
 
     <select id="findObjectById"
             parameterType="long"
-            resultMap="SysMenu">
+            resultMap="SysVip">
            select *
            from vip_info
            where ID=#{id}

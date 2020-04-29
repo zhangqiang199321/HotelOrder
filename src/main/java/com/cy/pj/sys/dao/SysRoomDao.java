@@ -13,7 +13,7 @@ public interface SysRoomDao {
 	  int updateObject(SysRoom entity);
 
 	  /**
-	   * 基于角色id获取客房信息
+	   * 基于id获取客房信息
 	   * @param hotelId
 	   * @return
 	   */

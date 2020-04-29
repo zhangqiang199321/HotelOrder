@@ -15,6 +15,7 @@ import java.util.Map;
 public class VipController {
 	 @Autowired
 	 private VipService vipService;
+
 	 @RequestMapping("doVipListUI")
 	 public String doVipListUI() {
 		 return "sys/vip_list";
@@ -24,23 +25,21 @@ public class VipController {
 	 public String doVipEditUI() {
 		 return "sys/vip_edit";
 	 }
+
 	 @RequestMapping("doUpdateObject")
 	 @ResponseBody
 	 public JsonResult doUpdateObject(Vip entity) {
 		 vipService.updateObject(entity);
 		 return new JsonResult("update ok");
 	 }
+
 	 @RequestMapping("doSaveObject")
 	 @ResponseBody
 	 public JsonResult doSaveObject(Vip entity) {
 		 vipService.saveObject(entity);
 		 return new JsonResult("save ok");
 	 }
-	 @RequestMapping("doFindZtreeMenuNodes")
-	 @ResponseBody
-	 public JsonResult doFindZtreeMenuNodes() {
-		 return new JsonResult(vipService.findZtreeMenuNodes());
-	 }
+
 
     @RequestMapping("doFindPageObjects")
     @ResponseBody
@@ -52,8 +51,7 @@ public class VipController {
     @ResponseBody
     public JsonResult doFindObjectById(
             Long id){
-        Map<String,Object> map=
-                vipService.findObjectById(id);
+        Map<String,Object> map= vipService.findObjectById(id);
         return new JsonResult(map);
     }
 
