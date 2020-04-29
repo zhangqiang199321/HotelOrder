@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cy</groupId>
-	<artifactId>CGB-DBTMS-V1.01</artifactId>
+	<artifactId>HOTEL-MANAGER_SYS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CGB-DBTMS-V1.01</name>
+	<name>HOTEL-MANAGER_SYS</name>
 	<description>ssm project for Spring Boot</description>
 
 	<properties>
